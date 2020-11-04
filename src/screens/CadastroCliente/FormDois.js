@@ -10,7 +10,7 @@ import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-import CheckBoxTermoDeUso from '../../components/CheckBoxTermoDeUso';
+import CheckBox from '../../components/CheckBox';
 
 // TODO
 // Validação de campos
@@ -26,12 +26,19 @@ export default class FormDois extends React.Component {
 
     this.state = {
       titulo: "",
+      check: false
     };
 
     this.handletituloChange = this.handletituloChange.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
+
   }
 
   handletituloChange = (value) => this.setState({ titulo: value });
+
+  handleCheck() {
+    this.setState({ check: !this.state.check });
+  }
 
   render () {
     return (
@@ -75,7 +82,14 @@ export default class FormDois extends React.Component {
           />
         </View>
   
-        <CheckBoxTermoDeUso />
+        <CheckBox
+          label="Li e concordo com os termos de uso"
+          labelStyle={{ color: '#fff', fontSize: 16 }}
+          iconColor="#fff"
+          checkColor="#fff"
+          value={this.state.check}
+          onChange={this.handleCheck}
+        />
 
         <Button />
       </View>

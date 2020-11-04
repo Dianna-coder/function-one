@@ -6,7 +6,6 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import colors from '../styles/colors/index';
 
 import * as ExpoImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
 
 // TODO - abrir camera tb
 // mudar mensagem do requestCameraRollPermissionsAsync()

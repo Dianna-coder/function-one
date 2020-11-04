@@ -30,9 +30,9 @@ export default class FormQuatro extends React.Component {
 
         <ImagePicker
         />
-
+ 
         <Input
-          labelText='Senha  '
+          labelText='Senha'
           onChangeText={this.handletituloChange}
           value={this.state.titulo}
         />
