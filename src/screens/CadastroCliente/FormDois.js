@@ -8,17 +8,19 @@ import Input from '../../components/Input';
 import ImagePicker from '../../components/ImagePicker';
 import Button from '../../components/Button';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-import CheckBox from 'react-native-just-checkbox' 
+import CheckBoxTermoDeUso from '../../components/CheckBoxTermoDeUso';
 
 // TODO
 // Validação de campos
 // Formatação dos inputs
 // Seta de voltar e botao de continuar funcionar
 // pegar os dados dos inputs
+// Checkbox
+// Botao de adicionar na image
 
-export default class FormUm extends React.Component {
+export default class FormDois extends React.Component {
   constructor (props) {
     super(props);
 
@@ -56,21 +58,6 @@ export default class FormUm extends React.Component {
           onChangeText={this.handletituloChange}
           value={this.state.titulo}
         />
-        <Input
-          labelText='Número'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
-        <Input
-          labelText='Número'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
-        <Input
-          labelText='Número'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
 
         <View style={styles.containerDoisInputs}>
           <Input
@@ -88,12 +75,7 @@ export default class FormUm extends React.Component {
           />
         </View>
   
-        <CheckBox 
-          isChecked={false}
-          checkBoxSize={20}
-          checkColor='white'
-          squareCheckBox={true}
-        />
+        <CheckBoxTermoDeUso />
 
         <Button />
       </View>
