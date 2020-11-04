@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+import colors from './src/styles/colors/index';
+
+// import FormUm from './src/screens/CadastroCliente/FormUm';
+import FormDois from './src/screens/CadastroCliente/FormDois';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <FormDois />
+
+      <StatusBar 
+          style='light'
+          backgroundColor = { colors.azulEscuro }
+          translucent = {false} 
+      />
     </View>
   );
 }
@@ -14,8 +24,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: colors.azulEscuro,
+    // alignItems: 'center'
+  }
 });
