@@ -16,11 +16,14 @@ export default class Button extends Component {
   }
 
   render() {
+    const { titulo } = this.props;
 
     return (
       <View style={[styles.wrapper]}>
         <TouchableOpacity style={styles.button}>
-            <Text style={styles.text}>CONTINUAR</Text>
+            <Text style={styles.text}>
+              { titulo ?? 'CONTINUAR' }
+            </Text>
         </TouchableOpacity>
       </View>
     );

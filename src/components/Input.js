@@ -4,7 +4,7 @@ import {
   TextInput,
   StyleSheet,
   Animated,
-  KeyboardAvoidingView
+  // KeyboardAvoidingView
 } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import colors from '../styles/colors/index';
@@ -76,7 +76,7 @@ export default class Input extends Component {
           <Animated.Text style={[labelStyle, styles.labelStyle ]}>
             {labelText}
           </Animated.Text>
-          <KeyboardAvoidingView behavior='padding'>
+          {/* <KeyboardAvoidingView behavior='padding'> */}
             <TextInput
               style={[
                 styles.inputField,
@@ -90,7 +90,7 @@ export default class Input extends Component {
               onBlur={this.handleBlur}
               blurOnSubmit
             />
-          </KeyboardAvoidingView>
+          {/* </KeyboardAvoidingView> */}
 
       </View>
     );

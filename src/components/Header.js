@@ -4,16 +4,24 @@ import colors from "../styles/colors/index";
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default function Header() {
-  return (
-      <View style={styles.container}>
-        <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")}/>
-        
-        <Text style={ styles.title }>
-          Seus Dados
-        </Text>
-      </View>
-  );
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { titulo } = this.props;
+
+    return (
+        <View style={styles.container}>
+          <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")}/>
+          
+          <Text style={ styles.title }>
+            { titulo ?? 'Seus Dados' }
+          </Text>
+        </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
