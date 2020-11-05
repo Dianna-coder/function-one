@@ -4,17 +4,17 @@ import { StatusBar } from 'expo-status-bar';
 
 import colors from './src/styles/colors/index';
 
-// import FormUm from './src/screens/CadastroCliente/FormUm';
-// import FormDois from './src/screens/CadastroCliente/FormDois';
-// import FormTres from './src/screens/CadastroCliente/FormTres';
-import FormQuatro from './src/screens/CadastroCliente/FormQuatro';
-
+import FormDadosIniciais from './src/screens/CadastroCliente/FormDadosIniciais';
+import FormEndereco from './src/screens/CadastroCliente/FormEndereco';
+// import FormCartaoDeCredito from './src/screens/CadastroCliente/FormTres';
+import FormSenha from './src/screens/CadastroCliente/FormSenha';
+import Formzao from './src/screens/CadastroCliente/exemplo/Formzao'
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FormQuatro />
+        <Formzao />
 
         <StatusBar 
           style='light'

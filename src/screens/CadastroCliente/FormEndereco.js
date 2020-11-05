@@ -10,29 +10,51 @@ import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default class FormTres extends React.Component {
+import CheckBox from '../../components/CheckBox';
+
+// TODO
+// Validação de campos
+// Formatação dos inputs
+// Seta de voltar e botao de continuar funcionar
+// pegar os dados dos inputs
+// Botao de adicionar na image
+
+export default class FormEndereco extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
       titulo: "",
+      check: false
     };
 
     this.handletituloChange = this.handletituloChange.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
+
   }
 
   handletituloChange = (value) => this.setState({ titulo: value });
 
+  handleCheck() {
+    this.setState({ check: !this.state.check });
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Header titulo='Cadastre Seu Cartão' />
+        <Header />
 
         <ImagePicker
         />
 
         <Input
-          labelText='Titular'
+          labelText='CEP'
+          onChangeText={this.handletituloChange}
+          value={this.state.titulo}
+        />
+
+        <Input
+          labelText='Endereço'
           onChangeText={this.handletituloChange}
           value={this.state.titulo}
         />
@@ -46,18 +68,27 @@ export default class FormTres extends React.Component {
         <View style={styles.containerDoisInputs}>
           <Input
             withi={wp('35%')}
-            labelText='Data'
+            labelText='Bairro'
             onChangeText={this.handletituloChange}
             value={this.state.titulo}
           />
 
           <Input
             withi={wp('35%')}
-            labelText='CVC'
+            labelText='UF'
             onChangeText={this.handletituloChange}
             value={this.state.titulo}
           />
         </View>
+  
+        <CheckBox
+          label="Li e concordo com os termos de uso"
+          labelStyle={{ color: colors.branco, fontSize: 16 }}
+          iconColor={ colors.branco }
+          checkColor={ colors.branco }
+          value={this.state.check}
+          onChange={this.handleCheck}
+        />
 
         <Button />
       </View>

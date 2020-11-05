@@ -8,13 +8,9 @@ import Input from '../../components/Input';
 import ImagePicker from '../../components/ImagePicker';
 import Button from '../../components/Button';
 
-// TODO
-// Validação de campos
-// Formatação dos inputs
-// Seta de voltar e botao de continuar funcionar
-// pegar os dados dos inputs
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default class FormUm extends React.Component {
+export default class FormCartaoDeCredito extends React.Component {
   constructor (props) {
     super(props);
 
@@ -30,46 +26,38 @@ export default class FormUm extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <Header />
+        <Header titulo='Cadastre Seu Cartão' />
 
         <ImagePicker
         />
 
         <Input
-          labelText='Nome'
+          labelText='Titular'
           onChangeText={this.handletituloChange}
           value={this.state.titulo}
         />
 
         <Input
-          labelText='Sobrenome'
+          labelText='Número'
           onChangeText={this.handletituloChange}
           value={this.state.titulo}
         />
 
-        <Input
-          labelText='Email'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
+        <View style={styles.containerDoisInputs}>
+          <Input
+            withi={wp('35%')}
+            labelText='Data'
+            onChangeText={this.handletituloChange}
+            value={this.state.titulo}
+          />
 
-        <Input
-          labelText='Celular'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
-
-        <Input
-          labelText='Nascimento'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
-
-        <Input
-          labelText='CPF'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
-        />
+          <Input
+            withi={wp('35%')}
+            labelText='CVC'
+            onChangeText={this.handletituloChange}
+            value={this.state.titulo}
+          />
+        </View>
 
         <Button />
       </View>
@@ -81,6 +69,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
   },
+  containerDoisInputs: {
+    flexDirection: 'row',
+    width: wp('79.71%'),
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
+  }
 });

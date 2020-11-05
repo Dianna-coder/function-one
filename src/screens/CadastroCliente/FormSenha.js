@@ -10,7 +10,7 @@ import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default class FormQuatro extends React.Component {
+export default class FormSenha extends React.Component {
   constructor (props) {
     super(props);
 

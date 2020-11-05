@@ -62,6 +62,6 @@ CheckBox.propTypes = {
   labelStyle: PropTypes.object,
   iconColor: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.boolean,
+  // value: PropTypes.boolean,
   checkColor: PropTypes.string
 }
