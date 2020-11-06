@@ -6,9 +6,8 @@ import colors from './src/styles/colors/index';
 
 import DadosIniciais from './src/screens/FormsCadastroCliente/DadosIniciais';
 import Endereco from './src/screens/FormsCadastroCliente/Endereco';
-// import CartaoDeCredito from './src/screens/FormsCadastroCliente/CartaoDeCredito';
-// import Senha from './src/screens/FormsCadastroCliente/Senha';
-// import Formzao from './src/screens/FormsCadastroCliente/exemplo/Formzao'
+import CartaoDeCredito from './src/screens/FormsCadastroCliente/CartaoDeCredito';
+import Senha from './src/screens/FormsCadastroCliente/Senha';
 
 import AnimatedFormView from './src/components/Step'
 
@@ -29,8 +28,8 @@ export default class App extends React.Component {
     const allSteps = [
       { name: "step 1", component: DadosIniciais },
       { name: "step 2", component: Endereco },
-      // { name: "step 3", component: FormCartaoDeCredito },
-      // { name: "step 4", component: Senha }
+      { name: "step 3", component: CartaoDeCredito },
+      { name: "step 4", component: Senha }
     ];
 
     return (

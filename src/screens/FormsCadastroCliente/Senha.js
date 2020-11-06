@@ -14,25 +14,37 @@ export default class Senha extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      senha: '',
-      confirmacaoSenha: ''
-    };
+    this.state = {};
 
     this.handleSenhaChange = this.handleSenhaChange.bind(this);
     this.handleConfirmacaoSenhaChange = this.handleConfirmacaoSenhaChange.bind(this);
   }
 
-  handleSenhaChange = (senha) => this.setState(senha);
-  handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState(confirmacaoSenha);
+  handleSenhaChange = (senha) => this.setState({ senha });
+  handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState({ confirmacaoSenha });
+  
+  nextStep = () => {
+    const { next, saveState, getState } = this.props;
+
+    saveState(this.state);
+    
+    const stateAnterior = getState(this.state)
+
+    next();
+  };
+
+  goBack = () => {
+    const { back } = this.props;
+
+    back();
+  }
   
   render () {
     return (
       <View style={styles.container}>
-        <Header titulo='Defina Sua Senha' />
+        <Header titulo='Defina Sua Senha' funcao={this.goBack}/>
 
-        <ImagePicker
-        />
+        <ImagePicker permitirAdd={false} />
  
         <Input
           labelText='Senha'
@@ -46,7 +58,7 @@ export default class Senha extends React.Component {
           value={this.state.confirmacaoSenha}
         />
 
-        <Button titulo='CADASTRAR' />
+        <Button titulo='CADASTRAR' funcao={this.nextStep} />  
       </View>
     );
   }

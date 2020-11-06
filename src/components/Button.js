@@ -16,13 +16,13 @@ export default class Button extends Component {
   }
 
   render() {
-    const { titulo } = this.props;
+    const { titulo, funcao } = this.props;
 
     return (
       <View style={[styles.wrapper]}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={funcao}>
             <Text style={styles.text}>
-              { titulo ?? 'CONTINUAR' }
+              { titulo }
             </Text>
         </TouchableOpacity>
       </View>

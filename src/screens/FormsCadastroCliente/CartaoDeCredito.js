@@ -27,18 +27,33 @@ export default class CartaoDeCredito extends React.Component {
     this.handleCVCChange = this.handleCVCChange.bind(this);
   }
 
-  handleTitularChange = (titular) => this.setState(titular);
-  handleNumeroChange = (numero) => this.setState(numero);
-  handleDataChange = (data) => this.setState(data);
-  handleCVCChange = (cvc) => this.setState(cvc);
+  handleTitularChange = (titular) => this.setState({ titular });
+  handleNumeroChange = (numero) => this.setState({ numero });
+  handleDataChange = (data) => this.setState({ data });
+  handleCVCChange = (cvc) => this.setState({ cvc });
 
+  nextStep = () => {
+    const { next, saveState, getState } = this.props;
+
+    saveState(this.state);
+    
+    const stateAnterior = getState(this.state)
+
+    next();
+  };
+
+  goBack = () => {
+    const { back } = this.props;
+
+    back();
+  }
 
   render () {
     return (
       <View style={styles.container}>
-        <Header titulo='Cadastre Seu Cartão' />
+        <Header titulo='Cadastre Seu Cartão' funcao={this.goBack} />
 
-        <ImagePicker />
+        <ImagePicker permitirAdd={false} />
 
         <Input
           labelText='Titular'
@@ -68,7 +83,7 @@ export default class CartaoDeCredito extends React.Component {
           />
         </View>
 
-        <Button />
+        <Button titulo='CONTINUAR' funcao={this.nextStep} />
       </View>
     );
   }

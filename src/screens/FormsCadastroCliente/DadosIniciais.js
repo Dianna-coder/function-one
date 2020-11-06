@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
-import ImagePicker from '../../components/ImagePicker';
-// import Button from '../../components/Button';
+import ImagePicker, { imagemPerfil } from '../../components/ImagePicker';
+import Button from '../../components/Button';
 
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
@@ -42,12 +42,7 @@ export default class DadosIniciais extends React.Component {
     super(props);
 
     this.state = {
-      nome: '',
-      sobrenome: '',
-      email: '',
-      celular: '',
-      nascimento: '',
-      cpf: ''
+      imagem: imagemPerfil
     };
 
     this.handleNomeChange = this.handleNomeChange.bind(this);
@@ -67,31 +62,25 @@ export default class DadosIniciais extends React.Component {
 
   nextStep = () => {
     const { next, saveState } = this.props;
-    // Save state for use in other steps
-    saveState({ name: "samad" });
+    saveState(this.state);
 
-    // Go to next step
     next();
   };
 
   goBack() {
     const { back } = this.props;
-    // Go to previous step
+
     back();
   }
 
   render () {
     // const { errors } = useForm({ validationSchema: fieldValidationSchema }); // initialize the hook
-    
-    const onSubmit = (data) => {
-      console.log(data);
-    };
 
     return (
       <View style={styles.container}>
         <Header titulo='Seus Dados' />
 
-        <ImagePicker />
+        <ImagePicker permitirAdd={true} />
 
         <Input
           labelText='Nome'
@@ -131,8 +120,7 @@ export default class DadosIniciais extends React.Component {
           value={this.state.cpf}
         />
 
-        <Button onPress={this.nextStep} title='Continuar'>
-        </Button> 
+        <Button titulo='CONTINUAR' funcao={this.nextStep} />
       </View>
     );
   }
@@ -143,8 +131,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.azulEscuro,
     alignItems: 'center'
-  },
-  text: {
-    color: '#F11'
   }
 });

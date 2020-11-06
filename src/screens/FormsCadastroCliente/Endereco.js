@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
@@ -10,13 +10,13 @@ import ImagePicker from '../../components/ImagePicker';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import CheckBox from '../../components/CheckBox';
+import Button from '../../components/Button';
 
 export default class Endereco extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      titulo: "",
       check: false
     };
 
@@ -38,28 +38,35 @@ export default class Endereco extends React.Component {
   }
   
   nextStep = () => {
-    const { next, saveState } = this.props;
-    // Save state for use in other steps
-    saveState({ name: "samad" });
+    const { next, saveState, getState } = this.props;
 
-    // Go to next step
+    saveState(this.state);
+    
+    const stateAnterior = getState(this.state)
+
     next();
   };
 
-  goBack() {
+  pegaONegocio = () => {
+    const { getState } = this.props;
+
+    const oNegocio = getState(this.state)
+
+    return oNegocio
+  };
+
+  goBack = () => {
     const { back } = this.props;
-    // Go to previous step
+
     back();
   }
 
   render () {
-
-    console.log(this.state)
     return (
       <View style={styles.container}>
-        <Header titulo='Seus Dados' />
+        <Header titulo='Seus Dados' funcao={this.goBack}/>
 
-        <ImagePicker />
+        <ImagePicker permitirAdd={false} />
 
         <Input
           labelText='CEP'
@@ -104,8 +111,7 @@ export default class Endereco extends React.Component {
           onChange={this.handleCheck}
         />
 
-        <Button onPress={this.nextStep} title='Continuar'>
-        </Button> 
+        <Button titulo='CONTINUAR' funcao={this.nextStep} />
       </View>
     );
   }
