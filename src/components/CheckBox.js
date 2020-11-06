@@ -7,9 +7,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 export default function CheckBox(props) {
   function handleChange() {
     const { onChange } = props;
-    if (onChange) {
-      return onChange();
-    }
+
+    if (onChange) return onChange();
   }
   
   return (
@@ -17,16 +16,24 @@ export default function CheckBox(props) {
 
       <TouchableOpacity onPress={handleChange} style={[
         styles.CheckBox,
-        { borderColor: props.checkColor ? props.checkColor : '#fff' }
+        { borderColor: props.checkColor 
+            ? props.checkColor 
+            : '#fff' 
+        }
       ]}>
 
         {
-          props.value ? <Icon name="check"
-            style={{
-              fontSize: 16,
-              color: props.iconColor ? props.iconColor : '#fff'
-            }}
-          /> : null
+          props.value 
+          ? <Icon 
+              name="check"
+              style={{ 
+                fontSize: 16, 
+                color: props.iconColor 
+                  ? props.iconColor 
+                  : '#fff' 
+                }}
+            /> 
+          : null
         }
 
       </TouchableOpacity>

@@ -17,7 +17,7 @@ export default class Header extends React.Component {
           <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")}/>
           
           <Text style={ styles.title }>
-            { titulo ?? 'Seus Dados' }
+            { titulo }
           </Text>
         </View>
     );

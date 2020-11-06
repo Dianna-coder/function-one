@@ -50,13 +50,14 @@ export default class Input extends Component {
       labelText,
       defaultValue,
       inputValue,
-      error
+      // error
     } = this.props;
     
     const labelStyle = {
       position: 'absolute',
       left: 0,
-      color: !!error ? colors.vermelho : colors.branco,
+      // color: !!error ? colors.vermelho : colors.branco,
+      color: colors.branco,
       top: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
         outputRange: [35, 18],
@@ -82,13 +83,15 @@ export default class Input extends Component {
           {/* <KeyboardAvoidingView behavior='padding'> */}
             <TextInput
               style={[
-                !!error ? styles.inputErrorField : styles.inputField,
+                // !!error ? styles.inputErrorField : styles.inputField,
+                styles.inputField,
                 { width: withi ? parseInt(withi) : wp('79.71%') }
               ]}
               onChangeText={this.onChangeText}
               keyboardType={inputType}
               underlineColorAndroid="transparent"
-              defaultValue={!!error ? error.message : inputValue}
+              // defaultValue={!!error ? error.message : inputValue}
+              defaultValue={inputValue}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               blurOnSubmit
@@ -105,15 +108,15 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingTop: 5 
   },
-  inputField: {
-    height: hp('3.95%'),
-    paddingBottom: 5,
-    color: colors.vermelho,
-    marginTop: hp('3.5%'),
-    fontSize: hp('1.9%'),
-    borderBottomWidth: 1,
-    borderBottomColor: colors.branco
-  },
+  // inputErrorField: {
+  //   height: hp('3.95%'),
+  //   paddingBottom: 5,
+  //   color: colors.vermelho,
+  //   marginTop: hp('3.5%'),
+  //   fontSize: hp('1.9%'),
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: colors.branco
+  // },
   inputField: {
     height: hp('3.95%'),
     paddingBottom: 5,

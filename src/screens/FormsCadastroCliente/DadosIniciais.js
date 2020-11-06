@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
@@ -10,12 +10,6 @@ import ImagePicker from '../../components/ImagePicker';
 
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
-
-// TODO
-// Validação de campos
-// Formatação dos inputs
-// Seta de voltar e botao de continuar funcionar
-// pegar os dados dos inputs
 
 // const fieldValidationSchema = yup.object().shape({
 //   nome: yup
@@ -43,7 +37,7 @@ import * as yup from 'yup'
 //     .min(11, 'O cpf deve conter 11 dígitos'),
 // })
 
-export default class FormDadosIniciais extends React.Component {
+export default class DadosIniciais extends React.Component {
   constructor (props) {
     super(props);
 
@@ -64,12 +58,27 @@ export default class FormDadosIniciais extends React.Component {
     this.handleCPFChange = this.handleCPFChange.bind(this);
   }
 
-  handleNomeChange = (nome) => this.setState(nome);
-  handleSobrenomeChange = (sobrenome) => this.setState(sobrenome);
-  handleEmailChange = (email) => this.setState(email);
-  handleCelularChange = (celular) => this.setState(celular);
-  handleNascimentoChange = (nascimento) => this.setState(nascimento);
-  handleCPFChange = (cpf) => this.setState(cpf);
+  handleNomeChange = (nome) => this.setState({ nome });
+  handleSobrenomeChange = (sobrenome) => this.setState({ sobrenome });
+  handleEmailChange = (email) => this.setState({ email });
+  handleCelularChange = (celular) => this.setState({ celular });
+  handleNascimentoChange = (nascimento) => this.setState({ nascimento });
+  handleCPFChange = (cpf) => this.setState({ cpf });
+
+  nextStep = () => {
+    const { next, saveState } = this.props;
+    // Save state for use in other steps
+    saveState({ name: "samad" });
+
+    // Go to next step
+    next();
+  };
+
+  goBack() {
+    const { back } = this.props;
+    // Go to previous step
+    back();
+  }
 
   render () {
     // const { errors } = useForm({ validationSchema: fieldValidationSchema }); // initialize the hook
@@ -80,10 +89,9 @@ export default class FormDadosIniciais extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Header />
+        <Header titulo='Seus Dados' />
 
-        <ImagePicker
-        />
+        <ImagePicker />
 
         <Input
           labelText='Nome'
@@ -123,7 +131,8 @@ export default class FormDadosIniciais extends React.Component {
           value={this.state.cpf}
         />
 
-        <Button onPress={handleSubmit(onSubmit)} text={'Continuar'}> </Button> 
+        <Button onPress={this.nextStep} title='Continuar'>
+        </Button> 
       </View>
     );
   }
@@ -135,4 +144,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.azulEscuro,
     alignItems: 'center'
   },
+  text: {
+    color: '#F11'
+  }
 });

@@ -1,25 +1,17 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import ImagePicker from '../../components/ImagePicker';
-import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import CheckBox from '../../components/CheckBox';
 
-// TODO
-// Validação de campos
-// Formatação dos inputs
-// Seta de voltar e botao de continuar funcionar
-// pegar os dados dos inputs
-// Botao de adicionar na image
-
-export default class FormEndereco extends React.Component {
+export default class Endereco extends React.Component {
   constructor (props) {
     super(props);
 
@@ -28,56 +20,78 @@ export default class FormEndereco extends React.Component {
       check: false
     };
 
-    this.handletituloChange = this.handletituloChange.bind(this);
+    this.handleCEPChange = this.handleCEPChange.bind(this);
+    this.handleEnderecoChange = this.handleEnderecoChange.bind(this);
+    this.handleNumeroChange = this.handleNumeroChange.bind(this);
+    this.handleBairroChange = this.handleBairroChange.bind(this);
+    this.handleUFChange = this.handleUFChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
-
   }
 
-  handletituloChange = (value) => this.setState({ titulo: value });
-
+  handleCEPChange = (cep) => this.setState({ cep });
+  handleEnderecoChange = (endereco) => this.setState({ endereco });
+  handleNumeroChange = (numero) => this.setState({ numero });
+  handleBairroChange = (bairro) => this.setState({ bairro });
+  handleUFChange = (uf) => this.setState({ uf });
   handleCheck() {
     this.setState({ check: !this.state.check });
   }
+  
+  nextStep = () => {
+    const { next, saveState } = this.props;
+    // Save state for use in other steps
+    saveState({ name: "samad" });
+
+    // Go to next step
+    next();
+  };
+
+  goBack() {
+    const { back } = this.props;
+    // Go to previous step
+    back();
+  }
 
   render () {
+
+    console.log(this.state)
     return (
       <View style={styles.container}>
-        <Header />
+        <Header titulo='Seus Dados' />
 
-        <ImagePicker
-        />
+        <ImagePicker />
 
         <Input
           labelText='CEP'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleCEPChange}
+          value={this.state.cep}
         />
 
         <Input
           labelText='Endereço'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleEnderecoChange}
+          value={this.state.endereco}
         />
 
         <Input
           labelText='Número'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleNumeroChange}
+          value={this.state.numero}
         />
 
         <View style={styles.containerDoisInputs}>
           <Input
             withi={wp('35%')}
             labelText='Bairro'
-            onChangeText={this.handletituloChange}
-            value={this.state.titulo}
+            onChangeText={this.handleBairroChange}
+            value={this.state.bairro}
           />
 
           <Input
             withi={wp('35%')}
             labelText='UF'
-            onChangeText={this.handletituloChange}
-            value={this.state.titulo}
+            onChangeText={this.handleUFChange}
+            value={this.state.uf}
           />
         </View>
   
@@ -90,7 +104,8 @@ export default class FormEndereco extends React.Component {
           onChange={this.handleCheck}
         />
 
-        <Button />
+        <Button onPress={this.nextStep} title='Continuar'>
+        </Button> 
       </View>
     );
   }

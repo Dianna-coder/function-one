@@ -7,11 +7,6 @@ import colors from '../styles/colors/index';
 
 import * as ExpoImagePicker from 'expo-image-picker';
 
-// TODO - abrir camera tb
-// mudar mensagem do requestCameraRollPermissionsAsync()
-// passar imagem para o App.js
-// Retirar o botao de adicionar conforme o formulario que estiver
-
 export default function ImagePicker() {
   const [image, setImage] = useState(null);
 

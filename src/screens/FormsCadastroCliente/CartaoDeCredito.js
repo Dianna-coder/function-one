@@ -10,52 +10,61 @@ import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default class FormCartaoDeCredito extends React.Component {
+export default class CartaoDeCredito extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      titulo: "",
+      titular: '',
+      numero: '',
+      data: '',
+      cvc: ''
     };
 
-    this.handletituloChange = this.handletituloChange.bind(this);
+    this.handleTitularChange = this.handleTitularChange.bind(this);
+    this.handleNumeroChange = this.handleNumeroChange.bind(this);
+    this.handleDataChange = this.handleDataChange.bind(this);
+    this.handleCVCChange = this.handleCVCChange.bind(this);
   }
 
-  handletituloChange = (value) => this.setState({ titulo: value });
+  handleTitularChange = (titular) => this.setState(titular);
+  handleNumeroChange = (numero) => this.setState(numero);
+  handleDataChange = (data) => this.setState(data);
+  handleCVCChange = (cvc) => this.setState(cvc);
+
 
   render () {
     return (
       <View style={styles.container}>
         <Header titulo='Cadastre Seu Cartão' />
 
-        <ImagePicker
-        />
+        <ImagePicker />
 
         <Input
           labelText='Titular'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleTitularChange}
+          value={this.state.titular}
         />
 
         <Input
           labelText='Número'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleNumeroChange}
+          value={this.state.numero}
         />
 
         <View style={styles.containerDoisInputs}>
           <Input
             withi={wp('35%')}
             labelText='Data'
-            onChangeText={this.handletituloChange}
-            value={this.state.titulo}
+            onChangeText={this.handleDataChange}
+            value={this.state.data}
           />
 
           <Input
             withi={wp('35%')}
             labelText='CVC'
-            onChangeText={this.handletituloChange}
-            value={this.state.titulo}
+            onChangeText={this.handleCVCChange}
+            value={this.state.cvc}
           />
         </View>
 

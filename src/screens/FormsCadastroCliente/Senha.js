@@ -10,19 +10,22 @@ import Button from '../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default class FormSenha extends React.Component {
+export default class Senha extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      titulo: "",
+      senha: '',
+      confirmacaoSenha: ''
     };
 
-    this.handletituloChange = this.handletituloChange.bind(this);
+    this.handleSenhaChange = this.handleSenhaChange.bind(this);
+    this.handleConfirmacaoSenhaChange = this.handleConfirmacaoSenhaChange.bind(this);
   }
 
-  handletituloChange = (value) => this.setState({ titulo: value });
-
+  handleSenhaChange = (senha) => this.setState(senha);
+  handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState(confirmacaoSenha);
+  
   render () {
     return (
       <View style={styles.container}>
@@ -33,14 +36,14 @@ export default class FormSenha extends React.Component {
  
         <Input
           labelText='Senha'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleSenhaChange}
+          value={this.state.confirmacaoSenha}
         />
 
         <Input
           labelText='Confirme Sua Senha'
-          onChangeText={this.handletituloChange}
-          value={this.state.titulo}
+          onChangeText={this.handleConfirmacaoSenhaChange}
+          value={this.state.confirmacaoSenha}
         />
 
         <Button titulo='CADASTRAR' />
