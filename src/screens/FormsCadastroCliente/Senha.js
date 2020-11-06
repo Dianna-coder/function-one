@@ -14,7 +14,10 @@ export default class Senha extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      senha: '',
+      confirmacaoSenha: '',
+    };
 
     this.handleSenhaChange = this.handleSenhaChange.bind(this);
     this.handleConfirmacaoSenhaChange = this.handleConfirmacaoSenhaChange.bind(this);

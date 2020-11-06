@@ -17,7 +17,12 @@ export default class Endereco extends React.Component {
     super(props);
 
     this.state = {
-      check: false
+      check: false,
+      cep: '',
+      endereco: '', 
+      numero: '',
+      bairro: '',
+      uf: '',
     };
 
     this.handleCEPChange = this.handleCEPChange.bind(this);

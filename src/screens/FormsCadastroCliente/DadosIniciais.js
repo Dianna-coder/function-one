@@ -42,7 +42,13 @@ export default class DadosIniciais extends React.Component {
     super(props);
 
     this.state = {
-      imagem: imagemPerfil
+      imagem: imagemPerfil,
+      nome: '',
+      sobrenome: '',
+      email: '',
+      celular: '',
+      nascimento: '',
+      cpf: '',
     };
 
     this.handleNomeChange = this.handleNomeChange.bind(this);
