@@ -56,7 +56,7 @@ export default class Senha extends React.Component {
         />
 
         <Input
-          labelText='Confirme Sua Senha'
+          labelText='Confirmar senha'
           onChangeText={this.handleConfirmacaoSenhaChange}
           value={this.state.confirmacaoSenha}
         />
