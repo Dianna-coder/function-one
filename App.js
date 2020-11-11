@@ -3,13 +3,21 @@ import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import colors from './src/styles/colors/index';
-
-import DadosIniciais from './src/screens/FormsCadastroCliente/DadosIniciais';
-import Endereco from './src/screens/FormsCadastroCliente/Endereco';
-import CartaoDeCredito from './src/screens/FormsCadastroCliente/CartaoDeCredito';
-import Senha from './src/screens/FormsCadastroCliente/Senha';
-
 import AnimatedFormView from './src/components/Step'
+
+import DadosIniciais from './src/screens/FormsPadroes/DadosIniciais';
+import Endereco from './src/screens/FormsPadroes/Endereco';
+// import CartaoDeCredito from './src/screens/FormsCadastroCliente/CartaoDeCredito';
+// import Senha from './src/screens/FormsCadastroCliente/Senha';
+
+import PerfilProfissional from './src/screens/FormsCadastroTecnico/PerfilProfissional';
+import InformacoesAcademicas from './src/screens/FormsCadastroTecnico/InformacoesAcademicas';
+import Conhecimentos from './src/screens/FormsCadastroTecnico/Conhecimentos';
+import ContaBancaria from './src/screens/FormsCadastroTecnico/DadosComplementares/ContaBancaria';
+import Agenda from './src/screens/FormsCadastroTecnico/DadosComplementares/Agenda';
+import Servicos from './src/screens/FormsCadastroTecnico/DadosComplementares/Servicos';
+import CadastroEfetuado from './src/screens/TelasDeTransicao/CadastroEfetuado';
+import PrimeiroLoginTecnico from './src/screens/TelasDeTransicao/PrimeiroLoginTecnico';
 
 export default class App extends React.Component {
   onNext = () => {
@@ -25,17 +33,30 @@ export default class App extends React.Component {
   };
 
   render() {
-    const allSteps = [
+    // const allStepsFormsCliente = [
+    //   { name: "step 1", component: DadosIniciais },
+    //   { name: "step 2", component: Endereco },
+    //   { name: "step 3", component: CartaoDeCredito },
+    //   { name: "step 4", component: Senha }
+    // ];
+
+    const allStepsFormsTecnico = [
       { name: "step 1", component: DadosIniciais },
       { name: "step 2", component: Endereco },
-      { name: "step 3", component: CartaoDeCredito },
-      { name: "step 4", component: Senha }
+      // { name: "step 3", component: PerfilProfissional },
+      { name: "step 4", component: InformacoesAcademicas },
+      // { name: "step 5", component: Conhecimentos },
+      // { name: "step 6", component: CadastroEfetuado },
+      { name: "step 7", component: PrimeiroLoginTecnico },
+      // { name: "step 8", component: ContaBancaria },
+      { name: "step 9", component: Agenda },
+      { name: "step 10", component: Servicos },
     ];
 
     return (
       <View style={styles.container}>
         <AnimatedFormView
-          steps={allSteps}
+          steps={allStepsFormsTecnico}
           onFinish={this.finish}
           onBack={this.onBack}
           onNext={this.onNext}
