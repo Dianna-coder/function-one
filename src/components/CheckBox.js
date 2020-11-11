@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Icon from "react-native-vector-icons/FontAwesome"
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import colors from '../styles/colors';
 
 export default function CheckBox(props) {
   function handleChange() {
@@ -12,14 +13,17 @@ export default function CheckBox(props) {
   }
   
   return (
-    <View style={styles.WrapperCheckBox}>
+    <View style={[
+      styles.WrapperCheckBox,
+      {
+        width: props.largura ? props.largura : ('79.71%'),
+        borderBottomWidth: props.bordaBottom ? props.bordaBottom : 0,
+        borderBottomColor: colors.branco,
+        paddingBottom: props.bordaBottom ? 5 : 0
+      }]}>
 
       <TouchableOpacity onPress={handleChange} style={[
         styles.CheckBox,
-        { borderColor: props.checkColor 
-            ? props.checkColor 
-            : '#fff' 
-        }
       ]}>
 
         {
@@ -28,9 +32,7 @@ export default function CheckBox(props) {
               name="check"
               style={{ 
                 fontSize: 16, 
-                color: props.iconColor 
-                  ? props.iconColor 
-                  : '#fff' 
+                color: colors.branco 
                 }}
             /> 
           : null
@@ -47,11 +49,12 @@ export default function CheckBox(props) {
 
 const styles = StyleSheet.create({
   CheckBox: {
-    width: 25,
-    height: 25,
+    width: 15,
+    height: 15,
     borderWidth: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderColor: colors.branco
   },
   WrapperCheckBox: {
     flexDirection: "row",
@@ -60,15 +63,13 @@ const styles = StyleSheet.create({
   },
   LabelCheck: {
     color: '#fff',
-    marginLeft: 6
+    marginLeft: 10
   }
 })
 
 CheckBox.propTypes = {
   label: PropTypes.string,
   labelStyle: PropTypes.object,
-  iconColor: PropTypes.string,
   onChange: PropTypes.func,
   // value: PropTypes.boolean,
-  checkColor: PropTypes.string
 }
