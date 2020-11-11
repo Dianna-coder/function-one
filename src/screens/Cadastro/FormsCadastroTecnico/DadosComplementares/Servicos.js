@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 import colors from '../../../../styles/colors/index';
 
@@ -10,6 +10,7 @@ import Button from '../../../../components/Button';
 import CheckBox from '../../../../components/CheckBox';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { addItem } from '../../../../database/Firebase';
 
 export default class Servicos extends React.Component {
   constructor (props) {
@@ -85,8 +86,7 @@ export default class Servicos extends React.Component {
 
         {/* Adicionar serviço */}
 
-        {/* Adicionar função de enviar */}
-        <Button titulo='CADASTRAR' funcao={this.nextStep} />
+        <Button titulo='PRÓXIMO' funcao={this.nextStep} />
       </View>
     );
   }

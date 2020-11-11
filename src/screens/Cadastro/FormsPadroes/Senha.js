@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -9,6 +9,7 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { addItem } from '../../../database/Firebase';
 
 export default class Senha extends React.Component {
   constructor (props) {
@@ -25,15 +26,23 @@ export default class Senha extends React.Component {
 
   handleSenhaChange = (senha) => this.setState({ senha });
   handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState({ confirmacaoSenha });
+
+  handleSubmit = () => {
+    const { saveState, getState, finish } = this.props;
+
+    saveState({ 
+      senha: this.state.senha 
+    });
   
-  nextStep = () => {
-    const { next, saveState, getState } = this.props;
+    const dadosCadastro = getState(this.state);
 
-    saveState(this.state);
-    
-    const stateAnterior = getState(this.state)
+    const table = this.props.profissao !== '' ? '/profissionais' : '/clientes';
+  
+    addItem(dadosCadastro, table);
 
-    next();
+    Alert.alert('Cadastro efetuado com sucesso!');
+
+    finish();
   };
 
   goBack = () => {
@@ -52,7 +61,7 @@ export default class Senha extends React.Component {
         <Input
           labelText='Senha'
           onChangeText={this.handleSenhaChange}
-          value={this.state.confirmacaoSenha}
+          value={this.state.senha}
         />
 
         <Input
@@ -61,7 +70,7 @@ export default class Senha extends React.Component {
           value={this.state.confirmacaoSenha}
         />
 
-        <Button titulo='CADASTRAR' funcao={this.nextStep} />  
+        <Button titulo='CADASTRAR' funcao={this.handleSubmit} />  
       </View>
     );
   }

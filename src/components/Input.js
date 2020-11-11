@@ -52,7 +52,6 @@ export default class Input extends Component {
     const {
       withi,
       altura,
-      alturaAoAbrir,
       inputType,
       labelText,
       inputValue,

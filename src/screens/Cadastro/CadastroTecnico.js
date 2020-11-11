@@ -15,19 +15,24 @@ import PrimeiroLoginTecnico from '../TelasDeTransicao/PrimeiroLoginTecnico';
 import ContaBancaria from './FormsCadastroTecnico/DadosComplementares/ContaBancaria';
 import Agenda from './FormsCadastroTecnico/DadosComplementares/Agenda';
 import Servicos from './FormsCadastroTecnico/DadosComplementares/Servicos';
+import Senha from './FormsPadroes/Senha';
 
 export default class CadastroTecnico extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {};
+  }
+
   onNext = () => {
-    console.log("Next");
+    // console.log("Next");
   };
 
   onBack = () => {
-    console.log("Back");
+    // console.log("Back");
   };
 
-  finish = finalState => {
-    console.log(finalState);
-  };
+  finish = () => this.props.navigation.navigate('Login');
 
   render() {
     const allStepsFormsTecnico = [
@@ -36,11 +41,12 @@ export default class CadastroTecnico extends React.Component {
       { name: "step 3", component: PerfilProfissional },
       { name: "step 4", component: InformacoesAcademicas },
       { name: "step 5", component: Conhecimentos },
-      { name: "step 6", component: CadastroEfetuado },
-      { name: "step 7", component: PrimeiroLoginTecnico },
+      // { name: "step 6", component: CadastroEfetuado },
+      // { name: "step 7", component: PrimeiroLoginTecnico },
       { name: "step 8", component: ContaBancaria },
       { name: "step 9", component: Agenda },
       { name: "step 10", component: Servicos },
+      { name: "step 11", component: Senha },
     ];
 
     return (

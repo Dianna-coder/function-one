@@ -16,7 +16,7 @@ export default class CartaoDeCredito extends React.Component {
 
     this.state = {
       titular: '',
-      numero: '',
+      numeroCartao: '',
       data: '',
       cvc: ''
     };
@@ -28,17 +28,15 @@ export default class CartaoDeCredito extends React.Component {
   }
 
   handleTitularChange = (titular) => this.setState({ titular });
-  handleNumeroChange = (numero) => this.setState({ numero });
+  handleNumeroChange = (numeroCartao) => this.setState({ numeroCartao });
   handleDataChange = (data) => this.setState({ data });
   handleCVCChange = (cvc) => this.setState({ cvc });
 
   nextStep = () => {
-    const { next, saveState, getState } = this.props;
+    const { next, saveState } = this.props;
 
     saveState(this.state);
     
-    const stateAnterior = getState(this.state)
-
     next();
   };
 
@@ -64,7 +62,7 @@ export default class CartaoDeCredito extends React.Component {
         <Input
           labelText='Número'
           onChangeText={this.handleNumeroChange}
-          value={this.state.numero}
+          value={this.state.numeroCartao}
         />
 
         <View style={styles.containerDoisInputs}>

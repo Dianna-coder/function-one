@@ -8,20 +8,24 @@ import AnimatedFormView from '../../components/Step'
 import DadosIniciais from './FormsPadroes/DadosIniciais';
 import Endereco from './FormsPadroes/Endereco';
 import CartaoDeCredito from './FormsCadastroCliente/CartaoDeCredito';
-import Senha from './FormsCadastroCliente/Senha';
+import Senha from './FormsPadroes/Senha';
 
 export default class CadastroCliente extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {};
+  }
+
   onNext = () => {
-    console.log("Next");
+    // console.log("Next");
   };
 
   onBack = () => {
-    console.log("Back");
+    // console.log("Back");
   };
 
-  finish = finalState => {
-    console.log(finalState);
-  };
+  finish = () => this.props.navigation.navigate('Login');
 
   render() {
     const allStepsFormsCliente = [

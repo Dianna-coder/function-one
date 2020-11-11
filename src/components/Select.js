@@ -12,14 +12,20 @@ import Icon from "react-native-vector-icons/FontAwesome"
 export default class Select extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      inputValue: props.defaultValue,
+    };
   }
 
   render() {
     const {
+      largura,
       labelText,
-      valorPadrao,
+      valor,
+      inputValue,
+      valorMudado,
       valoresDoSelect,
-      largura
     } = this.props;
 
     return (
@@ -54,11 +60,10 @@ export default class Select extends Component {
             }}
             placeholder={{
               label: labelText,
-              value: valorPadrao,
+              value: valor,
             }}
-            onValueChange={(value) => {
-              this.setState({ value });
-            }}
+            value={inputValue}
+            onValueChange={valorMudado}
             items={valoresDoSelect}
             Icon={() => {
               return <Icon 

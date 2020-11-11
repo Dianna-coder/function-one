@@ -62,8 +62,8 @@ export default class InformacoesAcademicas extends React.Component {
 
         <Select
             labelText={'Selecione o nível de escolaridade...'}
-            value={this.state.nivelDeEscolaridade}
-            onValueChange={this.handleNivelDeEscolaridadeChange}
+            valor={this.state.nivelDeEscolaridade}
+            valorMudado={this.handleNivelDeEscolaridadeChange}
             valoresDoSelect={[
               { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
               { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },

@@ -16,7 +16,7 @@ export default class ContaBancaria extends React.Component {
 
     this.state = {
       titular: '',
-      cpf: '',
+      cpfContaBancaria: '',
       banco: '', // Esse vai ser select
       agencia: '',
       conta: ''
@@ -31,7 +31,7 @@ export default class ContaBancaria extends React.Component {
   }
 
   handleTitularChange = (titular) => this.setState({ titular });
-  handleCpfChange = (cpf) => this.setState({ cpf });
+  handleCpfChange = (cpfContaBancaria) => this.setState({ cpfContaBancaria });
   handleBancoChange = (banco) => this.setState({ banco });
   handleAgenciaChange = (agencia) => this.setState({ agencia });
   handleContaChange = (conta) => this.setState({ conta });
@@ -65,7 +65,7 @@ export default class ContaBancaria extends React.Component {
         <Input
           labelText='CPF'
           onChangeText={this.handleCpfChange}
-          value={this.state.cpf}
+          value={this.state.cpfContaBancaria}
         />
 
         <Input
