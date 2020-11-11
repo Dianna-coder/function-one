@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     position: 'absolute', 
     width: wp('15%'), 
     height: wp('15%'),
-    marginLeft: wp('6%'),
+    marginLeft: wp('3.5%'),
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 3
