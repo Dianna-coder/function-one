@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import colors from '../../../styles/colors/index';
+import colors from '../../../../styles/colors/index';
 
-import Header from '../../../components/Header';
-import Input from '../../../components/Input';
-import ImagePicker from '../../../components/ImagePicker';
-import Button from '../../../components/Button';
-import CheckBox from '../../../components/CheckBox';
+import Header from '../../../../components/Header';
+import Input from '../../../../components/Input';
+import ImagePicker from '../../../../components/ImagePicker';
+import Button from '../../../../components/Button';
+import CheckBox from '../../../../components/CheckBox';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 

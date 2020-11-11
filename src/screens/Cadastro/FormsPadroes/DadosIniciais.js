@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import colors from '../../styles/colors/index';
+import colors from '../../../styles/colors/index';
 
-import Header from '../../components/Header';
-import Input from '../../components/Input';
-import ImagePicker, { imagemPerfil } from '../../components/ImagePicker';
-import Button from '../../components/Button';
+import Header from '../../../components/Header';
+import Input from '../../../components/Input';
+import ImagePicker, { imagemPerfil } from '../../../components/ImagePicker';
+import Button from '../../../components/Button';
 
-import CheckBox from '../../components/CheckBox';
+import CheckBox from '../../../components/CheckBox';
 
 // import { useForm } from 'react-hook-form'
 // import * as yup from 'yup'
