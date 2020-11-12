@@ -13,15 +13,16 @@ import CadastroTecnico from './src/screens/Cadastro/CadastroTecnico';
 const Stack = createStackNavigator();
 
 class App extends React.Component {
+  
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator
-        // screenOptions={{
-        //   headerShown: false
-        // }}
+        screenOptions={{
+          headerShown: false
+        }}
         >
-          <Stack.Screen name="Home" component={Main}/>
+          <Stack.Screen name="Main" component={Main}/>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="ScreenUm" component={ScreenUm}/>
           <Stack.Screen name="ScreenDois" component={ScreenDois}/>

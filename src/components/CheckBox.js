@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types"
 import Icon from "react-native-vector-icons/FontAwesome"
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import colors from '../styles/colors';
 
-export default function CheckBox(props) {
-  function handleChange() {
-    const { onChange } = props;
 
+export default function CheckBox(props) {
+  const [checkState, setCheckState] = useState(false)
+  
+
+  function handleChange() {
+    let { onChange } = props;
+    (checkState) ? setCheckState(false) : setCheckState(true);
+
+    console.log(checkState)
     if (onChange) return onChange();
   }
   
