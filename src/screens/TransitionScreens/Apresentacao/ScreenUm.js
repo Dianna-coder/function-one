@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, Alert } from 'react-native';
-import Header from '../../components/Header';
+import Header from '../../../components/Header';
 
 export default function ScreenUm(props) {
   return (

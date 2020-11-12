@@ -14,7 +14,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Input from "../components/Input";
+import { emailSignIn, signout, getUserData, getProfissionalData } from "../database/Firebase";
 import colors from "../styles/colors"
+import Global from "../global/Global";
 
 const fundo = "../../assets/fundo.png";
 const logo = "../../assets/logo.png";
@@ -25,16 +27,45 @@ export default class Login extends React.Component {
 
     this.state = {
       email: '',
-      senha: '',
+      password: '',
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handleSenhaChange = this.handleSenhaChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleEmailChange = (email) => this.setState({ email });
-  handleSenhaChange = (senha) => this.setState({ senha });
+  handlePasswordChange = (password) => this.setState({ password });
 
+  handleNextButton = () => {
+    const email = this.state.email;
+    const password = this.state.password;
+
+    emailSignIn({ email, password }, (error, user) => {
+      if (error && !user) return alert(error.message);
+
+      getUserData(email, (data, error) => {
+        if (error && !data) return alert(error.message);
+
+        Global.userData = data.data();
+        Global.EMAIL = email;
+
+        if (Global.userData) this.props.navigation.navigate('CadastroEfetuado');
+      });
+
+      getProfissionalData(email, (data, error) => {
+        if (error && !data) {
+          signout();
+          alert(error.message);
+        }
+
+        Global.userData = data.data();
+        Global.EMAIL = email;
+        
+        if (Global.userData) this.props.navigation.navigate('PrimeiroLoginTecnico');
+      });
+    });
+  }
 
   render () {
     return (
@@ -61,13 +92,13 @@ export default class Login extends React.Component {
 
               <Input
                   labelText='Senha'
-                  onChangeText={this.handleSenhaChange}
-                  value={this.state.senha}
+                  onChangeText={this.handlePasswordChange}
+                  value={this.state.password}
                 />
             </View>
 
             <View style={{alignItems: "center",marginTop: 40, marginBottom: 40}}>
-              <TouchableOpacity onPress={() => Alert.alert('Você clicou para Confirmar')} style={styles.botoes}>
+              <TouchableOpacity onPress={this.handleNextButton} style={styles.botoes}>
                 <Text style={styles.txtbotao}>Confirmar</Text>
               </TouchableOpacity>
 
@@ -90,7 +121,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
   container2: {
     marginTop: wp("30%"),
     padding: 10,
