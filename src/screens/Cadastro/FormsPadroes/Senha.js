@@ -8,12 +8,14 @@ import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import { addItem } from '../../../database/Firebase';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { addNewProfissionalData, addNewUserData, emailSignUp } from '../../../database/Firebase';
 
 export default class Senha extends React.Component {
   constructor (props) {
     super(props);
+
+    // LogBox.ignoreAllLogs(true)
 
     this.state = {
       senha: '',
@@ -24,21 +26,58 @@ export default class Senha extends React.Component {
     this.handleConfirmacaoSenhaChange = this.handleConfirmacaoSenhaChange.bind(this);
   }
 
-  handleSenhaChange = (senha) => this.setState({ senha });
+  handleSenhaChange = (senha) => this.setState({ senha: senha ? senha.toString() : senha });
   handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState({ confirmacaoSenha });
 
   handleSubmit = () => {
-    const { saveState, getState, finish } = this.props;
+    if (this.state.senha !== this.state.confirmacaoSenha) {
+      Alert.alert('Senhas divergentes!')
+      return
+    }
 
-    saveState({ 
-      senha: this.state.senha 
-    });
-  
-    const dadosCadastro = getState(this.state);
+    const { getState, finish } = this.props;
 
-    const table = this.props.profissao !== '' ? '/profissionais' : '/clientes';
-  
-    addItem(dadosCadastro, table);
+    const stateEncontrado = getState(this.state);
+    const data = { ...stateEncontrado, senha: this.state.senha}
+
+    const email = data.email;
+    const password = data.senha;
+
+    setTimeout(() => {
+      emailSignUp ({ email, password }, (error, user) => {
+        if (error && !user) {
+          alert(error.message);
+        } else {
+          const userData = data;
+
+          if (userData.profissional) {
+            addNewProfissionalData({ email, userData }, (docRef, error) => {
+              if (error && !docRef) alert(error);
+            });
+          }
+
+          if (!userData.profissional) {
+            addNewUserData({ email, userData }, (docRef, error) => {
+              if (error && !docRef) alert(error);
+              // } else {
+              //   //alert(docRef);
+              //   // Global.EMAIL = email;
+              //   // Global.userData = userData;
+              // }
+            });
+          }
+          // alert('Singed Up!');
+          // navigate('LoggedOut');
+          // navigate('LogIn');
+          // if (Global.userData.barber === true) {
+          //   navigate("LoggedIn");
+          // } else {
+          //   navigate("LoggedInC");
+          // }
+        }
+      });
+    }, 2000);
+      // this.setState({ formValid: true, loadingVisible: false });
 
     Alert.alert('Cadastro efetuado com sucesso!');
 

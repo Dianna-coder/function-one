@@ -17,6 +17,7 @@ export default class PerfilProfissional extends React.Component {
     this.state = {
       profissao: '',
       apresentacao: '',
+      profissional: true
     };
 
     this.handleProfissaoChange = this.handleProfissaoChange.bind(this);

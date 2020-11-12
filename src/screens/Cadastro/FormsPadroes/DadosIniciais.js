@@ -62,7 +62,7 @@ export default class DadosIniciais extends React.Component {
   }
 
   handleNomeChange = (nome) => this.setState({ nome });
-  handleEmailChange = (email) => this.setState({ email });
+  handleEmailChange = (email) => this.setState({ email: email ? email.toString().trim() : email });
   handleCelularChange = (celular) => this.setState({ celular });
   handleNascimentoChange = (nascimento) => this.setState({ nascimento });
   handleCPFChange = (cpf) => this.setState({ cpf });
