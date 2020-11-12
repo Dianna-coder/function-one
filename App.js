@@ -4,9 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Main from './src/screens/Main';
 import Login from './src/screens/Login';
-import ScreenUm from './src/screens/Apresentacao/ScreenUm';
-import ScreenDois from './src/screens/Apresentacao/ScreenDois';
-import ScreenTres from './src/screens/Apresentacao/ScreenTres';
+import ScreenUm from './src/screens/TransitionScreens/Apresentacao/ScreenUm';
+import ScreenDois from './src/screens/TransitionScreens/Apresentacao/ScreenDois';
+import ScreenTres from './src/screens/TransitionScreens/Apresentacao/ScreenTres';
 import CadastroCliente from './src/screens/Cadastro/CadastroCliente';
 import CadastroTecnico from './src/screens/Cadastro/CadastroTecnico';
 

@@ -9,7 +9,7 @@ export default function ScreenDois(props) {
         Profissionais capacitados
         </Text>
 
-      <Image source={require('../../../assets/icons/diploma.png')}>
+      <Image source={require('../../../../assets/icons/diploma.png')}>
       </Image>
 
       <Text style={{ color: "#FFFFFF", fontSize: 20, textAlign: "center" }}>

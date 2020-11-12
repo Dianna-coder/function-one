@@ -5,17 +5,17 @@ import { StatusBar } from 'expo-status-bar';
 import colors from '../../styles/colors/index';
 import AnimatedFormView from '../../components/Step'
 
-import DadosIniciais from './FormsPadroes/DadosIniciais';
-import Endereco from './FormsPadroes/Endereco';
-import PerfilProfissional from './FormsCadastroTecnico/PerfilProfissional';
-import InformacoesAcademicas from './FormsCadastroTecnico/InformacoesAcademicas';
-import Conhecimentos from './FormsCadastroTecnico/Conhecimentos';
-import CadastroEfetuado from '../TelasDeTransicao/CadastroEfetuado';
-import PrimeiroLoginTecnico from '../TelasDeTransicao/PrimeiroLoginTecnico';
-import ContaBancaria from './FormsCadastroTecnico/DadosComplementares/ContaBancaria';
-import Agenda from './FormsCadastroTecnico/DadosComplementares/Agenda';
-import Servicos from './FormsCadastroTecnico/DadosComplementares/Servicos';
-import Senha from './FormsPadroes/Senha';
+import DadosIniciais from './Formularios/DadosIniciais';
+import Endereco from './Formularios/Endereco';
+import PerfilProfissional from './Formularios/PerfilProfissional';
+import InformacoesAcademicas from './Formularios/InformacoesAcademicas';
+import Conhecimentos from './Formularios/Conhecimentos';
+import CadastroEfetuado from '../TransitionScreens/CadastroEfetuado';
+import PrimeiroLoginTecnico from '../TransitionScreens/PrimeiroLoginTecnico';
+import ContaBancaria from './Formularios/ContaBancaria';
+import Agenda from './Formularios/Agenda';
+import Servicos from './Formularios/Servicos';
+import Senha from './Formularios/Senha';
 
 export default class CadastroTecnico extends React.Component {
   constructor (props) {
@@ -36,9 +36,9 @@ export default class CadastroTecnico extends React.Component {
 
   render() {
     const allStepsFormsTecnico = [
-      { name: "step 1", component: DadosIniciais },
-      { name: "step 2", component: Endereco },
-      { name: "step 3", component: PerfilProfissional },
+      // { name: "step 1", component: DadosIniciais },
+      // { name: "step 2", component: Endereco },
+      // { name: "step 3", component: PerfilProfissional },
       { name: "step 4", component: InformacoesAcademicas },
       { name: "step 5", component: Conhecimentos },
       // { name: "step 6", component: CadastroEfetuado },

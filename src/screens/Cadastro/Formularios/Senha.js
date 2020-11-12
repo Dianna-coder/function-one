@@ -12,7 +12,7 @@ import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { addNewProfissionalData, addNewUserData, emailSignUp } from '../../../database/Firebase';
 
 export default class Senha extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     // LogBox.ignoreAllLogs(true)
@@ -37,47 +37,35 @@ export default class Senha extends React.Component {
 
     const { getState, finish } = this.props;
 
-    const stateEncontrado = getState(this.state);
-    const data = { ...stateEncontrado, senha: this.state.senha}
+    const foundState = getState(this.state);
+
+    const data = { 
+      ...foundState, 
+      senha: this.state.senha
+    };
 
     const email = data.email;
     const password = data.senha;
 
+    if (!email || !password) return Alert.alert('Dados Incompletos!')
+
     setTimeout(() => {
-      emailSignUp ({ email, password }, (error, user) => {
-        if (error && !user) {
-          alert(error.message);
+      emailSignUp({ email, password }, (error, user) => {
+        if (error && !user) return alert(error.message);
+
+        const userData = data;
+
+        if (userData.profissional) {
+          addNewProfissionalData({ email, userData }, (docRef, error) => {
+            if (error && !docRef) return alert(error);
+          });
         } else {
-          const userData = data;
-
-          if (userData.profissional) {
-            addNewProfissionalData({ email, userData }, (docRef, error) => {
-              if (error && !docRef) alert(error);
-            });
-          }
-
-          if (!userData.profissional) {
-            addNewUserData({ email, userData }, (docRef, error) => {
-              if (error && !docRef) alert(error);
-              // } else {
-              //   //alert(docRef);
-              //   // Global.EMAIL = email;
-              //   // Global.userData = userData;
-              // }
-            });
-          }
-          // alert('Singed Up!');
-          // navigate('LoggedOut');
-          // navigate('LogIn');
-          // if (Global.userData.barber === true) {
-          //   navigate("LoggedIn");
-          // } else {
-          //   navigate("LoggedInC");
-          // }
+          addNewUserData({ email, userData }, (docRef, error) => {
+            if (error && !docRef) return alert(error);
+          });    
         }
       });
     }, 2000);
-      // this.setState({ formValid: true, loadingVisible: false });
 
     Alert.alert('Cadastro efetuado com sucesso!');
 
@@ -89,14 +77,14 @@ export default class Senha extends React.Component {
 
     back();
   }
-  
-  render () {
+
+  render() {
     return (
       <View style={styles.container}>
-        <Header titulo='Defina Sua Senha' funcao={this.goBack}/>
+        <Header titulo='Defina Sua Senha' funcao={this.goBack} />
 
         <ImagePicker permitirAdd={false} />
- 
+
         <Input
           labelText='Senha'
           onChangeText={this.handleSenhaChange}
@@ -109,7 +97,7 @@ export default class Senha extends React.Component {
           value={this.state.confirmacaoSenha}
         />
 
-        <Button titulo='CADASTRAR' funcao={this.handleSubmit} />  
+        <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
       </View>
     );
   }

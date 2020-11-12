@@ -1,20 +1,21 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-export default function ScreenUm(props) {
+export default function ScreenTres(props) {
   return (
     <View style={styles.conatiner}>
       <Text style={{ color: "#FFFFFF", fontSize: 30 }}>
-        Conforto e Rapidez
+        Melhor Custo-benefício
         </Text>
 
-      <Image source={require('../../../assets/icons/rota.png')}></Image>
+      <Image source={require('../../../../assets/icons/cofrinho.png')}>
+      </Image>
 
       <Text style={{ color: "#FFFFFF", fontSize: 20, textAlign: "center" }}>
-        Solicite um técnico em TI no conforto de sua casa e sem dor de cabeça
+        Escolha o técnico que pode solucionar seu problema e que também atenda a seu orçamento.
         </Text>
 
-      <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => props.navigation.navigate('ScreenDois')}>
+      <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => props.navigation.navigate('CadastroCliente')}>
         <Text style={{
           fontSize: 20,
           justifyContent: "center",
@@ -26,7 +27,6 @@ export default function ScreenUm(props) {
         </Text>
       </TouchableOpacity>
     </View>
-
   );
 }
 

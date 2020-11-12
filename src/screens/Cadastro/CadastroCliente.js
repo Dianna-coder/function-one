@@ -5,10 +5,10 @@ import { StatusBar } from 'expo-status-bar';
 import colors from '../../styles/colors/index';
 import AnimatedFormView from '../../components/Step'
 
-import DadosIniciais from './FormsPadroes/DadosIniciais';
-import Endereco from './FormsPadroes/Endereco';
-import CartaoDeCredito from './FormsCadastroCliente/CartaoDeCredito';
-import Senha from './FormsPadroes/Senha';
+import DadosIniciais from './Formularios/DadosIniciais';
+import Endereco from './Formularios/Endereco';
+import CartaoDeCredito from './Formularios/CartaoDeCredito';
+import Senha from './Formularios/Senha';
 
 export default class CadastroCliente extends React.Component {
   constructor (props) {
