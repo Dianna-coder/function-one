@@ -1,9 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import Header from '../../components/Header';
 
 export default function ScreenUm(props) {
   return (
     <View style={styles.conatiner}>
+      <Header titulo='Conhecimentos' funcao={() => props.navigation.navigate('Main')} />
+
       <Text style={{ color: "#FFFFFF", fontSize: 30 }}>
         Conforto e Rapidez
         </Text>
