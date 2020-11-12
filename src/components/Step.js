@@ -138,6 +138,7 @@ class Index extends Component {
         <Step
           next={this.next}
           back={this.back}
+          finish={this.finish}
           saveState={this.saveState}
           getState={this.getState}
         />

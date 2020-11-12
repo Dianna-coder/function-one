@@ -45,9 +45,8 @@ export default class DadosIniciais extends React.Component {
 
     this.state = {
       termoDeUso: false,
-      imagem: imagemPerfil,
+      imagem: imagemPerfil, // nao foi
       nome: '',
-      sobrenome: '',
       email: '',
       celular: '',
       nascimento: '',
@@ -55,7 +54,6 @@ export default class DadosIniciais extends React.Component {
     };
 
     this.handleNomeChange = this.handleNomeChange.bind(this);
-    this.handleSobrenomeChange = this.handleSobrenomeChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleCelularChange = this.handleCelularChange.bind(this);
     this.handleNascimentoChange = this.handleNascimentoChange.bind(this);
@@ -64,8 +62,7 @@ export default class DadosIniciais extends React.Component {
   }
 
   handleNomeChange = (nome) => this.setState({ nome });
-  handleSobrenomeChange = (sobrenome) => this.setState({ sobrenome });
-  handleEmailChange = (email) => this.setState({ email });
+  handleEmailChange = (email) => this.setState({ email: email ? email.toString().trim() : email });
   handleCelularChange = (celular) => this.setState({ celular });
   handleNascimentoChange = (nascimento) => this.setState({ nascimento });
   handleCPFChange = (cpf) => this.setState({ cpf });

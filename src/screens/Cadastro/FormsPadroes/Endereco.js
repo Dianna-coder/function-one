@@ -40,21 +40,10 @@ export default class Endereco extends React.Component {
   handleCidadeChange = (cidade) => this.setState({ cidade });
   
   nextStep = () => {
-    const { next, saveState, getState } = this.props;
-
+    const { next, saveState } = this.props;
     saveState(this.state);
-    
-    const stateAnterior = getState(this.state)
 
     next();
-  };
-
-  pegaONegocio = () => {
-    const { getState } = this.props;
-
-    const oNegocio = getState(this.state)
-
-    return oNegocio
   };
 
   goBack = () => {
@@ -99,8 +88,8 @@ export default class Endereco extends React.Component {
           <Select
             largura={wp('38%')}
             labelText={'UF'}
-            value={this.state.uf}
-            onValueChange={this.handleUFChange}
+            valor={this.state.uf}
+            valorMudado={this.handleUFChange}
             valoresDoSelect={[
               { label: 'São Paulo', value: 'SP' },
             ]}

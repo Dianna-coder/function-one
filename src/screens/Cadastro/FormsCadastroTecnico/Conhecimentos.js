@@ -26,6 +26,22 @@ export default class Conhecimentos extends React.Component {
   handleConhecimentoChange = (conhecimento) => this.setState({ conhecimento });
   handleTempoDeExperienciaChange = (tempoDeExperiencia) => this.setState({ tempoDeExperiencia });
 
+  // handleSubmit = () => {
+  //   const { saveState, getState, finish } = this.props;
+
+  //   saveState({ 
+  //     senha: this.state.senha 
+  //   });
+  
+  //   const dadosCadastro = getState(this.state);
+
+  //   addItem(dadosCadastro, '/clientes');
+
+  //   Alert.alert('Item saved successfully');
+
+  //   finish();
+  // };
+  
   nextStep = () => {
     const { next, saveState } = this.props;
     saveState(this.state);
