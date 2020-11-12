@@ -18,7 +18,9 @@ class App extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
+
         screenOptions={{
+          animationEnabled: false, 
           headerShown: false
         }}
         >
