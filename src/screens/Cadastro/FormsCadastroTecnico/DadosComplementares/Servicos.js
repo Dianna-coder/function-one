@@ -30,7 +30,10 @@ export default class Servicos extends React.Component {
 
   handleTipoDeServicoChange = (tipoDeServico) => this.setState({ tipoDeServico });
   handleValorChange = (valor) => this.setState({ valor });
-  handleRemotoChange = (remoto) => this.setState({ remoto });
+  handleRemotoChange ()  {
+    this.setState({ remoto: !this.state.remoto })
+  };
+
   handleDuracaoChange = (duracao) => this.setState({ duracao });
 
   nextStep = () => {
@@ -85,7 +88,6 @@ export default class Servicos extends React.Component {
 
         {/* Adicionar serviço */}
 
-        {/* Adicionar função de enviar */}
         <Button titulo='CADASTRAR' funcao={this.nextStep} />
       </View>
     );
