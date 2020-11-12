@@ -50,7 +50,7 @@ export default class Login extends React.Component {
         Global.userData = data.data();
         Global.EMAIL = email;
 
-        if (Global.userData) this.props.navigation.navigate('CadastroEfetuado');
+        if (Global.userData) this.props.navigation.navigate('ProfileCliente');
       });
 
       getProfissionalData(email, (data, error) => {
