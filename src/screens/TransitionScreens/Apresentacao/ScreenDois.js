@@ -1,32 +1,34 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import Header from '../../../components/Header';
+import colors from '../../../styles/colors';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 export default function ScreenDois(props) {
   return (
     <View style={styles.conatiner}>
+      <Header titulo='' funcao={() => props.navigation.navigate('Main')} />
 
-      <Text style={{ color: "#FFFFFF", fontSize: 30 }}>
-        Profissionais capacitados
+      <View style={styles.interno}>
+        <Text style={styles.titulo}>
+          Profissionais capacitados
         </Text>
 
-      <Image source={require('../../../../assets/icons/diploma.png')}>
-      </Image>
+        <Image source={require('../../../../assets/icons/diploma.png')}></Image>
 
-      <Text style={{ color: "#FFFFFF", fontSize: 20, textAlign: "center" }}>
-        Através do site ou aplicativo, você encontrará técnicos capacitados e certificados para atender sua necessidade
+        <Text style={styles.paragrafo}>
+          Através do site ou aplicativo, você encontrará técnicos capacitados e certificados para atender sua necessidade
         </Text>
 
-      <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => props.navigation.navigate('ScreenTres')}>
-        <Text style={{
-          fontSize: 20,
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 25,
-          marginLeft: 30
-        }}>
-          PRÓXIMO
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity  onPress={() => props.navigation.navigate('ScreenTres')}>
+          <Text style={styles.btn}>
+            Próximo
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <Image style={styles.icon} source={require('../../../../assets/icons/telaDois.png')}></Image>
     </View>
 
   );
@@ -35,8 +37,41 @@ export default function ScreenDois(props) {
 const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
-    justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor: "#0C1C41",
+    backgroundColor: colors.azulEscuro,
   },
+  interno: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly"
+  },
+  titulo: {
+    color: colors.branco,
+    fontSize: 30,
+    textAlign: "center",
+  },
+  paragrafo: {
+    width: wp ('88%'),
+    color: "#FFFFFF", 
+    fontSize: 18,
+    textAlign: "center"
+  },
+  btn: {
+    fontSize: 20,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 25,
+      padding: 6,
+      paddingLeft: 12,
+      paddingRight: 12,
+      backgroundColor: colors.azulVibrante,
+      borderRadius: 5,
+      color: colors.branco,
+      borderWidth: 1
+  },
+  icon: {
+    height: hp ('1.2%'), 
+    width: hp ('4.9%'),
+    marginBottom: 20
+  }
 })
