@@ -62,7 +62,7 @@ export default class Login extends React.Component {
         Global.userData = data.data();
         Global.EMAIL = email;
         
-        if (Global.userData) this.props.navigation.navigate('PrimeiroLoginTecnico');
+        if (Global.userData) this.props.navigation.navigate('ProfileProfissional');
       });
     });
   }

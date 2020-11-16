@@ -9,8 +9,8 @@ import ScreenDois from './src/screens/TransitionScreens/Apresentacao/ScreenDois'
 import ScreenTres from './src/screens/TransitionScreens/Apresentacao/ScreenTres';
 import CadastroCliente from './src/screens/Cadastro/CadastroCliente';
 import CadastroTecnico from './src/screens/Cadastro/CadastroTecnico';
-import PrimeiroLoginTecnico from './src/screens/TransitionScreens/PrimeiroLoginTecnico';
 import ProfileCliente from './src/screens/ProfileCliente/ProfileCliente';
+import ProfileProfissional from './src/screens/ProfileProfissional/ProfileProfissional';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +34,7 @@ class App extends React.Component {
           <Stack.Screen name="CadastroCliente" component={CadastroCliente}/>
           <Stack.Screen name="CadastroTecnico" component={CadastroTecnico}/>
           <Stack.Screen name="ProfileCliente" component={ProfileCliente}/>
-          <Stack.Screen name="PrimeiroLoginTecnico" component={PrimeiroLoginTecnico}/>
+          <Stack.Screen name="ProfileProfissional" component={ProfileProfissional}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
