@@ -14,7 +14,6 @@ export default function CheckBox(props) {
     let { onChange } = props;
     (checkState) ? setCheckState(false) : setCheckState(true);
 
-    console.log(checkState)
     if (onChange) return onChange();
   }
   

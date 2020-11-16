@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -7,8 +7,9 @@ import Header from '../../../components/Header';
 import Input from '../../../components/Input';
 import ImagePicker, { imagemPerfil } from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
-
 import CheckBox from '../../../components/CheckBox';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // import { useForm } from 'react-hook-form'
 // import * as yup from 'yup'
@@ -85,54 +86,59 @@ export default class DadosIniciais extends React.Component {
   }
 
   render () {
-    // const { errors } = useForm({ validationSchema: fieldValidationSchema }); // initialize the hook
-
     return (
-      <View style={styles.container}>
-        <Header titulo='Seus Dados' />
+    <KeyboardAwareScrollView>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Seus Dados' />
 
-        <ImagePicker permitirAdd={true} />
+          <ImagePicker permitirAdd={true} />
 
-        <Input
-          labelText='Nome'
-          // error={errors?.nome}
-          onChangeText={this.handleNomeChange}
-          value={this.state.nome}
-        />
+          <Input
+            labelText='Nome'
+            // error={errors?.nome}
+            onChangeText={this.handleNomeChange}
+            value={this.state.nome}
+          />
 
-        <Input
-          labelText='CPF'
-          onChangeText={this.handleCPFChange}
-          value={this.state.cpf}
-        />
+          <Input
+            inputType='numeric'
+            labelText='CPF'
+            onChangeText={this.handleCPFChange}
+            value={this.state.cpf}
+          />
 
-        <Input
-          labelText='Email'
-          onChangeText={this.handleEmailChange}
-          value={this.state.email}
-        />
+          <Input
+            inputType='email-address'
+            labelText='Email'
+            onChangeText={this.handleEmailChange}
+            value={this.state.email}
+          />
 
-        <Input
-          labelText='Celular'
-          onChangeText={this.handleCelularChange}
-          value={this.state.celular}
-        />
+          <Input
+            inputType='phone-pad'
+            labelText='Celular'
+            onChangeText={this.handleCelularChange}
+            value={this.state.celular}
+          />
 
-        <Input
-          labelText='Nascimento'
-          onChangeText={this.handleNascimentoChange}
-          value={this.state.nascimento}
-        />
+          <Input
+            labelText='Nascimento'
+            onChangeText={this.handleNascimentoChange}
+            value={this.state.nascimento}
+          />
 
-        <CheckBox
-          label="Li e concordo com os termos de uso"
-          labelStyle={{ color: colors.branco, fontSize: 16 }}
-          value={this.state.termoDeUso}
-          onChange={this.handleTermoDeUsoChange}
-        />
+          <CheckBox
+            label="Li e concordo com os termos de uso"
+            labelStyle={{ color: colors.branco, fontSize: 16 }}
+            value={this.state.termoDeUso}
+            onChange={this.handleTermoDeUsoChange}
+          />
 
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
+        </View>
+      </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }

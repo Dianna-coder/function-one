@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -80,25 +80,31 @@ export default class Senha extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Header titulo='Defina Sua Senha' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Defina Sua Senha' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Senha'
-          onChangeText={this.handleSenhaChange}
-          value={this.state.senha}
-        />
+          <Input
+            inputType='visible-password'
+            isPassword={true}
+            labelText='Senha'
+            onChangeText={this.handleSenhaChange}
+            value={this.state.senha}
+          />
 
-        <Input
-          labelText='Confirmar senha'
-          onChangeText={this.handleConfirmacaoSenhaChange}
-          value={this.state.confirmacaoSenha}
-        />
+          <Input
+            inputType='visible-password'
+            isPassword={true}
+            labelText='Confirmar senha'
+            onChangeText={this.handleConfirmacaoSenhaChange}
+            value={this.state.confirmacaoSenha}
+          />
 
-        <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
-      </View>
+          <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

@@ -36,9 +36,9 @@ export default class CadastroTecnico extends React.Component {
 
   render() {
     const allStepsFormsTecnico = [
-      // { name: "step 1", component: DadosIniciais },
-      // { name: "step 2", component: Endereco },
-      // { name: "step 3", component: PerfilProfissional },
+      { name: "step 1", component: DadosIniciais },
+      { name: "step 2", component: Endereco },
+      { name: "step 3", component: PerfilProfissional },
       { name: "step 4", component: InformacoesAcademicas },
       { name: "step 5", component: Conhecimentos },
       // { name: "step 6", component: CadastroEfetuado },

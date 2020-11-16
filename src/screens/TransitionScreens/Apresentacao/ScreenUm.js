@@ -16,7 +16,13 @@ export default function ScreenUm(props) {
       <Text style={{ color: "#FFFFFF", fontSize: 20, textAlign: "center" }}>
         Solicite um técnico em TI no conforto de sua casa e sem dor de cabeça
         </Text>
-
+      {/* <TelaApresentacao 
+        titulo=''
+        imagem=''
+        descricao=''
+        navigate
+        funcao
+      /> */}
       <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => props.navigation.navigate('ScreenDois')}>
         <Text style={{
           fontSize: 20,

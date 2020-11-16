@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import {
   View,
-  TextInput,
   StyleSheet,
   Animated,
-  KeyboardAvoidingView,
-  Keyboard
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import colors from '../styles/colors/index';
+import { TextInputMask } from 'react-native-masked-text'
 
-export default class Input extends Component {
+export default class InputMask extends Component {
   constructor(props) {
     super(props);
 
@@ -55,11 +52,7 @@ export default class Input extends Component {
       inputType,
       labelText,
       inputValue,
-      multiline,
-      numberOfLines,
-      addIcone,
-      iconeEscolhido,
-      isPassword
+      inputOptions
     } = this.props;
     
     const labelStyle = {
@@ -81,50 +74,30 @@ export default class Input extends Component {
     };
 
     return (
-      // <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={[
         styles.wrapper
       ]}>
           <Animated.Text style={labelStyle}>
             {labelText}
-
-            <View style={{ marginLeft: 20 }}>
-              {
-                addIcone
-              ? <Icon 
-                  name={iconeEscolhido}
-                  style={{ 
-                    fontSize: 16, 
-                    color: colors.branco
-                    }}
-                /> 
-              : null
-              }
-            </View>
-
           </Animated.Text>
-            <TextInput
-              style={[
-                styles.inputField,
-                { 
-                  width: withi ? parseInt(withi) : wp('79.71%'),
-                  height: altura ? altura :  hp('3.95%') 
-                }
-              ]}
-              onChangeText={this.onChangeText}
-              keyboardType={inputType}
-              underlineColorAndroid="transparent"
-              defaultValue={inputValue}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              blurOnSubmit
-              secureTextEntry={isPassword}
-              multiline={multiline}
-              numberOfLines={numberOfLines}
-              onEndEditing={Keyboard.dismiss}
-            />
+          <TextInputMask
+            style={[
+              styles.inputField,
+              { 
+                width: withi ? parseInt(withi) : wp('79.71%'),
+                height: altura ? altura :  hp('3.95%') 
+              }
+            ]}
+            underlineColorAndroid="transparent"
+            type={inputType}
+            options={inputOptions}
+            value={inputValue}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            blurOnSubmit
+            onChangeText={this.onChangeText}
+          />
       </View>
-      // </KeyboardAvoidingView>
     );
   }
 };

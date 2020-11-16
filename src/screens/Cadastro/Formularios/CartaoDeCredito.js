@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -48,41 +48,45 @@ export default class CartaoDeCredito extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Cadastre Seu Cartão' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Cadastre Seu Cartão' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Titular'
-          onChangeText={this.handleTitularChange}
-          value={this.state.titular}
-        />
-
-        <Input
-          labelText='Número'
-          onChangeText={this.handleNumeroChange}
-          value={this.state.numeroCartao}
-        />
-
-        <View style={styles.containerDoisInputs}>
           <Input
-            withi={wp('35%')}
-            labelText='Data'
-            onChangeText={this.handleDataChange}
-            value={this.state.data}
+            labelText='Titular'
+            onChangeText={this.handleTitularChange}
+            value={this.state.titular}
           />
 
           <Input
-            withi={wp('35%')}
-            labelText='CVC'
-            onChangeText={this.handleCVCChange}
-            value={this.state.cvc}
+            inputType='numeric'
+            labelText='Número'
+            onChangeText={this.handleNumeroChange}
+            value={this.state.numeroCartao}
           />
+
+          <View style={styles.containerDoisInputs}>
+            <Input
+              withi={wp('35%')}
+              labelText='Data'
+              onChangeText={this.handleDataChange}
+              value={this.state.data}
+            />
+
+            <Input
+              inputType='numeric'
+              withi={wp('35%')}
+              labelText='CVC'
+              onChangeText={this.handleCVCChange}
+              value={this.state.cvc}
+            />
+          </View>
+
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
-
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

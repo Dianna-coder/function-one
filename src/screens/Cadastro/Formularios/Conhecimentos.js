@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -25,22 +25,6 @@ export default class Conhecimentos extends React.Component {
 
   handleConhecimentoChange = (conhecimento) => this.setState({ conhecimento });
   handleTempoDeExperienciaChange = (tempoDeExperiencia) => this.setState({ tempoDeExperiencia });
-
-  // handleSubmit = () => {
-  //   const { saveState, getState, finish } = this.props;
-
-  //   saveState({ 
-  //     senha: this.state.senha 
-  //   });
-  
-  //   const dadosCadastro = getState(this.state);
-
-  //   addItem(dadosCadastro, '/clientes');
-
-  //   Alert.alert('Item saved successfully');
-
-  //   finish();
-  // };
   
   nextStep = () => {
     const { next, saveState } = this.props;
@@ -57,27 +41,29 @@ export default class Conhecimentos extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Conhecimentos' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Conhecimentos' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Conhecimento'
-          onChangeText={this.handleConhecimentoChange}
-          value={this.state.conhecimento}
-        />
+          <Input
+            labelText='Conhecimento'
+            onChangeText={this.handleConhecimentoChange}
+            value={this.state.conhecimento}
+          />
 
-        <Input
-          labelText='Tempo de Experiência'
-          onChangeText={this.handleTempoDeExperienciaChange}
-          value={this.state.tempoDeExperiencia}
-        />
+          <Input
+            labelText='Tempo de Experiência'
+            onChangeText={this.handleTempoDeExperienciaChange}
+            value={this.state.tempoDeExperiencia}
+          />
 
-        {/* TODO - adicionar conhecimento -> gerar novo form */}
+          {/* TODO - adicionar conhecimento -> gerar novo form */}
 
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -54,56 +54,60 @@ export default class Endereco extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Endereço' funcao={this.goBack}/>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Endereço' funcao={this.goBack}/>
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='CEP'
-          onChangeText={this.handleCEPChange}
-          value={this.state.cep}
-        />
-
-        <Input
-          labelText='Endereço'
-          onChangeText={this.handleEnderecoChange}
-          value={this.state.endereco}
-        />
-
-        <Input
-          labelText='Número'
-          onChangeText={this.handleNumeroChange}
-          value={this.state.numero}
-        />
-
-        <View style={styles.containerDoisInputs}>
           <Input
-            withi={wp('38%')}
-            labelText='Bairro'
-            onChangeText={this.handleBairroChange}
-            value={this.state.bairro}
+            inputType='numeric'
+            labelText='CEP'
+            onChangeText={this.handleCEPChange}
+            value={this.state.cep}
           />
 
-          <Select
-            largura={wp('38%')}
-            labelText={'UF'}
-            valor={this.state.uf}
-            valorMudado={this.handleUFChange}
-            valoresDoSelect={[
-              { label: 'São Paulo', value: 'SP' },
-            ]}
+          <Input
+            labelText='Endereço'
+            onChangeText={this.handleEnderecoChange}
+            value={this.state.endereco}
           />
+
+          <Input
+            inputType='numeric'
+            labelText='Número'
+            onChangeText={this.handleNumeroChange}
+            value={this.state.numero}
+          />
+
+          <View style={styles.containerDoisInputs}>
+            <Input
+              withi={wp('38%')}
+              labelText='Bairro'
+              onChangeText={this.handleBairroChange}
+              value={this.state.bairro}
+            />
+
+            <Select
+              largura={wp('38%')}
+              labelText={'UF'}
+              valor={this.state.uf}
+              valorMudado={this.handleUFChange}
+              valoresDoSelect={[
+                { label: 'São Paulo', value: 'SP' },
+              ]}
+            />
+          </View>
+
+          <Input
+            labelText='Cidade'
+            onChangeText={this.handleCidadeChange}
+            value={this.state.cidade}
+          />
+
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
-
-        <Input
-          labelText='Cidade'
-          onChangeText={this.handleCidadeChange}
-          value={this.state.cidade}
-        />
-
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

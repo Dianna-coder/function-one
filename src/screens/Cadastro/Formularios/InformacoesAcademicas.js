@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -55,66 +55,68 @@ export default class InformacoesAcademicas extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Informações Acadêmicas' funcao={this.goBack}/>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Informações Acadêmicas' funcao={this.goBack}/>
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Select
-            labelText={'Selecione o nível de escolaridade...'}
-            valor={this.state.nivelDeEscolaridade}
-            valorMudado={this.handleNivelDeEscolaridadeChange}
-            valoresDoSelect={[
-              { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
-              { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
-              { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
-              { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
-              { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
-              { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
-            ]}
-          />
+          <Select
+              labelText={'Selecione o nível de escolaridade...'}
+              valor={this.state.nivelDeEscolaridade}
+              valorMudado={this.handleNivelDeEscolaridadeChange}
+              valoresDoSelect={[
+                { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
+                { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
+                { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
+                { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
+                { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
+                { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
+              ]}
+            />
 
-        <Input
-          labelText='Instituição'
-          onChangeText={this.handleInstituicaoChange}
-          value={this.state.instituicao}
-        />
-
-        <Input
-          labelText='Curso'
-          onChangeText={this.handleCursoChange}
-          value={this.state.curso}
-        />
-
-        <View style={styles.containerDoisInputs}>
           <Input
-            withi={wp('38%')}
-            labelText='Início'
-            onChangeText={this.handleInicioChange}
-            value={this.state.inicio}
+            labelText='Instituição'
+            onChangeText={this.handleInstituicaoChange}
+            value={this.state.instituicao}
           />
 
           <Input
-            withi={wp('38%')}
-            labelText='Término'
-            onChangeText={this.handleTerminoChange}
-            value={this.state.termino}
+            labelText='Curso'
+            onChangeText={this.handleCursoChange}
+            value={this.state.curso}
           />
+
+          <View style={styles.containerDoisInputs}>
+            <Input
+              withi={wp('38%')}
+              labelText='Início'
+              onChangeText={this.handleInicioChange}
+              value={this.state.inicio}
+            />
+
+            <Input
+              withi={wp('38%')}
+              labelText='Término'
+              onChangeText={this.handleTerminoChange}
+              value={this.state.termino}
+            />
+          </View>
+
+          <Input
+            labelText='Anexar Certificados e Diplomas                   '
+            onChangeText={this.handleCertificadosEDiplomasChange}
+            value={this.state.certificadosEDiplomas}
+            addIcone={true}
+            iconeEscolhido={'paperclip'}
+          />
+
+          {/* TODO - Anexar diplomas */}
+          {/* TODO - adicionar cursos -> gerar novo form */}
+
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
-
-        <Input
-          labelText='Anexar Certificados e Diplomas                   '
-          onChangeText={this.handleCertificadosEDiplomasChange}
-          value={this.state.certificadosEDiplomas}
-          addIcone={true}
-          iconeEscolhido={'paperclip'}
-        />
-
-        {/* TODO - Anexar diplomas */}
-        {/* TODO - adicionar cursos -> gerar novo form */}
-
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

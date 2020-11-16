@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -42,28 +42,30 @@ export default class PerfilProfissional extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Perfil Profissional' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Perfil Profissional' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Profissão'
-          onChangeText={this.handleProfissaoChange}
-          value={this.state.profissao}
-        />
+          <Input
+            labelText='Profissão'
+            onChangeText={this.handleProfissaoChange}
+            value={this.state.profissao}
+          />
 
-        <Input
-          altura={hp('10%')}
-          labelText='Escreva uma breve apresentação :)'
-          multiline={true}
-          numberOfLines={7}
-          onChangeText={this.handleApresentacaoChange}
-          value={this.state.apresentacao}
-        />
+          <Input
+            altura={hp('10%')}
+            labelText='Escreva uma breve apresentação :)'
+            multiline={true}
+            numberOfLines={7}
+            onChangeText={this.handleApresentacaoChange}
+            value={this.state.apresentacao}
+          />
 
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

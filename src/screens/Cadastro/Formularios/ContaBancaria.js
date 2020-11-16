@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -51,43 +51,48 @@ export default class ContaBancaria extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Cadastre Sua Conta Bancária' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Cadastre Sua Conta Bancária' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Titular'
-          onChangeText={this.handleTitularChange}
-          value={this.state.titular}
-        />
+          <Input
+            labelText='Titular'
+            onChangeText={this.handleTitularChange}
+            value={this.state.titular}
+          />
 
-        <Input
-          labelText='CPF'
-          onChangeText={this.handleCpfChange}
-          value={this.state.cpfContaBancaria}
-        />
+          <Input
+            inputType='numeric'
+            labelText='CPF'
+            onChangeText={this.handleCpfChange}
+            value={this.state.cpfContaBancaria}
+          />
 
-        <Input
-          labelText='Banco'
-          onChangeText={this.handleBancoChange}
-          value={this.state.banco}
-        />
+          <Input
+            labelText='Banco'
+            onChangeText={this.handleBancoChange}
+            value={this.state.banco}
+          />
 
-        <Input
-          labelText='Agência'
-          onChangeText={this.handleAgenciaChange}
-          value={this.state.agencia}
-        />
+          <Input       
+            inputType='numeric'
+            labelText='Agência'
+            onChangeText={this.handleAgenciaChange}
+            value={this.state.agencia}
+          />
 
-        <Input
-          labelText='Conta'
-          onChangeText={this.handleContaChange}
-          value={this.state.conta}
-        />
+          <Input
+            inputType='numeric'
+            labelText='Conta'
+            onChangeText={this.handleContaChange}
+            value={this.state.conta}
+          />
 
-        <Button titulo='CONTINUAR' funcao={this.nextStep} />
-      </View>
+          <Button titulo='CONTINUAR' funcao={this.nextStep} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

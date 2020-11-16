@@ -33,8 +33,8 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingTop: 18,
-    position: 'absolute',
+    paddingTop: 30,
+    // position: 'absolute',
     bottom: 0,
     marginBottom: hp('6%'),
   },

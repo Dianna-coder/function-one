@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -117,6 +117,8 @@ export default class Agencia extends React.Component {
 
   render () {
     return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
       <View style={styles.container}>
         <Header titulo='Cadastrar Agenda' funcao={this.goBack} />
 
@@ -299,6 +301,7 @@ export default class Agencia extends React.Component {
        
         <Button titulo='CONTINUAR' funcao={this.nextStep} />
       </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

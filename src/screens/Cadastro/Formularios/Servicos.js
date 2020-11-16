@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import colors from '../../../styles/colors/index';
 
@@ -10,7 +10,6 @@ import Button from '../../../components/Button';
 import CheckBox from '../../../components/CheckBox';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { addItem } from '../../../database/Firebase';
 
 export default class Servicos extends React.Component {
   constructor (props) {
@@ -52,45 +51,47 @@ export default class Servicos extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Header titulo='Cadastrar Serviços' funcao={this.goBack} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Header titulo='Cadastrar Serviços' funcao={this.goBack} />
 
-        <ImagePicker permitirAdd={false} />
+          <ImagePicker permitirAdd={false} />
 
-        <Input
-          labelText='Tipo de Serviço'
-          onChangeText={this.handleTipoDeServicoChange}
-          value={this.state.tipoDeServico}
-        />
-
-        <Input
-          labelText='Valor'
-          onChangeText={this.handleValorChange}
-          value={this.state.valor}
-        />
-
-        <View style={styles.containerDoisInputs}>
-          <CheckBox
-            bordaBottom={1}
-            largura={wp('38%')}
-            label="Remoto"
-            labelStyle={{ color: colors.branco, fontSize: 16 }}
-            value={this.state.remoto}
-            onChange={this.handleRemotoChange}
+          <Input
+            labelText='Tipo de Serviço'
+            onChangeText={this.handleTipoDeServicoChange}
+            value={this.state.tipoDeServico}
           />
 
           <Input
-            withi={wp('38%')}
-            labelText='Duração'
-            onChangeText={this.handleDuracaoChange}
-            value={this.state.duracao}
+            labelText='Valor'
+            onChangeText={this.handleValorChange}
+            value={this.state.valor}
           />
+
+          <View style={styles.containerDoisInputs}>
+            <CheckBox
+              bordaBottom={1}
+              largura={wp('38%')}
+              label="Remoto"
+              labelStyle={{ color: colors.branco, fontSize: 16 }}
+              value={this.state.remoto}
+              onChange={this.handleRemotoChange}
+            />
+
+            <Input
+              withi={wp('38%')}
+              labelText='Duração'
+              onChangeText={this.handleDuracaoChange}
+              value={this.state.duracao}
+            />
+          </View>
+
+          {/* Adicionar serviço */}
+
+          <Button titulo='PRÓXIMO' funcao={this.nextStep} />
         </View>
-
-        {/* Adicionar serviço */}
-
-        <Button titulo='PRÓXIMO' funcao={this.nextStep} />
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
