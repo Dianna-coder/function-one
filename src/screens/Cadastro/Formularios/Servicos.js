@@ -57,6 +57,7 @@ export default class Servicos extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Input
             labelText='Tipo de Serviço'
             onChangeText={this.handleTipoDeServicoChange}
@@ -87,6 +88,8 @@ export default class Servicos extends React.Component {
             />
           </View>
 
+          </View>
+
           {/* Adicionar serviço */}
 
           <Button titulo='PRÓXIMO' funcao={this.nextStep} />
@@ -100,7 +103,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',

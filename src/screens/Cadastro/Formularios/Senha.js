@@ -86,8 +86,9 @@ export default class Senha extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
+
           <Input
-            inputType='visible-password'
             isPassword={true}
             labelText='Senha'
             onChangeText={this.handleSenhaChange}
@@ -95,12 +96,13 @@ export default class Senha extends React.Component {
           />
 
           <Input
-            inputType='visible-password'
             isPassword={true}
             labelText='Confirmar senha'
             onChangeText={this.handleConfirmacaoSenhaChange}
             value={this.state.confirmacaoSenha}
           />
+
+          </View>
 
           <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
         </View>
@@ -114,6 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.azulEscuro,
     alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',

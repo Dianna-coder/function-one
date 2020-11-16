@@ -60,6 +60,7 @@ export default class Endereco extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Input
             inputType='numeric'
             labelText='CEP'
@@ -105,6 +106,8 @@ export default class Endereco extends React.Component {
             value={this.state.cidade}
           />
 
+          </View>
+
           <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
       </TouchableWithoutFeedback>
@@ -117,6 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.azulEscuro,
     alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',

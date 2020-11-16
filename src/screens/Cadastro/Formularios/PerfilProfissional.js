@@ -48,6 +48,7 @@ export default class PerfilProfissional extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Input
             labelText='Profissão'
             onChangeText={this.handleProfissaoChange}
@@ -62,6 +63,7 @@ export default class PerfilProfissional extends React.Component {
             onChangeText={this.handleApresentacaoChange}
             value={this.state.apresentacao}
           />
+          </View>
 
           <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   }
 });

@@ -57,6 +57,7 @@ export default class ContaBancaria extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Input
             labelText='Titular'
             onChangeText={this.handleTitularChange}
@@ -90,6 +91,8 @@ export default class ContaBancaria extends React.Component {
             value={this.state.conta}
           />
 
+          </View>
+
           <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
       </TouchableWithoutFeedback>
@@ -101,7 +104,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',

@@ -61,6 +61,7 @@ export default class InformacoesAcademicas extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Select
               labelText={'Selecione o nível de escolaridade...'}
               valor={this.state.nivelDeEscolaridade}
@@ -110,6 +111,7 @@ export default class InformacoesAcademicas extends React.Component {
             addIcone={true}
             iconeEscolhido={'paperclip'}
           />
+          </View>
 
           {/* TODO - Anexar diplomas */}
           {/* TODO - adicionar cursos -> gerar novo form */}
@@ -125,7 +127,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',

@@ -94,6 +94,7 @@ export default class DadosIniciais extends React.Component {
 
           <ImagePicker permitirAdd={true} />
 
+          <View>
           <Input
             labelText='Nome'
             // error={errors?.nome}
@@ -135,6 +136,8 @@ export default class DadosIniciais extends React.Component {
             onChange={this.handleTermoDeUsoChange}
           />
 
+          </View>
+
           <Button titulo='CONTINUAR' funcao={this.nextStep} />
         </View>
       </TouchableWithoutFeedback>
@@ -147,6 +150,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   }
 });

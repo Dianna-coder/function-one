@@ -47,6 +47,7 @@ export default class Conhecimentos extends React.Component {
 
           <ImagePicker permitirAdd={false} />
 
+          <View>
           <Input
             labelText='Conhecimento'
             onChangeText={this.handleConhecimentoChange}
@@ -58,6 +59,8 @@ export default class Conhecimentos extends React.Component {
             onChangeText={this.handleTempoDeExperienciaChange}
             value={this.state.tempoDeExperiencia}
           />
+
+          </View>
 
           {/* TODO - adicionar conhecimento -> gerar novo form */}
 
@@ -72,7 +75,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   containerDoisInputs: {
     flexDirection: 'row',
