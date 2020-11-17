@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import * as ExpoDocsPicker from 'expo-document-picker';
-import { StyleSheet, View, Text } from 'react-native';
-import { Icon } from 'react-native-vector-icons/FontAwesome'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import colors from '../styles/colors';
 
 export let docsSelecionados = [];
 
 export default function FilePicker() {
   const [docs, setDocs] = useState(null);
+  const [label, setLabel] = useState('Anexar Certificados e Diplomas')
 
   const pickDocs = async () => {
     let result = await ExpoDocsPicker.getDocumentAsync({
@@ -17,17 +20,17 @@ export default function FilePicker() {
 
     if (!result.cancelled) {
       setDocs(result.uri);
+      setLabel(result.name);
 
-      docsSelecionados = result.uri;
+      docsSelecionados.push(result.uri);
     }
   }
 
   return (
-    <View>
       <TouchableOpacity onPress={pickDocs}>
         <View style={styles.container}>
           <Text style={styles.text}>
-            Anexar Certificados e Diplomas
+            { label }
           </Text>
 
           <Icon
@@ -41,7 +44,6 @@ export default function FilePicker() {
 
         </View>
       </TouchableOpacity>
-    </View>
   );
 }
 
@@ -53,7 +55,8 @@ const styles = StyleSheet.create({
     borderColor: colors.branco,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderRadius: 10
+    borderRadius: 10,
+    width: wp('79.71%')
   },
   text: {
     fontSize: hp('2.0%'),

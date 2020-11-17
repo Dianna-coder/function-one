@@ -103,9 +103,9 @@ export default class InformacoesAcademicas extends React.Component {
               />
             </View>
 
-            <FilePicker />
           </View>
 
+          <FilePicker />
           {/* TODO - adicionar cursos -> gerar novo form */}
 
           <Button titulo='CONTINUAR' funcao={this.nextStep} />

@@ -53,7 +53,7 @@ export function addItem(item, tabel) {
 
 export function uploadImageToFirebase(blob) {
   return new Promise((resolve, reject)=>{
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebaseApp.storage().ref();
 
     storageRef.child('uploads/photo' + Math.random() * 286 + '.jpg').put(blob, {
       contentType: 'image/jpeg'
@@ -70,7 +70,7 @@ export function uploadImageToFirebase(blob) {
 
 export function uploadDocumentToFirebase(blob) {
   return new Promise((resolve, reject)=>{
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebaseApp.storage().ref();
 
     storageRef.child('uploads/document' + Math.random() * 286 + '.pdf').put(blob, {
       contentType: 'application/pdf'

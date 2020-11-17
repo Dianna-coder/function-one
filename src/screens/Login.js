@@ -17,6 +17,7 @@ import Input from "../components/Input";
 import { emailSignIn, getUserData, getProfissionalData } from "../database/Firebase";
 import colors from "../styles/colors"
 import Global from "../global/Global";
+import Header from "../components/Header";
 
 const fundo = "../../assets/fundo.png";
 const logo = "../../assets/logo.png";
@@ -79,8 +80,15 @@ export default class Login extends React.Component {
           }}
           source={require(fundo)}
         >
+
           <KeyboardAvoidingView>
             <View style={{justifyContent: "space-evenly", height: hp ('100%'), width: wp ('100%')}}>
+
+            <Header
+              titulo=''
+              funcao={() => this.props.navigation.navigate('Main')}
+            />
+            
             <Text style={styles.saudacao}>BEM VINDO</Text>
 
             <View style={styles.container2}>
