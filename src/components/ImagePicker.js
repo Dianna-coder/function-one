@@ -13,8 +13,9 @@ export default function ImagePicker(props) {
     (async () => {
       if (Platform.OS !== 'web') {
         const { status } = await ExpoImagePicker.requestCameraRollPermissionsAsync();
+
         if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!');
+          alert('Desculpe, nós precisamos acessar a galeria para isso!');
         }
       }
     })();

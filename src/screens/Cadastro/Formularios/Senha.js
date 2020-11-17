@@ -9,13 +9,11 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { addNewProfissionalData, addNewUserData, emailSignUp } from '../../../database/Firebase';
+import { addNewProfissionalData, addNewUserData, emailSignUp, uploadDocumentToFirebase, uploadImageToFirebase } from '../../../database/Firebase';
 
 export default class Senha extends React.Component {
   constructor(props) {
     super(props);
-
-    // LogBox.ignoreAllLogs(true)
 
     this.state = {
       senha: '',
@@ -29,26 +27,7 @@ export default class Senha extends React.Component {
   handleSenhaChange = (senha) => this.setState({ senha: senha ? senha.toString() : senha });
   handleConfirmacaoSenhaChange = (confirmacaoSenha) => this.setState({ confirmacaoSenha });
 
-  handleSubmit = () => {
-    if (this.state.senha !== this.state.confirmacaoSenha) {
-      Alert.alert('Senhas divergentes!')
-      return
-    }
-
-    const { getState, finish } = this.props;
-
-    const foundState = getState(this.state);
-
-    const data = { 
-      ...foundState, 
-      senha: this.state.senha
-    };
-
-    const email = data.email;
-    const password = data.senha;
-
-    if (!email || !password) return Alert.alert('Dados Incompletos!')
-
+  createDataAndUserInDatabase = (data, email, password) => {
     setTimeout(() => {
       emailSignUp({ email, password }, (error, user) => {
         if (error && !user) return alert(error.message);
@@ -66,6 +45,67 @@ export default class Senha extends React.Component {
         }
       });
     }, 2000);
+  };
+
+  uriToBlob = (uri) => {
+    return new Promise((resolve, reject) => {
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.onload = function() {
+        resolve(xhr.response);
+      };
+      
+      xhr.onerror = function() {
+        reject(new Error('uriToBlob failed'));
+      };
+
+      xhr.responseType = 'blob';
+
+      xhr.open('GET', uri, true);
+      xhr.send(null);
+
+    });
+  };
+
+  handleSubmit = async () => {
+    const { getState, finish } = this.props;
+
+    const data = getState(this.state);
+
+    const email = data.email;
+
+    const password = this.state.senha;
+    const passwordConfirmation = this.state.confirmacaoSenha;
+
+    // if (password !== passwordConfirmation) {
+    //   Alert.alert('Senhas divergentes!');
+    //   return;
+    // };
+    
+    // if (!email || !password) return Alert.alert('Dados Incompletos!');
+
+    // this.createDataAndUserInDatabase(data, email, password);
+
+    const uriImage = data.imagem;
+    const uriDocs = data.docs;
+
+    if (uriImage) {
+      const uri = uriImage;
+      const blob = await this.uriToBlob(uri);
+
+      await uploadImageToFirebase(blob);
+    }
+
+    if (uriDocs.length > 0) {
+      const promises = uriDocs.map(async (uri) => {
+        const blob = await this.uriToBlob(uri);
+  
+        await uploadDocumentToFirebase(blob);
+      });
+
+      Promise.all(promises);
+    }
 
     Alert.alert('Cadastro efetuado com sucesso!');
 

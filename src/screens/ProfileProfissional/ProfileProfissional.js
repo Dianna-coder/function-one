@@ -14,7 +14,7 @@ import Agenda from './pages/Agenda'
 import CustomDrawerCli from './component/CustomDrawerCli'
 
 
-export default function App() {
+export default function ProfileProfissional() {
   const Drawer = createDrawerNavigator();
   return (
     // <NavigationContainer >

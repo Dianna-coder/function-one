@@ -4,11 +4,9 @@ import {
   TextInput,
   StyleSheet,
   Animated,
-  KeyboardAvoidingView,
   Keyboard
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../styles/colors/index';
 
 export default class Input extends Component {
@@ -19,7 +17,7 @@ export default class Input extends Component {
       inputValue: props.defaultValue,
       isFocused: false,
     };
-    
+
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -57,11 +55,9 @@ export default class Input extends Component {
       inputValue,
       multiline,
       numberOfLines,
-      addIcone,
-      iconeEscolhido,
       isPassword
     } = this.props;
-    
+
     const labelStyle = {
       position: 'absolute',
       left: 0,
@@ -81,50 +77,34 @@ export default class Input extends Component {
     };
 
     return (
-      // <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={[
         styles.wrapper
       ]}>
-          <Animated.Text style={labelStyle}>
-            {labelText}
+        <Animated.Text style={labelStyle}>
+          {labelText}
 
-            <View style={{ marginLeft: 20 }}>
-              {
-                addIcone
-              ? <Icon 
-                  name={iconeEscolhido}
-                  style={{ 
-                    fontSize: 16, 
-                    color: colors.branco
-                    }}
-                /> 
-              : null
-              }
-            </View>
-
-          </Animated.Text>
-            <TextInput
-              style={[
-                styles.inputField,
-                { 
-                  width: withi ? parseInt(withi) : wp('79.71%'),
-                  height: altura ? altura :  hp('3.95%') 
-                }
-              ]}
-              onChangeText={this.onChangeText}
-              keyboardType={inputType}
-              underlineColorAndroid="transparent"
-              defaultValue={inputValue}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              blurOnSubmit
-              secureTextEntry={isPassword}
-              multiline={multiline}
-              numberOfLines={numberOfLines}
-              onEndEditing={Keyboard.dismiss}
-            />
+        </Animated.Text>
+        <TextInput
+          style={[
+            styles.inputField,
+            {
+              width: withi ? parseInt(withi) : wp('79.71%'),
+              height: altura ? altura : hp('3.95%')
+            }
+          ]}
+          onChangeText={this.onChangeText}
+          keyboardType={inputType}
+          underlineColorAndroid="transparent"
+          defaultValue={inputValue}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          blurOnSubmit
+          secureTextEntry={isPassword}
+          multiline={multiline}
+          numberOfLines={numberOfLines}
+          onEndEditing={Keyboard.dismiss}
+        />
       </View>
-      // </KeyboardAvoidingView>
     );
   }
 };

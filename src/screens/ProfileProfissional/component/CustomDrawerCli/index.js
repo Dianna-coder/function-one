@@ -1,8 +1,15 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { DrawerItem } from '@react-navigation/drawer';
+// import { signout } from '../../../../database/Firebase'
 
-export default function CustomDrawerCli({...props}){
+export default function CustomDrawerCli(props){
+  handleSignOutButton = () => {
+    // signout()
+
+    props.navigation.navigate('Login')
+  }
+
 return(
   
 
@@ -57,7 +64,7 @@ return(
         <Text style={{color:'#000', fontWeight:'bold'}}>Alternar Perfil</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+      <TouchableOpacity style={{flex:1, alignItems:'center', justifyContent:'center'}} onPress={handleSignOutButton()}>
         
         <Image source={require('../../assets/sair.png')}/>
         <Text style={{color:'#000', fontWeight:'bold'}}>Sair</Text>

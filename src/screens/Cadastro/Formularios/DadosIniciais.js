@@ -46,7 +46,7 @@ export default class DadosIniciais extends React.Component {
 
     this.state = {
       termoDeUso: false,
-      imagem: imagemPerfil, // nao foi
+      imagem: imagemPerfil,
       nome: '',
       email: '',
       celular: '',

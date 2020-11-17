@@ -14,7 +14,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Input from "../components/Input";
-import { emailSignIn, signout, getUserData, getProfissionalData } from "../database/Firebase";
+import { emailSignIn, getUserData, getProfissionalData } from "../database/Firebase";
 import colors from "../styles/colors"
 import Global from "../global/Global";
 
@@ -55,7 +55,7 @@ export default class Login extends React.Component {
 
       getProfissionalData(email, (data, error) => {
         if (error && !data) {
-          signout();
+          // signout();
           alert(error.message);
         }
 
