@@ -85,3 +85,12 @@ export function uploadDocumentToFirebase(blob) {
     });
   });
 };
+
+export function forgotPassword (email) {
+  firebaseApp.auth().sendPasswordResetEmail(email)
+    .then(function (user) {
+      alert('Email confirmando reset de senha enviado!')
+    }).catch(function (e) {
+      console.log(e)
+    })
+}

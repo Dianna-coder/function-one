@@ -11,6 +11,7 @@ import CadastroCliente from './src/screens/Cadastro/CadastroCliente';
 import CadastroTecnico from './src/screens/Cadastro/CadastroTecnico';
 import ProfileCliente from './src/screens/ProfileCliente/ProfileCliente';
 import ProfileProfissional from './src/screens/ProfileProfissional/ProfileProfissional';
+import ResetPassword from './src/screens/ResetPassword';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ class App extends React.Component {
           <Stack.Screen name="CadastroTecnico" component={CadastroTecnico}/>
           <Stack.Screen name="ProfileCliente" component={ProfileCliente}/>
           <Stack.Screen name="ProfileProfissional" component={ProfileProfissional}/>
+          <Stack.Screen name="ResetPassword" component={ResetPassword}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
