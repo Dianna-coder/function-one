@@ -11,35 +11,6 @@ import CheckBox from '../../../components/CheckBox';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-// import { useForm } from 'react-hook-form'
-// import * as yup from 'yup'
-
-// const fieldValidationSchema = yup.object().shape({
-//   nome: yup
-//     .string()
-//     .required('O nome não pode ser vazio')
-//     .min(2),
-//   sobrenome: yup
-//     .string()
-//     .required('O sobrenome não pode ser vazio')
-//     .min(2),
-//   email: yup
-//     .string()
-//     .required('O email não pode ser vazio')
-//     .email('Digite um email válido'),
-//   celular: yup
-//     .string()
-//     .required('O celular não pode ser vazio')
-//     .min(11, 'O celular deve conter 11 dígitos'),
-//   nascimento: yup
-//     .string()
-//     .required('O nascimento não pode ser vazio'),
-//   cpf: yup
-//     .string()
-//     .required('O cpf não pode ser vazio')
-//     .min(11, 'O cpf deve conter 11 dígitos'),
-// })
-
 export default class DadosIniciais extends React.Component {
   constructor (props) {
     super(props);
@@ -79,10 +50,10 @@ export default class DadosIniciais extends React.Component {
     next();
   };
 
-  goBack() {
-    const { back } = this.props;
+  goBack = () => {
+    const { finish } = this.props;
 
-    back();
+    finish();
   }
 
   render () {
@@ -90,7 +61,7 @@ export default class DadosIniciais extends React.Component {
     <KeyboardAwareScrollView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Header titulo='Seus Dados' />
+          <Header titulo='Seus Dados' funcao={this.goBack}/>
 
           <ImagePicker permitirAdd={true} />
 

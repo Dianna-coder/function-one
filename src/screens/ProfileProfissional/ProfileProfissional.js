@@ -24,7 +24,9 @@ export default function ProfileProfissional() {
       initialRouteName="Solicitaçoes" 
       drawerContent={CustomDrawerCli}
       children
-      
+      screenOptions={{
+        headerShown: false
+      }}
       >
         <Drawer.Screen name="Solicitaçoes" component={Solicitaçoes}/>
         <Drawer.Screen name="Mensagens" component={MensagensCli} />  

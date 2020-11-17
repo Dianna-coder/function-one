@@ -2,9 +2,10 @@ import { firebaseApp } from "./Config";
 
 export var db = firebaseApp.firestore();
 
-// export function signout() {
-//   firebaseApp.auth().signOut()
-// };
+export function signout(callback) {
+  firebaseApp.auth().signOut()
+    .catch((err) => callback(err, null))
+};
 
 export function emailSignUp({ email, password }, callback) {
   firebaseApp.auth().createUserWithEmailAndPassword(email, password)

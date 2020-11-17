@@ -1,15 +1,31 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { DrawerItem } from '@react-navigation/drawer';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { signout } from '../../../../database/Firebase';
 
-export default function CustomDrawer({...props}){
+export default function CustomDrawer(props){
+  function handleSignOutButton() {
+    Alert.alert('Você tem certeza que deseja sair?', '', [
+      {
+        text: "Cancelar",
+        onPress: () => {},
+        style: 'cancel'
+      }, {
+        text: "Sim",
+        onPress: () => {
+          props.navigation.navigate('Login');
+          signout();
+        },
+        style: 'default'
+      }]
+    )
+  }
+
 return(
-  
-
   <View >
     
     <View style={styles.BoxUser}>
@@ -51,7 +67,7 @@ return(
         <Text style={{color:'#000', fontWeight:'bold'}}>Alternar Perfil</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+      <TouchableOpacity style={{flex:1, alignItems:'center', justifyContent:'center'}} onPress={handleSignOutButton}>
         
         <Image source={require('../../assets/sair.png')}/>
         <Text style={{color:'#000', fontWeight:'bold'}}>Sair</Text>

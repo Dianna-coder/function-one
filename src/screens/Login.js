@@ -35,7 +35,7 @@ export default class Login extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleEmailChange = (email) => this.setState({ email });
+  handleEmailChange = (email) => this.setState({ email: email.trim() });
   handlePasswordChange = (password) => this.setState({ password });
 
   handleNextButton = () => {
@@ -93,12 +93,14 @@ export default class Login extends React.Component {
 
             <View style={styles.container2}>
               <Input
+                inputType='email-address'
                 labelText='E-mail'
                 onChangeText={this.handleEmailChange}
                 value={this.state.email}
               />
 
               <Input
+                  isPassword={true}
                   labelText='Senha'
                   onChangeText={this.handlePasswordChange}
                   value={this.state.password}
