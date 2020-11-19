@@ -9,15 +9,15 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 import Select from '../../../components/Select';
 
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default class Endereco extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       cep: '',
-      endereco: '', 
+      endereco: '',
       numero: '',
       bairro: '',
       uf: '',
@@ -38,7 +38,7 @@ export default class Endereco extends React.Component {
   handleBairroChange = (bairro) => this.setState({ bairro });
   handleUFChange = (uf) => this.setState({ uf });
   handleCidadeChange = (cidade) => this.setState({ cidade });
-  
+
   nextStep = () => {
     const { next, saveState } = this.props;
     saveState(this.state);
@@ -52,59 +52,59 @@ export default class Endereco extends React.Component {
     back();
   }
 
-  render () {
+  render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Header titulo='Endereço' funcao={this.goBack}/>
+          <Header titulo='Endereço' funcao={this.goBack} />
 
           <ImagePicker permitirAdd={false} />
 
           <View>
-          <Input
-            inputType='numeric'
-            labelText='CEP'
-            onChangeText={this.handleCEPChange}
-            value={this.state.cep}
-          />
-
-          <Input
-            labelText='Endereço'
-            onChangeText={this.handleEnderecoChange}
-            value={this.state.endereco}
-          />
-
-          <Input
-            inputType='numeric'
-            labelText='Número'
-            onChangeText={this.handleNumeroChange}
-            value={this.state.numero}
-          />
-
-          <View style={styles.containerDoisInputs}>
             <Input
-              withi={wp('38%')}
-              labelText='Bairro'
-              onChangeText={this.handleBairroChange}
-              value={this.state.bairro}
+              inputType='numeric'
+              labelText='CEP'
+              onChangeText={this.handleCEPChange}
+              value={this.state.cep}
             />
 
-            <Select
-              largura={wp('38%')}
-              labelText={'UF'}
-              valor={this.state.uf}
-              valorMudado={this.handleUFChange}
-              valoresDoSelect={[
-                { label: 'São Paulo', value: 'SP' },
-              ]}
+            <Input
+              labelText='Endereço'
+              onChangeText={this.handleEnderecoChange}
+              value={this.state.endereco}
             />
-          </View>
 
-          <Input
-            labelText='Cidade'
-            onChangeText={this.handleCidadeChange}
-            value={this.state.cidade}
-          />
+            <Input
+              inputType='numeric'
+              labelText='Número'
+              onChangeText={this.handleNumeroChange}
+              value={this.state.numero}
+            />
+
+            <View style={styles.containerDoisInputs}>
+              <Input
+                withi={wp('38%')}
+                labelText='Bairro'
+                onChangeText={this.handleBairroChange}
+                value={this.state.bairro}
+              />
+
+              <Select
+                largura={wp('38%')}
+                labelText={'UF'}
+                valor={this.state.uf}
+                valorMudado={this.handleUFChange}
+                valoresDoSelect={[
+                  { label: 'São Paulo', value: 'SP' },
+                ]}
+              />
+            </View>
+
+            <Input
+              labelText='Cidade'
+              onChangeText={this.handleCidadeChange}
+              value={this.state.cidade}
+            />
 
           </View>
 

@@ -15,27 +15,27 @@ export default function ProfileCliente() {
   const Drawer = createDrawerNavigator();
   return (
     // <NavigationContainer>
-      <Drawer.Navigator 
-      drawerStyle={{width: '60%'}} 
-      edgeWidth={50} 
-      initialRouteName="Profissionais" 
+    <Drawer.Navigator
+      drawerStyle={{ width: '60%' }}
+      edgeWidth={50}
+      initialRouteName="Profissionais"
       drawerContent={CustomDrawer}
       screenOptions={{
         headerShown: false
       }}
       children
-      
-      >
-        <Drawer.Screen name="Profissionais" component={Profissionais}/>
-        <Drawer.Screen name="Mensagens" component={Mensagens} />  
-        <Drawer.Screen name="Seus Chamados" component={Chamados} />
-        <Drawer.Screen name="Pagamentos" component={Pagamentos} />
-        <Drawer.Screen name="Pesquisa" component={Pesquisa} />
 
-        
-      </Drawer.Navigator>
+    >
+      <Drawer.Screen name="Profissionais" component={Profissionais} />
+      <Drawer.Screen name="Mensagens" component={Mensagens} />
+      <Drawer.Screen name="Seus Chamados" component={Chamados} />
+      <Drawer.Screen name="Pagamentos" component={Pagamentos} />
+      <Drawer.Screen name="Pesquisa" component={Pesquisa} />
+
+
+    </Drawer.Navigator>
 
     // </NavigationContainer>
-    
+
   );
 }

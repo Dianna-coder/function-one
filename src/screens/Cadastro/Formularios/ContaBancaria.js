@@ -8,16 +8,16 @@ import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class ContaBancaria extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       titular: '',
       cpfContaBancaria: '',
-      banco: '', // Esse vai ser select
+      banco: '', // TODO - add select
       agencia: '',
       conta: ''
     };
@@ -49,7 +49,7 @@ export default class ContaBancaria extends React.Component {
     back();
   }
 
-  render () {
+  render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
@@ -58,38 +58,38 @@ export default class ContaBancaria extends React.Component {
           <ImagePicker permitirAdd={false} />
 
           <View>
-          <Input
-            labelText='Titular'
-            onChangeText={this.handleTitularChange}
-            value={this.state.titular}
-          />
+            <Input
+              labelText='Titular'
+              onChangeText={this.handleTitularChange}
+              value={this.state.titular}
+            />
 
-          <Input
-            inputType='numeric'
-            labelText='CPF'
-            onChangeText={this.handleCpfChange}
-            value={this.state.cpfContaBancaria}
-          />
+            <Input
+              inputType='numeric'
+              labelText='CPF'
+              onChangeText={this.handleCpfChange}
+              value={this.state.cpfContaBancaria}
+            />
 
-          <Input
-            labelText='Banco'
-            onChangeText={this.handleBancoChange}
-            value={this.state.banco}
-          />
+            <Input
+              labelText='Banco'
+              onChangeText={this.handleBancoChange}
+              value={this.state.banco}
+            />
 
-          <Input       
-            inputType='numeric'
-            labelText='Agência'
-            onChangeText={this.handleAgenciaChange}
-            value={this.state.agencia}
-          />
+            <Input
+              inputType='numeric'
+              labelText='Agência'
+              onChangeText={this.handleAgenciaChange}
+              value={this.state.agencia}
+            />
 
-          <Input
-            inputType='numeric'
-            labelText='Conta'
-            onChangeText={this.handleContaChange}
-            value={this.state.conta}
-          />
+            <Input
+              inputType='numeric'
+              labelText='Conta'
+              onChangeText={this.handleContaChange}
+              value={this.state.conta}
+            />
 
           </View>
 

@@ -17,27 +17,24 @@ import CustomDrawerCli from './component/CustomDrawerCli'
 export default function ProfileProfissional() {
   const Drawer = createDrawerNavigator();
   return (
-    // <NavigationContainer >
-      <Drawer.Navigator 
-      drawerStyle={{width: '60%'}} 
-      edgeWidth={50} 
-      initialRouteName="Solicitaçoes" 
+    <Drawer.Navigator
+      drawerStyle={{ width: '60%' }}
+      edgeWidth={50}
+      initialRouteName="Solicitaçoes"
       drawerContent={CustomDrawerCli}
       children
       screenOptions={{
         headerShown: false
       }}
-      >
-        <Drawer.Screen name="Solicitaçoes" component={Solicitaçoes}/>
-        <Drawer.Screen name="Mensagens" component={MensagensCli} />  
-        <Drawer.Screen name="Notas Fiscais" component={NotasFiscais} />
-        <Drawer.Screen name="Carteira" component={Carteira} />
-        <Drawer.Screen name="Pesquisa" component={PesquisaCli} />
-        <Drawer.Screen name="Serviços" component={Serviços} />
-        <Drawer.Screen name="Agenda" component={Agenda} />
-  
-      </Drawer.Navigator>
+    >
+      <Drawer.Screen name="Solicitaçoes" component={Solicitaçoes} />
+      <Drawer.Screen name="Mensagens" component={MensagensCli} />
+      <Drawer.Screen name="Notas Fiscais" component={NotasFiscais} />
+      <Drawer.Screen name="Carteira" component={Carteira} />
+      <Drawer.Screen name="Pesquisa" component={PesquisaCli} />
+      <Drawer.Screen name="Serviços" component={Serviços} />
+      <Drawer.Screen name="Agenda" component={Agenda} />
 
-    // </NavigationContainer>
+    </Drawer.Navigator>
   );
 }

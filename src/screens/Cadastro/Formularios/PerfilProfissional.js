@@ -8,10 +8,10 @@ import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class PerfilProfissional extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -40,7 +40,7 @@ export default class PerfilProfissional extends React.Component {
     back();
   }
 
-  render () {
+  render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
@@ -49,20 +49,20 @@ export default class PerfilProfissional extends React.Component {
           <ImagePicker permitirAdd={false} />
 
           <View>
-          <Input
-            labelText='Profissão'
-            onChangeText={this.handleProfissaoChange}
-            value={this.state.profissao}
-          />
+            <Input
+              labelText='Profissão'
+              onChangeText={this.handleProfissaoChange}
+              value={this.state.profissao}
+            />
 
-          <Input
-            altura={hp('10%')}
-            labelText='Escreva uma breve apresentação :)'
-            multiline={true}
-            numberOfLines={7}
-            onChangeText={this.handleApresentacaoChange}
-            value={this.state.apresentacao}
-          />
+            <Input
+              altura={hp('10%')}
+              labelText='Escreva uma breve apresentação :)'
+              multiline={true}
+              numberOfLines={7}
+              onChangeText={this.handleApresentacaoChange}
+              value={this.state.apresentacao}
+            />
           </View>
 
           <Button titulo='CONTINUAR' funcao={this.nextStep} />

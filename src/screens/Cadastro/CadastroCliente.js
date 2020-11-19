@@ -11,7 +11,7 @@ import CartaoDeCredito from './Formularios/CartaoDeCredito';
 import Senha from './Formularios/Senha';
 
 export default class CadastroCliente extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {};
@@ -48,10 +48,10 @@ export default class CadastroCliente extends React.Component {
           OutOnBack="bounceOutUp"
         />
 
-        <StatusBar 
+        <StatusBar
           style='light'
-          backgroundColor = { colors.azulEscuro }
-          translucent = {false} 
+          backgroundColor={colors.azulEscuro}
+          translucent={false}
         />
       </View>
     );

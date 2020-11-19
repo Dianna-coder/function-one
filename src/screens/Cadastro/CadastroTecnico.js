@@ -18,7 +18,7 @@ import Servicos from './Formularios/Servicos';
 import Senha from './Formularios/Senha';
 
 export default class CadastroTecnico extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {};
@@ -62,10 +62,10 @@ export default class CadastroTecnico extends React.Component {
           OutOnBack="bounceOutUp"
         />
 
-        <StatusBar 
+        <StatusBar
           style='light'
-          backgroundColor = { colors.azulEscuro }
-          translucent = {false} 
+          backgroundColor={colors.azulEscuro}
+          translucent={false}
         />
       </View>
     );

@@ -41,7 +41,7 @@ export default class Senha extends React.Component {
         } else {
           addNewUserData({ email, userData }, (docRef, error) => {
             if (error && !docRef) return alert(error);
-          });    
+          });
         }
       });
     }, 2000);
@@ -52,11 +52,11 @@ export default class Senha extends React.Component {
 
       const xhr = new XMLHttpRequest();
 
-      xhr.onload = function() {
+      xhr.onload = function () {
         resolve(xhr.response);
       };
-      
-      xhr.onerror = function() {
+
+      xhr.onerror = function () {
         reject(new Error('uriToBlob failed'));
       };
 
@@ -82,7 +82,7 @@ export default class Senha extends React.Component {
     //   Alert.alert('Senhas divergentes!');
     //   return;
     // };
-    
+
     // if (!email || !password) return Alert.alert('Dados Incompletos!');
 
     // this.createDataAndUserInDatabase(data, email, password);
@@ -100,7 +100,7 @@ export default class Senha extends React.Component {
     if (uriDocs.length > 0) {
       const promises = uriDocs.map(async (uri) => {
         const blob = await this.uriToBlob(uri);
-  
+
         await uploadDocumentToFirebase(blob);
       });
 
@@ -128,19 +128,19 @@ export default class Senha extends React.Component {
 
           <View>
 
-          <Input
-            isPassword={true}
-            labelText='Senha'
-            onChangeText={this.handleSenhaChange}
-            value={this.state.senha}
-          />
+            <Input
+              isPassword={true}
+              labelText='Senha'
+              onChangeText={this.handleSenhaChange}
+              value={this.state.senha}
+            />
 
-          <Input
-            isPassword={true}
-            labelText='Confirmar senha'
-            onChangeText={this.handleConfirmacaoSenhaChange}
-            value={this.state.confirmacaoSenha}
-          />
+            <Input
+              isPassword={true}
+              labelText='Confirmar senha'
+              onChangeText={this.handleConfirmacaoSenhaChange}
+              value={this.state.confirmacaoSenha}
+            />
 
           </View>
 

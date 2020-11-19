@@ -12,7 +12,7 @@ import CheckBox from '../../../components/CheckBox';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class DadosIniciais extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -56,62 +56,62 @@ export default class DadosIniciais extends React.Component {
     finish();
   }
 
-  render () {
+  render() {
     return (
-    <KeyboardAwareScrollView>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Seus Dados' funcao={this.goBack}/>
+      <KeyboardAwareScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Seus Dados' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={true} />
+            <ImagePicker permitirAdd={true} />
 
-          <View>
-          <Input
-            labelText='Nome'
-            // error={errors?.nome}
-            onChangeText={this.handleNomeChange}
-            value={this.state.nome}
-          />
+            <View>
+              <Input
+                labelText='Nome'
+                // error={errors?.nome}
+                onChangeText={this.handleNomeChange}
+                value={this.state.nome}
+              />
 
-          <Input
-            inputType='numeric'
-            labelText='CPF'
-            onChangeText={this.handleCPFChange}
-            value={this.state.cpf}
-          />
+              <Input
+                inputType='numeric'
+                labelText='CPF'
+                onChangeText={this.handleCPFChange}
+                value={this.state.cpf}
+              />
 
-          <Input
-            inputType='email-address'
-            labelText='Email'
-            onChangeText={this.handleEmailChange}
-            value={this.state.email}
-          />
+              <Input
+                inputType='email-address'
+                labelText='Email'
+                onChangeText={this.handleEmailChange}
+                value={this.state.email}
+              />
 
-          <Input
-            inputType='phone-pad'
-            labelText='Celular'
-            onChangeText={this.handleCelularChange}
-            value={this.state.celular}
-          />
+              <Input
+                inputType='phone-pad'
+                labelText='Celular'
+                onChangeText={this.handleCelularChange}
+                value={this.state.celular}
+              />
 
-          <Input
-            labelText='Nascimento'
-            onChangeText={this.handleNascimentoChange}
-            value={this.state.nascimento}
-          />
+              <Input
+                labelText='Nascimento'
+                onChangeText={this.handleNascimentoChange}
+                value={this.state.nascimento}
+              />
 
-          <CheckBox
-            label="Li e concordo com os termos de uso"
-            labelStyle={{ color: colors.branco, fontSize: 16 }}
-            value={this.state.termoDeUso}
-            onChange={this.handleTermoDeUsoChange}
-          />
+              <CheckBox
+                label="Li e concordo com os termos de uso"
+                labelStyle={{ color: colors.branco, fontSize: 16 }}
+                value={this.state.termoDeUso}
+                onChange={this.handleTermoDeUsoChange}
+              />
 
+            </View>
+
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
       </KeyboardAwareScrollView>
     );
   }

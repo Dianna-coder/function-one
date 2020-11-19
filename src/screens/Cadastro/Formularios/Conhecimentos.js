@@ -8,10 +8,10 @@ import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class Conhecimentos extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -25,7 +25,7 @@ export default class Conhecimentos extends React.Component {
 
   handleConhecimentoChange = (conhecimento) => this.setState({ conhecimento });
   handleTempoDeExperienciaChange = (tempoDeExperiencia) => this.setState({ tempoDeExperiencia });
-  
+
   nextStep = () => {
     const { next, saveState } = this.props;
     saveState(this.state);
@@ -39,7 +39,7 @@ export default class Conhecimentos extends React.Component {
     back();
   }
 
-  render () {
+  render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
@@ -48,17 +48,17 @@ export default class Conhecimentos extends React.Component {
           <ImagePicker permitirAdd={false} />
 
           <View>
-          <Input
-            labelText='Conhecimento'
-            onChangeText={this.handleConhecimentoChange}
-            value={this.state.conhecimento}
-          />
+            <Input
+              labelText='Conhecimento'
+              onChangeText={this.handleConhecimentoChange}
+              value={this.state.conhecimento}
+            />
 
-          <Input
-            labelText='Tempo de Experiência'
-            onChangeText={this.handleTempoDeExperienciaChange}
-            value={this.state.tempoDeExperiencia}
-          />
+            <Input
+              labelText='Tempo de Experiência'
+              onChangeText={this.handleTempoDeExperienciaChange}
+              value={this.state.tempoDeExperiencia}
+            />
 
           </View>
 
