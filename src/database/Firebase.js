@@ -53,40 +53,40 @@ export function addItem(item, tabel) {
 };
 
 export function uploadImageToFirebase(blob) {
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     var storageRef = firebaseApp.storage().ref();
 
     storageRef.child('uploads/photo' + Math.random() * 286 + '.jpg').put(blob, {
       contentType: 'image/jpeg'
-    }).then((snapshot)=>{
+    }).then((snapshot) => {
       blob.close();
 
       resolve(snapshot);
 
-    }).catch((error)=>{
+    }).catch((error) => {
       reject(error);
     });
   });
 };
 
 export function uploadDocumentToFirebase(blob) {
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     var storageRef = firebaseApp.storage().ref();
 
     storageRef.child('uploads/document' + Math.random() * 286 + '.pdf').put(blob, {
       contentType: 'application/pdf'
-    }).then((document)=>{
+    }).then((document) => {
       blob.close();
 
       resolve(document);
 
-    }).catch((error)=>{
+    }).catch((error) => {
       reject(error);
     });
   });
 };
 
-export function forgotPassword (email) {
+export function forgotPassword(email) {
   firebaseApp.auth().sendPasswordResetEmail(email)
     .then(function (user) {
       alert('Email confirmando reset de senha enviado!')
