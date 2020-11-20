@@ -24,15 +24,11 @@ export default class CadastroTecnico extends React.Component {
     this.state = {};
   }
 
-  onNext = () => {
-    // console.log("Next");
-  };
+  onNext = () => { };
 
-  onBack = () => {
-    // console.log("Back");
-  };
+  onBack = () => { };
 
-  finish = () => this.props.navigation.navigate('Login');
+  finish = () => this.props.navigation.navigate('Main');
 
   render() {
     const allStepsFormsTecnico = [
