@@ -109,7 +109,7 @@ export default class Login extends React.Component {
 
               <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
                 <TouchableOpacity onPress={this.handleNextButton} style={styles.botoes}>
-                  <Text style={styles.txtbotao}>Confirmar</Text>
+                  <Text style={styles.txtbotao}>CONFIRMAR</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={this.handleForgotPassword}>

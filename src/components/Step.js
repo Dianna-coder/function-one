@@ -20,11 +20,6 @@ class Index extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   const { comeInOnNext = defaultInOnNext } = this.props;
-  //   this.setState({ action: comeInOnNext });
-  // }
-
   componentDidMount() {
     const { comeInOnNext = defaultInOnNext } = this.props;
     this.setState({ action: comeInOnNext });
@@ -52,7 +47,7 @@ class Index extends Component {
   back = () => {
     const { currentStep } = this.state;
     const { animate = true, OutOnBack = defaultOutOnBack } = this.props;
-    
+
     if (currentStep !== 0) {
       this.onBack();
       this.setState({ action: OutOnBack, animationFinished: false });
@@ -71,8 +66,8 @@ class Index extends Component {
     if (onNext) {
       if (typeof onNext != "function") {
         throw new Error("onNext parameter should be a function");
-      }else {
-      onNext();
+      } else {
+        onNext();
       }
     }
   };
@@ -84,7 +79,7 @@ class Index extends Component {
       if (typeof onBack != "function") {
         throw new Error("onBack parameter should be a function");
       } else {
-      onBack();
+        onBack();
       }
     }
   };

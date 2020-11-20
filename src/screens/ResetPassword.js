@@ -58,7 +58,7 @@ export default class ResetPassword extends React.Component {
                 funcao={() => this.props.navigation.navigate('Login')}
               />
 
-              <Text style={styles.saudacao}>Confirme o email para o reset de senha!</Text>
+              <Text style={styles.saudacao}>Confirme seu e-mail para realizar o reset de senha, por favor</Text>
 
               <Input
                 inputType='email-address'
@@ -69,7 +69,7 @@ export default class ResetPassword extends React.Component {
 
               <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
                 <TouchableOpacity onPress={this.handleForgotPassword} style={styles.botoes}>
-                  <Text style={styles.txtbotao}>Confirmar</Text>
+                  <Text style={styles.txtbotao}>CONFIRMAR</Text>
                 </TouchableOpacity>
               </View>
             </View>

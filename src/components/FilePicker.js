@@ -27,29 +27,28 @@ export default function FilePicker() {
   }
 
   return (
-      <TouchableOpacity onPress={pickDocs}>
-        <View style={styles.container}>
-          <Text style={styles.text}>
-            { label }
-          </Text>
+    <TouchableOpacity onPress={pickDocs}>
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          {label}
+        </Text>
 
-          <Icon
-            name='paperclip'
-            style={{
-              fontSize: 16,
-              marginTop: 5,
-              color: colors.branco,
-            }}
-          />
+        <Icon
+          name='paperclip'
+          style={{
+            fontSize: 16,
+            marginTop: 5,
+            color: colors.branco,
+          }}
+        />
 
-        </View>
-      </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: hp('4.5%'),
     borderWidth: 1,
     padding: 10,
     borderColor: colors.branco,

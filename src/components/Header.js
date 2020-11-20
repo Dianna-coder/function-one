@@ -14,15 +14,15 @@ export default class Header extends React.Component {
     const { titulo, funcao } = this.props;
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.btnVoltar} onPress={funcao}>
-              <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")}/>
-            </TouchableOpacity>
-            
-            <Text style={ styles.title }>
-              { titulo }
-            </Text>
-        </View>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.btnVoltar} onPress={funcao}>
+          <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")} />
+        </TouchableOpacity>
+
+        <Text style={styles.title}>
+          {titulo}
+        </Text>
+      </View>
     );
   }
 }
@@ -43,10 +43,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   btnVoltar: {
-    position: 'absolute', 
-    width: wp('15%'), 
+    position: 'absolute',
+    width: wp('15%'),
     height: wp('15%'),
-    marginLeft: wp('3.5%'),
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 3

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types"
 import Icon from "react-native-vector-icons/FontAwesome"
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../styles/colors';
 
 
 export default function CheckBox(props) {
   const [checkState, setCheckState] = useState(false)
-  
+
 
   function handleChange() {
     let { onChange } = props;
@@ -16,7 +16,7 @@ export default function CheckBox(props) {
 
     if (onChange) return onChange();
   }
-  
+
   return (
     <View style={[
       styles.WrapperCheckBox,
@@ -32,15 +32,15 @@ export default function CheckBox(props) {
       ]}>
 
         {
-          props.value 
-          ? <Icon 
+          props.value
+            ? <Icon
               name="check"
-              style={{ 
-                fontSize: 16, 
-                color: colors.branco 
-                }}
-            /> 
-          : null
+              style={{
+                fontSize: 16,
+                color: colors.branco
+              }}
+            />
+            : null
         }
 
       </TouchableOpacity>
