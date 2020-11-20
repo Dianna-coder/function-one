@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import Header from '../../../components/Header';
 import colors from '../../../styles/colors';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 export default function ScreenDois(props) {
   return (
-    <View style={styles.conatiner}>
-      <Header titulo='' funcao={() => props.navigation.navigate('Main')} />
+    <View style={styles.container}>
+      <Header funcao={() => props.navigation.navigate('ScreenUm')} />
 
       <View style={styles.interno}>
         <Text style={styles.titulo}>
@@ -20,58 +20,68 @@ export default function ScreenDois(props) {
         <Text style={styles.paragrafo}>
           Através do site ou aplicativo, você encontrará técnicos capacitados e certificados para atender sua necessidade
         </Text>
-
-        <TouchableOpacity  onPress={() => props.navigation.navigate('ScreenTres')}>
-          <Text style={styles.btn}>
-            Próximo
-          </Text>
-        </TouchableOpacity>
       </View>
 
-      <Image style={styles.icon} source={require('../../../../assets/icons/telaDois.png')}></Image>
-    </View>
+      <View style={styles.footer}>
+        <TouchableOpacity onPress={() => props.navigation.navigate('CadastroCliente')}>
+          <Text style={styles.btnTransparente}>
+            PULAR
+          </Text>
+        </TouchableOpacity>
 
+        <Image style={styles.icon} source={require('../../../../assets/icons/telaDois.png')}></Image>
+
+        {/* TODO - fix */}
+        <TouchableOpacity onPress={() => props.navigation.navigate('ScreenTres')}>
+          <Image source={require('../../../../assets/icons/seta-avancar.png')}></Image>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  conatiner: {
+  container: {
     flex: 1,
-    alignItems: "center",
     backgroundColor: colors.azulEscuro,
+    padding: 10
   },
   interno: {
     flex: 1,
+    height: hp('38%'),
     alignItems: "center",
-    justifyContent: "space-evenly"
+    justifyContent: 'center'
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   titulo: {
     color: colors.branco,
-    fontSize: 30,
+    fontSize: wp('6%'),
     textAlign: "center",
+    marginBottom: hp('8.96%')
   },
   paragrafo: {
-    width: wp ('88%'),
-    color: "#FFFFFF", 
-    fontSize: 18,
-    textAlign: "center"
-  },
-  btn: {
-    fontSize: 20,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 25,
-      padding: 6,
-      paddingLeft: 12,
-      paddingRight: 12,
-      backgroundColor: colors.azulVibrante,
-      borderRadius: 5,
-      color: colors.branco,
-      borderWidth: 1
+    width: wp('88%'),
+    color: colors.branco,
+    fontSize: wp('4%'),
+    textAlign: "center",
+    marginTop: hp('8.96%'),
+    lineHeight: 23
   },
   icon: {
-    height: hp ('1.2%'), 
-    width: hp ('4.9%'),
+    height: hp('1.2%'),
+    width: hp('4.9%'),
     marginBottom: 20
-  }
+  },
+  btnTransparente: {
+    fontSize: wp('3.5%'),
+    backgroundColor: colors.azulVibrante,
+    borderRadius: 5,
+    color: colors.branco,
+    borderWidth: 1,
+    backgroundColor: 'transparent',
+    borderWidth: 0
+  },
 })

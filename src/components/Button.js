@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity
 } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import colors from '../styles/colors/index';
 
@@ -21,9 +21,9 @@ export default class Button extends Component {
     return (
       <View style={[styles.wrapper]}>
         <TouchableOpacity style={styles.button} onPress={funcao}>
-            <Text style={styles.text}>
-              { titulo }
-            </Text>
+          <Text style={styles.text}>
+            {titulo}
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -33,10 +33,8 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingTop: 30,
-    // position: 'absolute',
-    bottom: 0,
-    marginBottom: hp('6%'),
+    marginBottom: hp('3.5%'),
+    bottom: 0
   },
   button: {
     backgroundColor: colors.azulVibrante,

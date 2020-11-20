@@ -9,7 +9,7 @@ export let imagemPerfil = null;
 export default function ImagePicker(props) {
   const [image, setImage] = useState(null);
 
-  useEffect(() => {
+  const pickImage = async () => {
     (async () => {
       if (Platform.OS !== 'web') {
         const { status } = await ExpoImagePicker.requestCameraRollPermissionsAsync();
@@ -19,9 +19,7 @@ export default function ImagePicker(props) {
         }
       }
     })();
-  }, []);
 
-  const pickImage = async () => {
     let result = await ExpoImagePicker.launchImageLibraryAsync({
       mediaTypes: ExpoImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -40,9 +38,25 @@ export default function ImagePicker(props) {
   const { permitirAdd } = props;
 
   return (
-    <ImageBackground source={{ uri: !image ? imagemPerfil : image }} style={styles.container} borderRadius={ 100 }>
-    <TouchableOpacity style={!permitirAdd ? styles.btnHidden : styles.btnAdicionar} onPress={pickImage}>
-        <Image style={styles.imagemAdicao} source={require("../../assets/icons/adicao.png")}/>
+    <ImageBackground
+      source={{
+        uri: !image
+          ? imagemPerfil
+          : image
+      }}
+      style={styles.container}
+      borderRadius={100}>
+
+      <TouchableOpacity
+        style={
+          !permitirAdd
+            ? styles.btnHidden
+            : styles.btnAdicionar
+        }
+        onPress={pickImage}>
+        <Image
+          style={styles.imagemAdicao}
+          source={require("../../assets/icons/adicao.png")} />
       </TouchableOpacity>
     </ImageBackground>
   );
@@ -50,8 +64,8 @@ export default function ImagePicker(props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: hp('7.5%'),
-    marginBottom: hp('1%'),
+    // marginTop: hp('5.5%'),
+    // marginBottom: hp('1%'),
     height: hp('18%'),
     width: hp('18%'),
     borderRadius: wp('50%'),
