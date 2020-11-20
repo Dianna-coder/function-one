@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Button } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class PrimeiroLoginTecnico extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {};
@@ -15,32 +15,40 @@ export default class PrimeiroLoginTecnico extends React.Component {
   nextStep = () => {
     const { next } = this.props;
 
-    // setTimeout(
-    //   function() {
-    //       this.setState({timePassed: true});
-    //   }
-    //   .bind(this),
-    //   1000
-    // );
-
     next();
   };
 
-  render () {
+  pickName = () => {
+    const { getState } = this.props;
+
+    const data = getState(this.state);
+
+    const nome = data.nome;
+    const nomeFormatado = nome.split(' ').shift();
+
+    return nomeFormatado;
+  }
+
+  render() {
     return (
       <View style={styles.container}>
+        <View>
+          <Text style={styles.titulo}>BEM VINDO {this.pickName()}!</Text>
 
-        {/* Adicionar nome da pessoa */}
-        <Text style={styles.titulo}>BEM VINDO!</Text>
+          <Image style={styles.imagem} source={require('../../../assets/icons/garoto.png')} />
 
-        <Image style={styles.imagem} source={require('../../../assets/icons/garoto.png')}/>
+          <Text style={styles.text}>
+            Antes de começar a trabalhar adicione os dados complementares do seu perfil!
+          </Text>
+        </View>
 
-        <Text style={styles.text}>
-          Antes de começar a trabalhar adicione os dados complementares do seu perfil!
-        </Text>
-
-
-        <Button style={styles.btn} title='CONTINUAR' funcao={this.nextStep} />
+        <View style={styles.footer}>
+          <TouchableOpacity onPress={() => this.nextStep}>
+            <Text style={styles.btnTransparente}>
+              CONTINUAR
+          </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -51,16 +59,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.azulEscuro,
     alignItems: 'center',
+    justifyContent: 'space-around'
   },
   titulo: {
     fontSize: hp('2.7%'),
     color: colors.branco,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: hp('20%'),
+    // marginTop: hp('20%'),
     marginBottom: hp('10%'),
-    marginRight: wp('6.9%'),
-    marginLeft: wp('6.9%'),
+    // marginRight: wp('6.9%'),
+    // marginLeft: wp('6.9%'),
+    textTransform: 'uppercase'
   },
   imagem: {
     height: hp('18%'),
@@ -74,10 +84,18 @@ const styles = StyleSheet.create({
     marginRight: wp('6.9%'),
     marginLeft: wp('6.9%'),
   },
-  btn: {
-    position: 'absolute',
-    bottom: 0,
-    opacity: 0,
-    color: colors.branco
+  footer: {
+    justifyContent: 'flex-end',
+    // bottom: 0
+  },
+  btnTransparente: {
+    fontSize: wp('3.8%'),
+    fontWeight: 'bold',
+    backgroundColor: colors.azulVibrante,
+    borderRadius: 5,
+    color: colors.branco,
+    borderWidth: 1,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
   }
 });

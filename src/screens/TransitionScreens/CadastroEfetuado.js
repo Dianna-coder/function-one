@@ -3,46 +3,38 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 
 import colors from '../../styles/colors/index';
 
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class CadastroEfetuado extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {};
   }
 
-  nextStep = () => {
-    const { next } = this.props;
+  componentDidMount() {
+    setTimeout(() => {
+      const { next } = this.props;
 
-    // setTimeout(
-    //   function() {
-    //       this.setState({timePassed: true});
-    //   }
-    //   .bind(this),
-    //   1000
-    // );
+      next();
+    }, 1500)
+  }
 
-    next();
-  };
-
-  render () {
+  render() {
     return (
       <View style={styles.container}>
 
         <Text style={styles.titulo}>CADASTRO EFETUADO COM SUCESSO!</Text>
 
-        <Image style={styles.imagem} source={require('../../../assets/icons/Bolinha-foto.png')}/>
+        <Image style={styles.imagem} source={require('../../../assets/icons/Bolinha-foto.png')} />
 
         <Text style={styles.text}>
-          Seu perfil está em 
-          análise e em 5 dias 
-          úteis receberá um e-
-          mail de aprovação de 
+          Seu perfil está em
+          análise e em 5 dias
+          úteis receberá um
+          e-mail de aprovação de
           cadastro
         </Text>
-
-        {/* {this.nextStep} */}
       </View>
     );
   }
