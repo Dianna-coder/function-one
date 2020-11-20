@@ -10,6 +10,7 @@ import Button from '../../../components/Button';
 import CheckBox from '../../../components/CheckBox';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class Agencia extends React.Component {
   constructor(props) {
@@ -117,193 +118,194 @@ export default class Agencia extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Cadastrar Agenda' funcao={this.goBack} />
 
-        <View style={styles.container}>
-          <Header titulo='Cadastrar Agenda' funcao={this.goBack} />
+            <ImagePicker permitirAdd={false} />
 
-          <ImagePicker permitirAdd={false} />
+            <View style={styles.tabela}>
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Segunda"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaSegunda}
+                  onChange={this.handleAgendaSegundaChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
 
-          <View style={styles.tabela}>
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Segunda"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaSegunda}
-                onChange={this.handleAgendaSegundaChange}
-                bordaBottom={1}
-                largura={200}
-              />
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioSegundaChange}
+                  value={this.state.inicioSegunda}
+                />
 
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioSegundaChange}
-                value={this.state.inicioSegunda}
-              />
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalSegundaChange}
+                  value={this.state.finalSegunda}
+                />
+              </View>
 
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalSegundaChange}
-                value={this.state.finalSegunda}
-              />
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Terça"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaTerca}
+                  onChange={this.handleAgendaTercaChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioTercaChange}
+                  value={this.state.inicioTerca}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalTercaChange}
+                  value={this.state.finalTerca}
+                />
+              </View>
+
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Quarta"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaQuarta}
+                  onChange={this.handleAgendaQuartaChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioQuartaChange}
+                  value={this.state.inicioQuarta}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalQuartaChange}
+                  value={this.state.finalQuarta}
+                />
+              </View>
+
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Quinta"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaQuinta}
+                  onChange={this.handleAgendaQuintaChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioQuintaChange}
+                  value={this.state.inicioQuinta}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalQuintaChange}
+                  value={this.state.finalQuinta}
+                />
+              </View>
+
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Sexta"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaSexta}
+                  onChange={this.handleAgendaSextaChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioSextaChange}
+                  value={this.state.inicioSexta}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalSextaChange}
+                  value={this.state.finalSexta}
+                />
+              </View>
+
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Sábado"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaSabado}
+                  onChange={this.handleAgendaSabadoChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioSabadoChange}
+                  value={this.state.inicioSabado}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalSabadoChange}
+                  value={this.state.finalSabado}
+                />
+              </View>
+
+              <View style={styles.linhas}>
+                <CheckBox
+                  label="Domingo"
+                  labelStyle={{ color: colors.branco, fontSize: 16 }}
+                  value={this.state.agendaDomingo}
+                  onChange={this.handleAgendaDomingoChange}
+                  bordaBottom={1}
+                  largura={wp('50%')}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Início'
+                  onChangeText={this.handleInicioDomingoChange}
+                  value={this.state.inicioDomingo}
+                />
+
+                <Input
+                  withi={70}
+                  labelText='Final'
+                  onChangeText={this.handleFinalDomingoChange}
+                  value={this.state.finalDomingo}
+                />
+              </View>
             </View>
 
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Terça"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaTerca}
-                onChange={this.handleAgendaTercaChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioTercaChange}
-                value={this.state.inicioTerca}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalTercaChange}
-                value={this.state.finalTerca}
-              />
-            </View>
-
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Quarta"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaQuarta}
-                onChange={this.handleAgendaQuartaChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioQuartaChange}
-                value={this.state.inicioQuarta}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalQuartaChange}
-                value={this.state.finalQuarta}
-              />
-            </View>
-
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Quinta"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaQuinta}
-                onChange={this.handleAgendaQuintaChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioQuintaChange}
-                value={this.state.inicioQuinta}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalQuintaChange}
-                value={this.state.finalQuinta}
-              />
-            </View>
-
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Sexta"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaSexta}
-                onChange={this.handleAgendaSextaChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioSextaChange}
-                value={this.state.inicioSexta}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalSextaChange}
-                value={this.state.finalSexta}
-              />
-            </View>
-
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Sábado"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaSabado}
-                onChange={this.handleAgendaSabadoChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioSabadoChange}
-                value={this.state.inicioSabado}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalSabadoChange}
-                value={this.state.finalSabado}
-              />
-            </View>
-
-            <View style={styles.linhas}>
-              <CheckBox
-                label="Domingo"
-                labelStyle={{ color: colors.branco, fontSize: 16 }}
-                value={this.state.agendaDomingo}
-                onChange={this.handleAgendaDomingoChange}
-                bordaBottom={1}
-                largura={200}
-              />
-
-              <Input
-                withi={70}
-                labelText='Início'
-                onChangeText={this.handleInicioDomingoChange}
-                value={this.state.inicioDomingo}
-              />
-
-              <Input
-                withi={70}
-                labelText='Final'
-                onChangeText={this.handleFinalDomingoChange}
-                value={this.state.finalDomingo}
-              />
-            </View>
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -324,4 +326,7 @@ const styles = StyleSheet.create({
   linhas: {
     flexDirection: 'row',
   },
+  tabela: {
+    alignItems: 'center'
+  }
 });

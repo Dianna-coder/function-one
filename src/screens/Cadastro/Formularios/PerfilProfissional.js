@@ -9,6 +9,8 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 
 export default class PerfilProfissional extends React.Component {
   constructor(props) {
@@ -42,32 +44,34 @@ export default class PerfilProfissional extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Perfil Profissional' funcao={this.goBack} />
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Perfil Profissional' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={false} />
+            <ImagePicker permitirAdd={false} />
 
-          <View>
-            <Input
-              labelText='Profissão'
-              onChangeText={this.handleProfissaoChange}
-              value={this.state.profissao}
-            />
+            <View>
+              <Input
+                labelText='Profissão'
+                onChangeText={this.handleProfissaoChange}
+                value={this.state.profissao}
+              />
 
-            <Input
-              altura={hp('10%')}
-              labelText='Escreva uma breve apresentação :)'
-              multiline={true}
-              numberOfLines={7}
-              onChangeText={this.handleApresentacaoChange}
-              value={this.state.apresentacao}
-            />
+              <Input
+                altura={hp('10%')}
+                labelText='Escreva uma breve apresentação :)'
+                multiline={true}
+                numberOfLines={7}
+                onChangeText={this.handleApresentacaoChange}
+                value={this.state.apresentacao}
+              />
+            </View>
+
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }

@@ -12,6 +12,7 @@ import FilePicker from '../../../components/FilePicker';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { docsSelecionados } from '../../../components/FilePicker';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class InformacoesAcademicas extends React.Component {
   constructor(props) {
@@ -54,63 +55,65 @@ export default class InformacoesAcademicas extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Informações Acadêmicas' funcao={this.goBack} />
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Informações Acadêmicas' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={false} />
+            <ImagePicker permitirAdd={false} />
 
-          <View>
-            <Select
-              labelText={'Selecione o nível de escolaridade...'}
-              valor={this.state.nivelDeEscolaridade}
-              valorMudado={this.handleNivelDeEscolaridadeChange}
-              valoresDoSelect={[
-                { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
-                { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
-                { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
-                { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
-                { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
-                { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
-              ]}
-            />
-
-            <Input
-              labelText='Instituição'
-              onChangeText={this.handleInstituicaoChange}
-              value={this.state.instituicao}
-            />
-
-            <Input
-              labelText='Curso'
-              onChangeText={this.handleCursoChange}
-              value={this.state.curso}
-            />
-
-            <View style={styles.containerDoisInputs}>
-              <Input
-                withi={wp('38%')}
-                labelText='Início'
-                onChangeText={this.handleInicioChange}
-                value={this.state.inicio}
+            <View>
+              <Select
+                labelText={'Selecione o nível de escolaridade...'}
+                valor={this.state.nivelDeEscolaridade}
+                valorMudado={this.handleNivelDeEscolaridadeChange}
+                valoresDoSelect={[
+                  { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
+                  { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
+                  { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
+                  { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
+                  { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
+                  { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
+                ]}
               />
 
               <Input
-                withi={wp('38%')}
-                labelText='Término'
-                onChangeText={this.handleTerminoChange}
-                value={this.state.termino}
+                labelText='Instituição'
+                onChangeText={this.handleInstituicaoChange}
+                value={this.state.instituicao}
               />
+
+              <Input
+                labelText='Curso'
+                onChangeText={this.handleCursoChange}
+                value={this.state.curso}
+              />
+
+              <View style={styles.containerDoisInputs}>
+                <Input
+                  withi={wp('38%')}
+                  labelText='Início'
+                  onChangeText={this.handleInicioChange}
+                  value={this.state.inicio}
+                />
+
+                <Input
+                  withi={wp('38%')}
+                  labelText='Término'
+                  onChangeText={this.handleTerminoChange}
+                  value={this.state.termino}
+                />
+              </View>
+
             </View>
 
+            <FilePicker />
+            {/* TODO - adicionar cursos -> gerar novo form */}
+
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          <FilePicker />
-          {/* TODO - adicionar cursos -> gerar novo form */}
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }

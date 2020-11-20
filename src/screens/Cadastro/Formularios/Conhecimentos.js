@@ -9,6 +9,7 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class Conhecimentos extends React.Component {
   constructor(props) {
@@ -41,32 +42,34 @@ export default class Conhecimentos extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Conhecimentos' funcao={this.goBack} />
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Conhecimentos' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={false} />
+            <ImagePicker permitirAdd={false} />
 
-          <View>
-            <Input
-              labelText='Conhecimento'
-              onChangeText={this.handleConhecimentoChange}
-              value={this.state.conhecimento}
-            />
+            <View>
+              <Input
+                labelText='Conhecimento'
+                onChangeText={this.handleConhecimentoChange}
+                value={this.state.conhecimento}
+              />
 
-            <Input
-              labelText='Tempo de Experiência'
-              onChangeText={this.handleTempoDeExperienciaChange}
-              value={this.state.tempoDeExperiencia}
-            />
+              <Input
+                labelText='Tempo de Experiência'
+                onChangeText={this.handleTempoDeExperienciaChange}
+                value={this.state.tempoDeExperiencia}
+              />
 
+            </View>
+
+            {/* TODO - adicionar conhecimento -> gerar novo form */}
+
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          {/* TODO - adicionar conhecimento -> gerar novo form */}
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }

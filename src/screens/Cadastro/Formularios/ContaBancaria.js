@@ -9,6 +9,7 @@ import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class ContaBancaria extends React.Component {
   constructor(props) {
@@ -51,51 +52,53 @@ export default class ContaBancaria extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Cadastre Sua Conta Bancária' funcao={this.goBack} />
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Cadastre Sua Conta Bancária' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={false} />
+            <ImagePicker permitirAdd={false} />
 
-          <View>
-            <Input
-              labelText='Titular'
-              onChangeText={this.handleTitularChange}
-              value={this.state.titular}
-            />
+            <View>
+              <Input
+                labelText='Titular'
+                onChangeText={this.handleTitularChange}
+                value={this.state.titular}
+              />
 
-            <Input
-              inputType='numeric'
-              labelText='CPF'
-              onChangeText={this.handleCpfChange}
-              value={this.state.cpfContaBancaria}
-            />
+              <Input
+                inputType='numeric'
+                labelText='CPF'
+                onChangeText={this.handleCpfChange}
+                value={this.state.cpfContaBancaria}
+              />
 
-            <Input
-              labelText='Banco'
-              onChangeText={this.handleBancoChange}
-              value={this.state.banco}
-            />
+              <Input
+                labelText='Banco'
+                onChangeText={this.handleBancoChange}
+                value={this.state.banco}
+              />
 
-            <Input
-              inputType='numeric'
-              labelText='Agência'
-              onChangeText={this.handleAgenciaChange}
-              value={this.state.agencia}
-            />
+              <Input
+                inputType='numeric'
+                labelText='Agência'
+                onChangeText={this.handleAgenciaChange}
+                value={this.state.agencia}
+              />
 
-            <Input
-              inputType='numeric'
-              labelText='Conta'
-              onChangeText={this.handleContaChange}
-              value={this.state.conta}
-            />
+              <Input
+                inputType='numeric'
+                labelText='Conta'
+                onChangeText={this.handleContaChange}
+                value={this.state.conta}
+              />
 
+            </View>
+
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
-
-          <Button titulo='CONTINUAR' funcao={this.nextStep} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     );
   }
 }

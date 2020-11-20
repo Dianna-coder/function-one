@@ -10,6 +10,7 @@ import Button from '../../../components/Button';
 import CheckBox from '../../../components/CheckBox';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 export default class DadosIniciais extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class DadosIniciais extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Seus Dados' funcao={this.goBack} />
@@ -68,7 +69,6 @@ export default class DadosIniciais extends React.Component {
             <View>
               <Input
                 labelText='Nome'
-                // error={errors?.nome}
                 onChangeText={this.handleNomeChange}
                 value={this.state.nome}
               />
@@ -123,5 +123,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.azulEscuro,
     alignItems: 'center',
     justifyContent: 'space-around'
+  },
+  formulario: {
+    marginBottom: heightPercentageToDP('3.5%')
   }
 });

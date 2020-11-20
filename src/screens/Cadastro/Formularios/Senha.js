@@ -10,6 +10,7 @@ import Button from '../../../components/Button';
 
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { addNewProfissionalData, addNewUserData, emailSignUp, uploadDocumentToFirebase, uploadImageToFirebase } from '../../../database/Firebase';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class Senha extends React.Component {
   constructor(props) {
@@ -120,33 +121,35 @@ export default class Senha extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Header titulo='Defina Sua Senha' funcao={this.goBack} />
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            <Header titulo='Defina Sua Senha' funcao={this.goBack} />
 
-          <ImagePicker permitirAdd={false} />
+            <ImagePicker permitirAdd={false} />
 
-          <View>
+            <View>
 
-            <Input
-              isPassword={true}
-              labelText='Senha'
-              onChangeText={this.handleSenhaChange}
-              value={this.state.senha}
-            />
+              <Input
+                isPassword={true}
+                labelText='Senha'
+                onChangeText={this.handleSenhaChange}
+                value={this.state.senha}
+              />
 
-            <Input
-              isPassword={true}
-              labelText='Confirmar senha'
-              onChangeText={this.handleConfirmacaoSenhaChange}
-              value={this.state.confirmacaoSenha}
-            />
+              <Input
+                isPassword={true}
+                labelText='Confirmar senha'
+                onChangeText={this.handleConfirmacaoSenhaChange}
+                value={this.state.confirmacaoSenha}
+              />
 
+            </View>
+
+            <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
           </View>
-
-          <Button titulo='CADASTRAR' funcao={this.handleSubmit} />
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView >
     );
   }
 }
