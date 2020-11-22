@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import {
-  View,
-  StyleSheet
-} from "react-native";
+import { View } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import colors from '../styles/colors/index';
+import colors from '../../styles/colors/index';
 
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from "react-native-vector-icons/FontAwesome"
 
-export default class Select extends Component {
+export default class SelectWithBorder extends Component {
   constructor(props) {
     super(props);
 
@@ -29,7 +26,7 @@ export default class Select extends Component {
     } = this.props;
 
     return (
-      <View style={styles.wrapper}>
+      <View>
         <RNPickerSelect
           style={{
             placeholder: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput } from 'react-native';
 import 'react-native-gesture-handler';
+import Button from '../../../../components/Button'
 
 const BottonDown = '../../assets/Btn-down.png'
 
@@ -59,9 +60,7 @@ export default function Pesquisa({ navigation }) {
       </View>
 
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity style={styles.BotaoPesq}>
-          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>PESQUISAR</Text>
-        </TouchableOpacity>
+        <Button titulo='PESQUISAR' />
       </View>
 
     </SafeAreaView>

@@ -26,7 +26,7 @@ export default class CadastroEfetuado extends React.Component {
 
         <Text style={styles.titulo}>CADASTRO EFETUADO COM SUCESSO!</Text>
 
-        <Image style={styles.imagem} source={require('../../../assets/icons/Bolinha-foto.png')} />
+        <Image style={styles.imagem} source={require('../../../assets/icons/Bolinha-adicionar-foto.png')} />
 
         <Text style={styles.text}>
           Seu perfil está em

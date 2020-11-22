@@ -10,12 +10,7 @@ import CadProfissionais from '../../component/CadProfissionais';
 export default function Profissionais({ navigation }) {
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   return (
-
-
-
     <SafeAreaView style={{ backgroundColor: "#0C1C41", flex: 1 }}>
-
-
       <StatusBar style="light" hidden={false} translucent={false} backgroundColor='#0C1C41' />
 
       <Animated.View
@@ -34,10 +29,9 @@ export default function Profissionais({ navigation }) {
             })
           }
         ]} >
+
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
-
           <Icon name="menu" size={40} color="#fff" />
-
         </TouchableOpacity>
 
         <Text style={styles.TitleProf}>PROFISSIONAIS</Text>
@@ -66,7 +60,7 @@ export default function Profissionais({ navigation }) {
             img={require('../../assets/Bolinha-foto.png')}
             NameProf="Paulo Fernandes"
             NameRamo="Programador"
-            DescServico='Desenvolvo App em JavaScript e Flash'
+            DescServico='Desenvolvimento de App em JavaScript e Flash'
             Distancia="A 1km de você"
             Avali="4,6"
             onClick={() => alert('Solicitado')}>
@@ -78,7 +72,7 @@ export default function Profissionais({ navigation }) {
             img={require('../../assets/Bolinha-foto-1.png')}
             NameProf="Julia Pontes"
             NameRamo="Designer Grafico"
-            DescServico='Crio Banners e desenvolvo Logos'
+            DescServico='Criação de Banners e desenvolvimento de logos'
             Distancia="A 10km de você"
             Avali="5,6"
             onClick={() => alert('Solicitado')}>
