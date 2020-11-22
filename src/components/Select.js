@@ -3,7 +3,7 @@ import {
   View,
   StyleSheet
 } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../styles/colors/index';
 
 import RNPickerSelect from 'react-native-picker-select';
@@ -30,51 +30,53 @@ export default class Select extends Component {
 
     return (
       <View style={styles.wrapper}>
-          <RNPickerSelect
-            style={{
-              placeholder: {
-                color: colors.branco,
-                fontSize: hp('2.2%'),
-                color: colors.branco,
-                fontWeight: 'bold',
-                left: -8.5,
-              },
-              iconContainer: {
-                color: '#fff',
-                paddingTop: 10,
-              },
-              inputAndroid: {
-                height: hp('3.95%'),
-                color: '#fff',
-                paddingBottom: 10,
-                textAlign: 'center',
-                backgroundColor: colors.azulEscuro,
-              },
-              viewContainer: {
-                marginTop: hp('3.5%'),
-                borderBottomWidth: 1.5,
-                borderBottomColor: '#cecece',
-                width: largura ? largura : wp('79.71%'),
-                alignSelf: 'center',
-              }
-            }}
-            placeholder={{
-              label: labelText,
-              value: valor,
-            }}
-            value={inputValue}
-            onValueChange={valorMudado}
-            items={valoresDoSelect}
-            Icon={() => {
-              return <Icon 
+        <RNPickerSelect
+          style={{
+            placeholder: {
+              color: colors.branco,
+              fontSize: hp('2.2%'),
+              color: colors.branco,
+              fontWeight: 'bold',
+            },
+            iconContainer: {
+              color: '#fff',
+              paddingRight: 10
+            },
+            inputAndroid: {
+              height: hp('3.95%'),
+              color: '#fff',
+              // paddingBottom: 10,
+              textAlign: 'center',
+              backgroundColor: colors.azulEscuro,
+            },
+            viewContainer: {
+              marginTop: hp('3.5%'),
+              borderWidth: 1,
+              padding: 10,
+              borderColor: colors.branco,
+              borderRadius: 10,
+              width: largura ? largura : wp('79.71%'),
+              alignSelf: 'center',
+              justifyContent: 'center'
+            }
+          }}
+          placeholder={{
+            label: labelText,
+            value: valor,
+          }}
+          value={inputValue}
+          onValueChange={valorMudado}
+          items={valoresDoSelect}
+          Icon={() => {
+            return <Icon
               name='chevron-down'
-              style={{ 
-                fontSize: 16, 
-                color: colors.branco 
-                }}
-            /> ;
-            }}
-            />
+              style={{
+                fontSize: 16,
+                color: colors.branco
+              }}
+            />;
+          }}
+        />
 
       </View>
     );
