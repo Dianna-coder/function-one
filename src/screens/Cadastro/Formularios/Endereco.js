@@ -56,7 +56,7 @@ export default class Endereco extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Endereço' funcao={this.goBack} />

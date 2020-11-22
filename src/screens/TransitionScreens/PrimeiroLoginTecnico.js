@@ -13,7 +13,8 @@ export default class PrimeiroLoginTecnico extends React.Component {
   }
 
   nextStep = () => {
-    const { next } = this.props;
+    const { next, saveState } = this.props;
+    saveState(this.state);
 
     next();
   };
@@ -24,7 +25,7 @@ export default class PrimeiroLoginTecnico extends React.Component {
     const data = getState(this.state);
 
     const nome = data.nome;
-    const nomeFormatado = nome.split(' ').shift();
+    const nomeFormatado = nome?.split(' ').shift();
 
     return nomeFormatado;
   }
@@ -32,8 +33,8 @@ export default class PrimeiroLoginTecnico extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text style={styles.titulo}>BEM VINDO {this.pickName()}!</Text>
+        <View style={styles.conteudo}>
+          <Text style={styles.titulo}>BEM VINDO {this.pickName()}</Text>
 
           <Image style={styles.imagem} source={require('../../../assets/icons/garoto.png')} />
 
@@ -43,10 +44,10 @@ export default class PrimeiroLoginTecnico extends React.Component {
         </View>
 
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => this.nextStep}>
+          <TouchableOpacity onPress={this.nextStep}>
             <Text style={styles.btnTransparente}>
               CONTINUAR
-          </Text>
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.azulEscuro,
-    alignItems: 'center',
     justifyContent: 'space-around'
   },
   titulo: {
@@ -66,16 +66,19 @@ const styles = StyleSheet.create({
     color: colors.branco,
     fontWeight: 'bold',
     textAlign: 'center',
-    // marginTop: hp('20%'),
+    marginTop: hp('15%'),
     marginBottom: hp('10%'),
-    // marginRight: wp('6.9%'),
-    // marginLeft: wp('6.9%'),
+    marginRight: wp('6.9%'),
+    marginLeft: wp('6.9%'),
     textTransform: 'uppercase'
   },
   imagem: {
     height: hp('18%'),
     width: hp('18%'),
-    marginBottom: hp('10%')
+    marginBottom: hp('10%'),
+  },
+  conteudo: {
+    alignItems: 'center'
   },
   text: {
     fontSize: hp('2.7%'),
@@ -83,10 +86,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: wp('6.9%'),
     marginLeft: wp('6.9%'),
+    marginBottom: wp('15%'),
   },
   footer: {
-    justifyContent: 'flex-end',
-    // bottom: 0
+    alignItems: 'flex-end',
+    marginRight: wp('6%')
   },
   btnTransparente: {
     fontSize: wp('3.8%'),

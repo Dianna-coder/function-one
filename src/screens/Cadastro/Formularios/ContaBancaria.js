@@ -52,7 +52,7 @@ export default class ContaBancaria extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Cadastre Sua Conta Bancária' funcao={this.goBack} />

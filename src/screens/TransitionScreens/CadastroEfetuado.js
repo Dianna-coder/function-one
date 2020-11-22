@@ -17,7 +17,7 @@ export default class CadastroEfetuado extends React.Component {
       const { next } = this.props;
 
       next();
-    }, 1500)
+    }, 3000)
   }
 
   render() {
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     marginLeft: wp('6.9%'),
   },
   imagem: {
-    height: hp('18%'),
-    width: hp('18%'),
+    height: hp('19.7%'),
+    width: hp('20%'),
     marginBottom: hp('10%')
   },
   text: {

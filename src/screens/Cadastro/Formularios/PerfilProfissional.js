@@ -44,7 +44,7 @@ export default class PerfilProfissional extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Perfil Profissional' funcao={this.goBack} />
