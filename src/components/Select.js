@@ -39,13 +39,12 @@ export default class Select extends Component {
               fontWeight: 'bold',
             },
             iconContainer: {
-              color: '#fff',
+              color: colors.branco,
               paddingRight: 10
             },
             inputAndroid: {
               height: hp('3.95%'),
-              color: '#fff',
-              // paddingBottom: 10,
+              color: colors.branco,
               textAlign: 'center',
               backgroundColor: colors.azulEscuro,
             },
@@ -82,10 +81,3 @@ export default class Select extends Component {
     );
   }
 };
-
-
-const styles = StyleSheet.create({
-  wrapper: {
-    // paddingTop: 5,
-  },
-});
