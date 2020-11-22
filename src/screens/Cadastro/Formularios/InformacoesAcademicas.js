@@ -96,7 +96,7 @@ export default class InformacoesAcademicas extends React.Component {
             >
 
               <View style={styles.container}>
-                <Select
+                <SelectWithBorder
                   labelText={'Selecione o nível de escolaridade...'}
                   valor={this.state.nivelDeEscolaridade}
                   valorMudado={this.handleNivelDeEscolaridadeChange}
