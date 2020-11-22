@@ -7,7 +7,7 @@ import Header from '../../../components/Header';
 import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
-import Select from '../../../components/Select';
+import Select from '../../../components/Select/Select';
 
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
@@ -56,7 +56,7 @@ export default class Endereco extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Endereço' funcao={this.goBack} />

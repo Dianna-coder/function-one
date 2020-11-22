@@ -9,7 +9,7 @@ import Header from '../../../components/Header';
 import Input from '../../../components/Input';
 import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
-import Select from '../../../components/Select';
+import SelectWithBorder from '../../../components/Select/SelectWithBorder';
 import FilePicker from '../../../components/FilePicker';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -82,7 +82,7 @@ export default class InformacoesAcademicas extends React.Component {
   render() {
     const { modalVisible } = this.state;
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Informações Acadêmicas' funcao={this.goBack} />

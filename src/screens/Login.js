@@ -5,9 +5,9 @@ import {
   View,
   ImageBackground,
   TouchableOpacity,
-  TextInput,
+  TouchableWithoutFeedback,
   KeyboardAvoidingView,
-  Alert,
+  Keyboard
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -70,58 +70,60 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
 
-        <ImageBackground
-          style={{
-            width: wp("100%"),
-            height: hp("100%"),
-            justifyContent: "center",
-          }}
-          source={require(fundo)}
-        >
+          <ImageBackground
+            style={{
+              width: wp("100%"),
+              height: hp("100%"),
+              justifyContent: "center",
+            }}
+            source={require(fundo)}
+          >
 
-          <KeyboardAvoidingView>
-            <View style={{ justifyContent: "space-evenly", height: hp('100%'), width: wp('100%') }}>
+            <KeyboardAvoidingView>
+              <View style={{ justifyContent: "space-evenly", height: hp('100%'), width: wp('100%') }}>
 
-              <Header
-                titulo=''
-                funcao={() => this.props.navigation.navigate('Main')}
-              />
-
-              <Text style={styles.saudacao}>BEM VINDO</Text>
-
-              <View style={styles.container2}>
-                <Input
-                  inputType='email-address'
-                  labelText='E-mail'
-                  onChangeText={this.handleEmailChange}
-                  value={this.state.email}
+                <Header
+                  titulo=''
+                  funcao={() => this.props.navigation.navigate('Main')}
                 />
 
-                <Input
-                  isPassword={true}
-                  labelText='Senha'
-                  onChangeText={this.handlePasswordChange}
-                  value={this.state.password}
-                />
-              </View>
+                <Text style={styles.saudacao}>BEM VINDO</Text>
 
-              <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
-                <TouchableOpacity onPress={this.handleNextButton} style={styles.botoes}>
-                  <Text style={styles.txtbotao}>CONFIRMAR</Text>
-                </TouchableOpacity>
+                <View style={styles.container2}>
+                  <Input
+                    inputType='email-address'
+                    labelText='E-mail'
+                    onChangeText={this.handleEmailChange}
+                    value={this.state.email}
+                  />
 
-                <TouchableOpacity onPress={this.handleForgotPassword}>
-                  <Text style={{ textDecorationLine: "underline", color: "white", textAlign: "center", marginTop: 25 }}>
-                    Esqueci minha senha
+                  <Input
+                    isPassword={true}
+                    labelText='Senha'
+                    onChangeText={this.handlePasswordChange}
+                    value={this.state.password}
+                  />
+                </View>
+
+                <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
+                  <TouchableOpacity onPress={this.handleNextButton} style={styles.botoes}>
+                    <Text style={styles.txtbotao}>CONFIRMAR</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={this.handleForgotPassword}>
+                    <Text style={{ textDecorationLine: "underline", color: "white", textAlign: "center", marginTop: 25 }}>
+                      Esqueci minha senha
                 </Text>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </KeyboardAvoidingView>
-        </ImageBackground>
-      </View>
+            </KeyboardAvoidingView>
+          </ImageBackground>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 export default class MainTransition extends React.Component {
   componentDidMount() {
-    setTimeout(() => { this.props.navigation.navigate('Main') }, 1500)
+    setTimeout(() => { this.props.navigation.navigate('Main') }, 2000)
   }
 
   // TODO - adicionar animações

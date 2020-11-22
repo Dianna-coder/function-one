@@ -54,11 +54,10 @@ const styles = StyleSheet.create({
     marginLeft: wp('10%'),
     alignItems: "center",
     justifyContent: 'center'
-    // justifyContent: "space-evenly"
   },
   footer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   titulo: {
     color: colors.branco,

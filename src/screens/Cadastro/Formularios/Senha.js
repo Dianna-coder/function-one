@@ -79,14 +79,14 @@ export default class Senha extends React.Component {
     const password = this.state.senha;
     const passwordConfirmation = this.state.confirmacaoSenha;
 
-    // if (password !== passwordConfirmation) {
-    //   Alert.alert('Senhas divergentes!');
-    //   return;
-    // };
+    if (password !== passwordConfirmation) {
+      Alert.alert('Senhas divergentes!');
+      return;
+    };
 
-    // if (!email || !password) return Alert.alert('Dados Incompletos!');
+    if (!email || !password) return Alert.alert('Dados Incompletos!');
 
-    // this.createDataAndUserInDatabase(data, email, password);
+    this.createDataAndUserInDatabase(data, email, password);
 
     const uriImage = data.imagem;
     const uriDocs = data.docs;
@@ -121,7 +121,7 @@ export default class Senha extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Header titulo='Defina Sua Senha' funcao={this.goBack} />

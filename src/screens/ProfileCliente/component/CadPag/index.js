@@ -1,89 +1,63 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
+import colors from '../../../../styles/colors';
 
 export default function CadPag(props) {
-
     return (
-
         <View style={styles.container} >
-
-            <View style={styles.Coluna1}>
+            <View style={styles.Header}>
                 <Image source={props.img} style={styles.ProfImg} />
-            </View>
 
-            <View style={styles.Coluna2}>
-
-                <View style={styles.Linha1}>
+                <View style={styles.ColunaDescricao}>
                     <Text style={styles.StyleName}> {props.NameProf} </Text>
+                    <Text style={[
+                        styles.StyleDivida,
+                        props.Divida === 'Pago'
+                            ? {
+                                color: colors.verde
+                            }
+                            : {
+                                color: colors.vermelho
+                            }
+                    ]}> {(props.Divida)}</Text>
                 </View>
-
-                <View style={styles.Linha2}>
-                    <Text style={styles.StyleDivida}> {(props.Divida)}</Text>
-                </View>
-
             </View>
-
         </View>
-
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: 100,
-        width: '80%',
-        backgroundColor: '#fff',
-        margin: '3%',
-        alignSelf: 'center',
+        height: heightPercentageToDP('13%'),
+        width: widthPercentageToDP('90%'),
+        backgroundColor: colors.branco,
+        margin: heightPercentageToDP('2%'),
+        padding: 15,
         borderColor: '#9c9c9c',
-        borderWidth: 2,
-        flexDirection: 'row'
+        borderWidth: 1,
+        borderRadius: 15,
+        justifyContent: 'center'
     },
-    Coluna1: {
-        flex: 0.2,
-        height: '100%',
-        width: '20%',
-        paddingTop: 20,
-
+    ColunaDescricao: {
+        width: widthPercentageToDP('55%'),
     },
-    Coluna2: {
-        flex: 1,
-        height: '100%',
-        width: '80%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    Linha1: {
-        height: '33.3%',
-        width: '100%',
-        flex: 1,
+    Header: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    Linha2: {
-        height: '33.3%',
-        width: '100%',
-        alignItems: 'flex-start',
-        flex: 0.8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'space-around',
     },
     StyleName: {
-        fontSize: 25,
+        fontSize: widthPercentageToDP('4.8%'),
         fontWeight: 'bold',
-        paddingTop: 18
-
+        width: widthPercentageToDP('55%'),
+        marginBottom: heightPercentageToDP('0.8%')
     },
     StyleDivida: {
         fontSize: 15,
         fontWeight: 'bold'
-
     },
     ProfImg: {
-        alignSelf: 'center',
-        width: '100%',
         resizeMode: 'contain',
+        marginRight: widthPercentageToDP('2%')
     }
 });

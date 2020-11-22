@@ -1,167 +1,107 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../../../../styles/colors';
 
 export default function CadPro(props) {
-
-
     function filterDesc(desc) {
-        if (desc.length < 40) {
-            return desc;
-        }
+        if (desc.length < 60) return desc;
 
-        return `${desc.substring(0, 35)}...`;
+        return `${desc.substring(0, 55)}...`;
     }
 
-
     return (
+        <View style={styles.container}>
+            <View style={styles.Header}>
+                <Image source={props.img} style={styles.imagemProfissional} />
 
-        <View style={styles.container} >
-
-            <View style={styles.Coluna1}>
-                <Image
-                    source={props.img}
-                    style={styles.ProfImg} />
-            </View>
-
-            <View style={styles.Coluna2}>
-
-                <View style={styles.Linha1}>
+                <View style={styles.ColunaDescricao}>
                     <Text style={styles.StyleName}> {props.NameProf} </Text>
 
-
-                </View>
-
-
-
-                <View style={styles.Linha2}>
                     <Text style={styles.StyleRamo}> {props.NameRamo} </Text>
+                    <Text style={styles.StyleDesc}> {filterDesc(props.DescServico)} </Text>
 
-                    <Text style={styles.StyleDesc}> {filterDesc(props.DescServico)}
-
-                    </Text>
+                    <View style={styles.linhaDistancia}>
+                        <Icon name='location-on' style={styles.StyleDist} />
+                        <Text style={styles.StyleDist}> {props.Distancia}</Text>
+                    </View>
                 </View>
-
-                <View style={styles.Linha3}>
-
-                    <Icon name='location-on' style={styles.StyleDist} />
-                    <Text style={styles.StyleDist}> {props.Distancia}
-
-                    </Text>
-
-                </View>
-            </View>
-            <View style={styles.Coluna3}>
 
                 <View style={styles.StyleAva}>
-
                     <Icon name='star' size={20} />
                     <Text> {props.Avali} </Text>
-
-                </View>
-
-                <View style={styles.StyleAccess}>
-                    <TouchableOpacity>
-                        <Image source={require('../../assets/SetaRight.png')} style={styles.SetaEnt} />
-                    </TouchableOpacity>
                 </View>
             </View>
 
+            <View style={styles.StyleAccess}>
+                <TouchableOpacity>
+                    <Image source={require('../../assets/SetaRight.png')} style={styles.SetaEnt} />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: 175,
-        width: '80%',
-        backgroundColor: '#fff',
-        margin: '3%',
-        alignSelf: 'center',
+        height: heightPercentageToDP('22%'),
+        width: widthPercentageToDP('90%'),
+        backgroundColor: colors.branco,
+        margin: heightPercentageToDP('2%'),
+        padding: 15,
         borderColor: '#9c9c9c',
-        borderWidth: 2,
-        flexDirection: 'row'
+        borderWidth: 1,
+        borderRadius: 15,
+        justifyContent: 'center'
     },
-    Coluna1: {
-        flex: 0.2,
-        height: '100%',
-        width: '20%',
-        paddingTop: 15
+    Header: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
     },
-    Coluna2: {
-        flex: 1,
-        height: '100%',
-        width: '80%'
+    ColunaDescricao: {
+        width: widthPercentageToDP('55%'),
     },
-    Coluna3: {
-        flex: 0.2,
-        height: '100%',
-        width: '20%',
-    },
-    Linha1: {
+    linhaDistancia: {
         height: '33.3%',
-        width: '100%',
-        flex: 1,
-        flexDirection: 'row'
-    },
-    Linha2: {
-        height: '33.3%',
-        width: '100%',
-        alignItems: 'flex-start',
-        flex: 1,
-    },
-    Linha3: {
-        height: '33.3%',
-        width: '100%',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         flex: 0.6,
         flexDirection: 'row',
         borderTopWidth: 1,
-        borderColor: '#b3b3b3'
+        borderColor: '#b3b3b3',
+        paddingTop: heightPercentageToDP('2%'),
+        marginTop: heightPercentageToDP('2%')
     },
     StyleName: {
-        fontSize: 25,
+        fontSize: widthPercentageToDP('4.8%'),
         fontWeight: 'bold',
-        paddingTop: 18
-
+        width: widthPercentageToDP('55%'),
+        marginBottom: heightPercentageToDP('0.8%')
     },
     StyleRamo: {
-        fontSize: 13,
-        lineHeight: 25,
+        fontSize: widthPercentageToDP('3.5%'),
+        marginBottom: heightPercentageToDP('0.4%'),
         opacity: 0.6,
         fontWeight: 'bold'
-
     },
     StyleDesc: {
-        fontSize: 13,
-        opacity: 0.5
+        fontSize: widthPercentageToDP('3%'),
+        opacity: 0.5,
     },
     StyleDist: {
-        fontSize: 13,
-        alignSelf: 'flex-end',
+        fontSize: widthPercentageToDP('3%'),
         opacity: 0.5,
-        paddingBottom: 10
     },
-    ProfImg: {
-        alignSelf: 'center',
-        width: '100%',
+    imagemProfissional: {
         resizeMode: 'contain',
+        marginRight: widthPercentageToDP('2%')
     },
     StyleAva: {
-        paddingTop: 25,
         flexDirection: 'row',
-        alignSelf: 'center',
-        alignItems: 'center',
-        opacity: 0.6
-
+        opacity: 0.6,
     },
     StyleAccess: {
-        flex: 1,
         resizeMode: 'contain',
-        alignSelf: 'center',
-        paddingTop: 100
+        alignSelf: 'flex-end',
     },
-    SetaEnt: {
-
-    }
 });
