@@ -1,32 +1,28 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+import colors from '../../../../styles/colors';
 
 export default function CadAgenda(props) {
-
- return (
-    
-    <View style={styles.container} >
+    return (
+        <View style={styles.container} >
             <Text style={styles.StyleAgenda}> {props.Agendado} </Text>
-    </View>
-  
-  );
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-    container:{
-        height: 500,
+    container: {
+        // height: heightPercentageToDP('15%'),
         width: '80%',
-        backgroundColor: '#fff',
         margin: '3%',
         alignSelf: 'center',
-        borderWidth:3,
-        borderColor:'#d3d3d3',
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    StyleAgenda:{
+    StyleAgenda: {
         fontSize: 18,
-        fontWeight: 'bold'
-
+        fontWeight: 'bold',
+        color: colors.branco
     }
 });

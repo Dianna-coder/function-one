@@ -13,7 +13,6 @@ export default function CadMensagens(props) {
     }
 
     return (
-
         <View style={styles.container}>
             <View style={styles.Header}>
                 <Image source={props.img} style={styles.ImagemProfissional} />
@@ -31,7 +30,6 @@ export default function CadMensagens(props) {
                 </TouchableOpacity>
             </View>
         </View>
-
     );
 }
 

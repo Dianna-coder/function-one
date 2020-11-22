@@ -1,34 +1,39 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+import colors from '../../../../styles/colors';
 
 export default function CadCarteira(props) {
 
- return (
-    
-    <View style={styles.container} >
+    return (
+        <View style={styles.container} >
+            <Text style={styles.titulo}>Saldo Disponível</Text>
+            <Text style={styles.StyleSaldo}> R$ {props.Saldo} </Text>
+        </View>
 
-            <Text style={styles.StyleSaldo}> Saldo: {props.Saldo} Reais </Text>
-
-    </View>
-  
-  );
+    );
 }
 
 const styles = StyleSheet.create({
-    container:{
-        height: 150,
+    container: {
+        height: heightPercentageToDP('15%'),
         width: '80%',
         backgroundColor: '#fff',
         margin: '3%',
         alignSelf: 'center',
-        borderWidth:3,
-        borderColor:'#d3d3d3',
-        justifyContent:'center',
-        alignItems:'center'
+        borderWidth: 1,
+        borderRadius: 15,
+        borderColor: '#d3d3d3',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    StyleSaldo:{
-        fontSize: 26,
+    titulo: {
+        fontSize: 18,
+        marginBottom: 5,
+        color: colors.cinza
+    },
+    StyleSaldo: {
+        fontSize: 20,
         fontWeight: 'bold'
-
     }
 });

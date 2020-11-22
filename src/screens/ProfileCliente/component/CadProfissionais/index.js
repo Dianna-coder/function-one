@@ -62,8 +62,6 @@ const styles = StyleSheet.create({
     ColunaDescricao: {
         width: widthPercentageToDP('55%'),
     },
-    ColunaAvaliacao: {
-    },
     linhaDistancia: {
         height: '33.3%',
         alignItems: 'center',
