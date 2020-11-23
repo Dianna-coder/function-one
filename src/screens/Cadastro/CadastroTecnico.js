@@ -45,6 +45,7 @@ export default class CadastroTecnico extends React.Component {
       { name: "step 11", component: Senha },
     ];
 
+    
     return (
       <View style={styles.container}>
         <AnimatedFormView

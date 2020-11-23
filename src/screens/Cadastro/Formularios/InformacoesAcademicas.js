@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Keyboard, TouchableWithoutFeedback, Modal } from 'react-native';
 
 import colors from '../../../styles/colors/index';
+
+import { Modalize } from 'react-native-modalize';
 
 import Header from '../../../components/Header';
 import Input from '../../../components/Input';
@@ -23,7 +25,9 @@ export default class InformacoesAcademicas extends React.Component {
       curso: '',
       inicio: '',
       termino: '',
-      doc: ''
+      doc: '',
+      modalVisible: false,
+      diplomas: [],
     };
 
     this.handleNivelDeEscolaridadeChange = this.handleNivelDeEscolaridadeChange.bind(this);
@@ -41,6 +45,10 @@ export default class InformacoesAcademicas extends React.Component {
   handleTerminoChange = (termino) => this.setState({ termino });
   handleDocChange = (doc) => this.setState({ doc });
 
+  setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  }
+
   nextStep = () => {
     const { next, saveState } = this.props;
     saveState(this.state);
@@ -54,7 +62,26 @@ export default class InformacoesAcademicas extends React.Component {
     back();
   }
 
+  addCurso = () => {
+    const key = {
+      nivelDeEscolaridade: this.state.nivelDeEscolaridade,
+      instituicao: this.state.instituicao,
+      curso: this.state.curso,
+      inicio: this.state.inicio,
+      termino: this.state.termino,
+      docs: this.state.docs
+    }
+
+    this.setState({ diplomas: [...this.state.diplomas, key] })
+  }
+
+  console = () => {
+    console.log("------------------------------------------------------")
+    console.log(this.state.diplomas)
+  }
+
   render() {
+    const { modalVisible } = this.state;
     return (
       <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -63,50 +90,60 @@ export default class InformacoesAcademicas extends React.Component {
 
             <ImagePicker permitirAdd={false} />
 
-            <View>
-              <SelectWithBorder
-                labelText={'Selecione o nível de escolaridade...'}
-                valor={this.state.nivelDeEscolaridade}
-                valorMudado={this.handleNivelDeEscolaridadeChange}
-                valoresDoSelect={[
-                  { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
-                  { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
-                  { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
-                  { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
-                  { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
-                  { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
-                ]}
-              />
+            <Button titulo='Adcionar Curso' funcao={() => this.setModalVisible(true)} />
 
-              <Input
-                labelText='Instituição'
-                onChangeText={this.handleInstituicaoChange}
-                value={this.state.instituicao}
-              />
+            <Modal
+              visible={modalVisible}
+            >
 
-              <Input
-                labelText='Curso'
-                onChangeText={this.handleCursoChange}
-                value={this.state.curso}
-              />
-
-              <View style={styles.containerDoisInputs}>
-                <Input
-                  withi={wp('38%')}
-                  labelText='Início'
-                  onChangeText={this.handleInicioChange}
-                  value={this.state.inicio}
+              <View style={styles.container}>
+                <SelectWithBorder
+                  labelText={'Selecione o nível de escolaridade...'}
+                  valor={this.state.nivelDeEscolaridade}
+                  valorMudado={this.handleNivelDeEscolaridadeChange}
+                  valoresDoSelect={[
+                    { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
+                    { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
+                    { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
+                    { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
+                    { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
+                    { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
+                  ]}
                 />
 
                 <Input
-                  withi={wp('38%')}
-                  labelText='Término'
-                  onChangeText={this.handleTerminoChange}
-                  value={this.state.termino}
+                  labelText='Instituição'
+                  onChangeText={this.handleInstituicaoChange}
+                  value={this.state.instituicao}
                 />
+
+                <Input
+                  labelText='Curso'
+                  onChangeText={this.handleCursoChange}
+                  value={this.state.curso}
+                />
+
+                <View style={styles.containerDoisInputs}>
+                  <Input
+                    withi={wp('38%')}
+                    labelText='Início'
+                    onChangeText={this.handleInicioChange}
+                    value={this.state.inicio}
+                  />
+                  <Input
+                    withi={wp('38%')}
+                    labelText='Término'
+                    onChangeText={this.handleTerminoChange}
+                    value={this.state.termino}
+                  />
+                </View>
+
+                <Button titulo='VOLTAR' funcao={() => this.setModalVisible(false)} />
+                <Button titulo='ADD CURSO' funcao={() => this.addCurso()} />
+                <Button titulo='CONSOLE' funcao={() => this.console()} />
               </View>
+            </Modal>
 
-            </View>
 
             <FilePicker
               onChangeDoc={this.handleDocChange}
