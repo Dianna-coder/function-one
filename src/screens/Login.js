@@ -73,7 +73,6 @@ export default class Login extends React.Component {
           Global.NOME = Global.userData.nome;
           Global.PROFILEIMAGE = Global.userData.imagem;
 
-          console.log(Global);
           if (Global.userData) this.props.navigation.navigate('ProfileProfissional');
         }
 

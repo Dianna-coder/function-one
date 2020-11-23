@@ -94,7 +94,7 @@ export default class Servicos extends React.Component {
 
             {/* Adicionar serviço */}
 
-            <Button titulo='PRÓXIMO' funcao={this.nextStep} />
+            <Button titulo='CONTINUAR' funcao={this.nextStep} />
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAwareScrollView>

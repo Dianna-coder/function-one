@@ -41,7 +41,7 @@ export default function CadCli(props) {
 
 const styles = StyleSheet.create({
     container: {
-        height: heightPercentageToDP('20%'),
+        height: heightPercentageToDP('18%'),
         width: widthPercentageToDP('90%'),
         backgroundColor: colors.branco,
         margin: heightPercentageToDP('2%'),

@@ -26,7 +26,7 @@ export default class InformacoesAcademicas extends React.Component {
       inicio: '',
       termino: '',
       doc: '',
-      modalVisible: false,
+      // modalVisible: false,
       diplomas: [],
     };
 
@@ -45,9 +45,9 @@ export default class InformacoesAcademicas extends React.Component {
   handleTerminoChange = (termino) => this.setState({ termino });
   handleDocChange = (doc) => this.setState({ doc });
 
-  setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
-  }
+  // setModalVisible = (visible) => {
+  //   this.setState({ modalVisible: visible });
+  // }
 
   nextStep = () => {
     const { next, saveState } = this.props;
@@ -62,26 +62,26 @@ export default class InformacoesAcademicas extends React.Component {
     back();
   }
 
-  addCurso = () => {
-    const key = {
-      nivelDeEscolaridade: this.state.nivelDeEscolaridade,
-      instituicao: this.state.instituicao,
-      curso: this.state.curso,
-      inicio: this.state.inicio,
-      termino: this.state.termino,
-      docs: this.state.docs
-    }
+  // addCurso = () => {
+  //   const key = {
+  //     nivelDeEscolaridade: this.state.nivelDeEscolaridade,
+  //     instituicao: this.state.instituicao,
+  //     curso: this.state.curso,
+  //     inicio: this.state.inicio,
+  //     termino: this.state.termino,
+  //     docs: this.state.docs
+  //   }
 
-    this.setState({ diplomas: [...this.state.diplomas, key] })
-  }
+  //   this.setState({ diplomas: [...this.state.diplomas, key] })
+  // }
 
-  console = () => {
-    console.log("------------------------------------------------------")
-    console.log(this.state.diplomas)
-  }
+  // console = () => {
+  //   console.log("------------------------------------------------------")
+  //   console.log(this.state.diplomas)
+  // }
 
   render() {
-    const { modalVisible } = this.state;
+    // const { modalVisible } = this.state;
     return (
       <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -90,65 +90,66 @@ export default class InformacoesAcademicas extends React.Component {
 
             <ImagePicker permitirAdd={false} />
 
-            <Button titulo='Adcionar Curso' funcao={() => this.setModalVisible(true)} />
+            {/* <Button titulo='Adcionar Curso' funcao={() => this.setModalVisible(true)} /> */}
 
-            <Modal
+            {/* <Modal
               visible={modalVisible}
-            >
+            > */}
 
-              <View style={styles.container}>
-                <SelectWithBorder
-                  labelText={'Selecione o nível de escolaridade...'}
-                  valor={this.state.nivelDeEscolaridade}
-                  valorMudado={this.handleNivelDeEscolaridadeChange}
-                  valoresDoSelect={[
-                    { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
-                    { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
-                    { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
-                    { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
-                    { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
-                    { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
-                  ]}
-                />
+            <View>
+              <SelectWithBorder
+                labelText={'Selecione o nível de escolaridade...'}
+                valor={this.state.nivelDeEscolaridade}
+                valorMudado={this.handleNivelDeEscolaridadeChange}
+                valoresDoSelect={[
+                  { label: 'Ensino Fundamental Incompleto', value: 'ensinoFundamentalIncompleto' },
+                  { label: 'Ensino Fundamental Completo', value: 'ensinoFundamentalCompleto' },
+                  { label: 'Ensino Médio Incompleto', value: 'ensinoMedioIncompleto' },
+                  { label: 'Ensino Médio Completo', value: 'ensinoMedioCompleto' },
+                  { label: 'Ensino Superior Incompleto', value: 'ensinoSuperiorIncompleto' },
+                  { label: 'Ensino Superior Completo', value: 'ensinoSuperiorCompleto' },
+                ]}
+              />
 
+              <Input
+                labelText='Instituição'
+                onChangeText={this.handleInstituicaoChange}
+                value={this.state.instituicao}
+              />
+
+              <Input
+                labelText='Curso'
+                onChangeText={this.handleCursoChange}
+                value={this.state.curso}
+              />
+
+              <View style={styles.containerDoisInputs}>
                 <Input
-                  labelText='Instituição'
-                  onChangeText={this.handleInstituicaoChange}
-                  value={this.state.instituicao}
+                  withi={wp('38%')}
+                  labelText='Início'
+                  onChangeText={this.handleInicioChange}
+                  value={this.state.inicio}
                 />
-
                 <Input
-                  labelText='Curso'
-                  onChangeText={this.handleCursoChange}
-                  value={this.state.curso}
+                  withi={wp('38%')}
+                  labelText='Término'
+                  onChangeText={this.handleTerminoChange}
+                  value={this.state.termino}
                 />
-
-                <View style={styles.containerDoisInputs}>
-                  <Input
-                    withi={wp('38%')}
-                    labelText='Início'
-                    onChangeText={this.handleInicioChange}
-                    value={this.state.inicio}
-                  />
-                  <Input
-                    withi={wp('38%')}
-                    labelText='Término'
-                    onChangeText={this.handleTerminoChange}
-                    value={this.state.termino}
-                  />
-                </View>
-
-                <Button titulo='VOLTAR' funcao={() => this.setModalVisible(false)} />
-                <Button titulo='ADD CURSO' funcao={() => this.addCurso()} />
-                <Button titulo='CONSOLE' funcao={() => this.console()} />
               </View>
-            </Modal>
 
+              {/* <Button titulo='VOLTAR' funcao={() => this.setModalVisible(false)} />
+              <Button titulo='ADD CURSO' funcao={() => this.addCurso()} />
+              <Button titulo='CONSOLE' funcao={() => this.console()} /> */}
+            </View>
 
             <FilePicker
               onChangeDoc={this.handleDocChange}
               value={this.state.doc}
             />
+            {/* </Modal> */}
+
+
             {/* TODO - adicionar cursos -> gerar novo form */}
 
             <Button titulo='CONTINUAR' funcao={this.nextStep} />
