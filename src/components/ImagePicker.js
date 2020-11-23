@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
-
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
 import colors from '../styles/colors/index';
-
 import * as ExpoImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
 
-// TODO - abrir camera tb
-// mudar mensagem do requestCameraRollPermissionsAsync()
-// passar imagem para o App.js
-// Retirar o botao de adicionar conforme o formulario que estiver
+let imagemSelecionada = undefined;
 
-export default function ImagePicker() {
+export default function ImagePicker(props) {
   const [image, setImage] = useState(null);
 
-  useEffect(() => {
+  const pickImage = async () => {
     (async () => {
       if (Platform.OS !== 'web') {
         const { status } = await ExpoImagePicker.requestCameraRollPermissionsAsync();
+
         if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!');
+          alert('Desculpe, nós precisamos acessar a galeria para isso!');
         }
       }
     })();
-  }, []);
 
-  const pickImage = async () => {
     let result = await ExpoImagePicker.launchImageLibraryAsync({
       mediaTypes: ExpoImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -37,14 +29,36 @@ export default function ImagePicker() {
     });
 
     if (!result.cancelled) {
+      props.onChangeImage(result.uri);
+
       setImage(result.uri);
+
+      imagemSelecionada = result.uri;
     }
   };
 
+  const {
+    permitirAdd
+  } = props;
+
   return (
-    <ImageBackground source={{ uri: image }} style={styles.container} borderRadius={ 100 }>
-      <TouchableOpacity style={styles.btnAdicionar} onPress={pickImage}>
-        <Image style={styles.imagemAdicao} source={require("../../assets/icons/adicao.png")}/>
+    <ImageBackground
+      source={{
+        uri: !image ? imagemSelecionada : image
+      }}
+      style={styles.container}
+      borderRadius={100}>
+
+      <TouchableOpacity
+        style={
+          !permitirAdd
+            ? styles.btnHidden
+            : styles.btnAdicionar
+        }
+        onPress={pickImage}>
+        <Image
+          style={styles.imagemAdicao}
+          source={require("../../assets/icons/adicao.png")} />
       </TouchableOpacity>
     </ImageBackground>
   );
@@ -52,8 +66,8 @@ export default function ImagePicker() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: hp('7.5%'),
-    marginBottom: hp('1%'),
+    // marginTop: hp('5.5%'),
+    // marginBottom: hp('1%'),
     height: hp('18%'),
     width: hp('18%'),
     borderRadius: wp('50%'),
@@ -68,6 +82,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.azulVibrante,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  btnHidden: {
+    display: 'none'
   },
   imagemAdicao: {
     width: hp('2.6%'),

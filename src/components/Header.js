@@ -1,19 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import colors from "../styles/colors/index";
+// import Button from '../../components/Button';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default function Header() {
-  return (
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { titulo, funcao } = this.props;
+
+    return (
       <View style={styles.container}>
-        <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")}/>
-        
-        <Text style={ styles.title }>
-          Seus Dados
+        <TouchableOpacity style={styles.btnVoltar} onPress={funcao}>
+          <Image style={styles.imagem} source={require("../../assets/icons/btn-voltar.png")} />
+        </TouchableOpacity>
+
+        <Text style={styles.title}>
+          {titulo}
         </Text>
       </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -24,14 +35,19 @@ const styles = StyleSheet.create({
   imagem: {
     width: wp('2.5%'),
     height: hp('2.3%'),
-    marginLeft: wp('6%'),
-    marginTop: hp('2.2%'),
-    position: 'absolute'
   },
   title: {
     fontSize: hp('2.2%'),
     color: colors.branco,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
+  btnVoltar: {
+    position: 'absolute',
+    width: wp('15%'),
+    height: wp('15%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 3
+  }
 });

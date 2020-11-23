@@ -4,9 +4,9 @@ import {
   TextInput,
   StyleSheet,
   Animated,
-  KeyboardAvoidingView
+  Keyboard
 } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../styles/colors/index';
 
 export default class Input extends Component {
@@ -17,7 +17,7 @@ export default class Input extends Component {
       inputValue: props.defaultValue,
       isFocused: false,
     };
-    
+
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -25,8 +25,13 @@ export default class Input extends Component {
     this._animatedIsFocused = new Animated.Value(this.props.value === '' ? 0 : 1);
   }
 
-  handleFocus = () => this.setState({ isFocused: true });
-  handleBlur = () => this.setState({ isFocused: false });
+  handleFocus = () => {
+    this.setState({ isFocused: true });
+  };
+  handleBlur = () => {
+    this.setState({ isFocused: false });
+    // Keyboard.dismiss();
+  };
 
   componentDidUpdate() {
     Animated.timing(this._animatedIsFocused, {
@@ -44,26 +49,26 @@ export default class Input extends Component {
   render() {
     const {
       withi,
-      onChangeText,
+      altura,
       inputType,
-      inputStyle,
       labelText,
-      defaultValue,
       inputValue,
+      multiline,
+      numberOfLines,
+      isPassword
     } = this.props;
-    
+
     const labelStyle = {
       position: 'absolute',
       left: 0,
+      color: colors.branco,
       top: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
         outputRange: [35, 18],
-        useNativeDriver: false,
       }),
       fontSize: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
         outputRange: [hp('1.9%'), hp('1.7%')],
-        useNativeDriver: false,
       }),
       marginTop: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
@@ -72,26 +77,34 @@ export default class Input extends Component {
     };
 
     return (
-      <View style={styles.wrapper}>
-          <Animated.Text style={[labelStyle, styles.labelStyle ]}>
-            {labelText}
-          </Animated.Text>
-          <KeyboardAvoidingView behavior='padding'>
-            <TextInput
-              style={[
-                styles.inputField,
-                { width: withi ? parseInt(withi) : wp('79.71%') }
-              ]}
-              onChangeText={this.onChangeText}
-              keyboardType={inputType}
-              underlineColorAndroid="transparent"
-              defaultValue={inputValue}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              blurOnSubmit
-            />
-          </KeyboardAvoidingView>
+      <View style={[
+        styles.wrapper
+      ]}>
+        <Animated.Text style={labelStyle}>
+          {labelText}
 
+        </Animated.Text>
+        <TextInput
+          style={[
+            styles.inputField,
+            {
+              width: withi ? parseInt(withi) : wp('79.71%'),
+              height: altura ? altura : hp('3.95%')
+            }
+          ]}
+          secureTextEntry={isPassword}
+          onChangeText={this.onChangeText}
+          keyboardType={inputType}
+          underlineColorAndroid="transparent"
+          defaultValue={inputValue}
+          value={inputValue}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          blurOnSubmit
+          multiline={multiline}
+          numberOfLines={numberOfLines}
+          onEndEditing={Keyboard.dismiss}
+        />
       </View>
     );
   }
@@ -100,18 +113,17 @@ export default class Input extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingTop: 5 
+    paddingTop: 5,
+  },
+  container: {
+    flex: 1,
   },
   inputField: {
-    height: hp('3.95%'),
     paddingBottom: 5,
     color: colors.branco,
     marginTop: hp('3.5%'),
     fontSize: hp('1.9%'),
     borderBottomWidth: 1,
     borderBottomColor: colors.branco
-  },
-  labelStyle: {
-    color: colors.branco
   }
 });
