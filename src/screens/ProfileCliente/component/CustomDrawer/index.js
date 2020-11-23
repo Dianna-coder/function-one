@@ -4,8 +4,10 @@ import { DrawerItem } from '@react-navigation/drawer';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  heightPercentageToDP,
 } from "react-native-responsive-screen";
-import { signout } from '../../../../database/Firebase';
+import Global from "../../../../global/Global";
+import { getImageFromFirebase, signout } from '../../../../database/Firebase';
 
 export default function CustomDrawer(props) {
   function handleSignOutButton() {
@@ -25,13 +27,35 @@ export default function CustomDrawer(props) {
     )
   }
 
+  function buscarImagemPerfil() {
+    const imagem = Global.PROFILEIMAGE;
+
+    if (imagem) {
+      getImageFromFirebase(imagem, (url, error) => {
+        if (error) console.log(error);
+        Global.IMAGEURL = url;
+      });
+    }
+
+    return Global.IMAGEURL
+  }
+
+  function formatarNome(nome) {
+    let tmp = nome.split(" ");
+    if (tmp[1]) {
+      nome = tmp[0] + " " + tmp[1];
+    }
+    return nome;
+  }
+
   return (
-    <View >
-
+    <View>
       <View style={styles.BoxUser}>
-        <Image source={require('../../assets/Bolinha-foto-1.png')} />
-        <Text style={styles.NameUser}>Alessandra Ferreira</Text>
-
+        <Image
+          style={styles.imgPerfil}
+          source={{ uri: buscarImagemPerfil() }}
+        />
+        <Text style={styles.NameUser}>{formatarNome(Global.NOME)}</Text>
       </View>
 
       <View style={styles.BoxMid}>
@@ -89,6 +113,11 @@ const styles = StyleSheet.create({
     height: '9%',
     backgroundColor: '#0C1C41',
     padding: 10,
+  },
+  imgPerfil: {
+    width: heightPercentageToDP('6.3%'),
+    height: heightPercentageToDP('6.3%'),
+    borderRadius: heightPercentageToDP('50%'),
   },
   BoxMid: {
     height: '80%'

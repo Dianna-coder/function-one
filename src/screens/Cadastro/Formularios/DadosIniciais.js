@@ -5,7 +5,7 @@ import colors from '../../../styles/colors/index';
 
 import Header from '../../../components/Header';
 import Input from '../../../components/Input';
-import ImagePicker, { imagemPerfil } from '../../../components/ImagePicker';
+import ImagePicker from '../../../components/ImagePicker';
 import Button from '../../../components/Button';
 import CheckBox from '../../../components/CheckBox';
 
@@ -18,7 +18,7 @@ export default class DadosIniciais extends React.Component {
 
     this.state = {
       termoDeUso: false,
-      imagem: imagemPerfil,
+      imagem: '',
       nome: '',
       email: '',
       celular: '',
@@ -32,6 +32,7 @@ export default class DadosIniciais extends React.Component {
     this.handleNascimentoChange = this.handleNascimentoChange.bind(this);
     this.handleCPFChange = this.handleCPFChange.bind(this);
     this.handleTermoDeUsoChange = this.handleTermoDeUsoChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   handleNomeChange = (nome) => this.setState({ nome });
@@ -39,6 +40,7 @@ export default class DadosIniciais extends React.Component {
   handleCelularChange = (celular) => this.setState({ celular });
   handleNascimentoChange = (nascimento) => this.setState({ nascimento });
   handleCPFChange = (cpf) => this.setState({ cpf });
+  handleImageChange = (imagem) => this.setState({ imagem });
 
   handleTermoDeUsoChange() {
     this.setState({ termoDeUso: !this.state.termoDeUso });
@@ -64,7 +66,11 @@ export default class DadosIniciais extends React.Component {
           <View style={styles.container}>
             <Header titulo='Seus Dados' funcao={this.goBack} />
 
-            <ImagePicker permitirAdd={true} />
+            <ImagePicker
+              onChangeImage={this.handleImageChange}
+              value={this.state.imagem}
+              permitirAdd={true}
+            />
 
             <View>
               <Input

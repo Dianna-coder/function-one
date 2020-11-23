@@ -11,7 +11,6 @@ import SelectWithBorder from '../../../components/Select/SelectWithBorder';
 import FilePicker from '../../../components/FilePicker';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { docsSelecionados } from '../../../components/FilePicker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class InformacoesAcademicas extends React.Component {
@@ -24,7 +23,7 @@ export default class InformacoesAcademicas extends React.Component {
       curso: '',
       inicio: '',
       termino: '',
-      docs: docsSelecionados
+      doc: ''
     };
 
     this.handleNivelDeEscolaridadeChange = this.handleNivelDeEscolaridadeChange.bind(this);
@@ -32,6 +31,7 @@ export default class InformacoesAcademicas extends React.Component {
     this.handleCursoChange = this.handleCursoChange.bind(this);
     this.handleInicioChange = this.handleInicioChange.bind(this);
     this.handleTerminoChange = this.handleTerminoChange.bind(this);
+    this.handleDocChange = this.handleDocChange.bind(this);
   }
 
   handleNivelDeEscolaridadeChange = (nivelDeEscolaridade) => this.setState({ nivelDeEscolaridade });
@@ -39,6 +39,7 @@ export default class InformacoesAcademicas extends React.Component {
   handleCursoChange = (curso) => this.setState({ curso });
   handleInicioChange = (inicio) => this.setState({ inicio });
   handleTerminoChange = (termino) => this.setState({ termino });
+  handleDocChange = (doc) => this.setState({ doc });
 
   nextStep = () => {
     const { next, saveState } = this.props;
@@ -107,7 +108,10 @@ export default class InformacoesAcademicas extends React.Component {
 
             </View>
 
-            <FilePicker />
+            <FilePicker
+              onChangeDoc={this.handleDocChange}
+              value={this.state.doc}
+            />
             {/* TODO - adicionar cursos -> gerar novo form */}
 
             <Button titulo='CONTINUAR' funcao={this.nextStep} />

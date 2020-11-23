@@ -48,7 +48,7 @@ export default class Senha extends React.Component {
     }, 2000);
   };
 
-  uriToBlob = (uri) => {
+  uriToBlob = async (uri) => {
     return new Promise((resolve, reject) => {
 
       const xhr = new XMLHttpRequest();
@@ -65,16 +65,17 @@ export default class Senha extends React.Component {
 
       xhr.open('GET', uri, true);
       xhr.send(null);
-
     });
   };
 
   handleSubmit = async () => {
     const { getState, finish } = this.props;
 
-    const data = getState(this.state);
+    let data = getState(this.state);
 
     const email = data.email;
+    const imagem = data.imagem;
+    const documento = data.doc;
 
     const password = this.state.senha;
     const passwordConfirmation = this.state.confirmacaoSenha;
@@ -86,27 +87,27 @@ export default class Senha extends React.Component {
 
     if (!email || !password) return Alert.alert('Dados Incompletos!');
 
-    this.createDataAndUserInDatabase(data, email, password);
-
-    const uriImage = data.imagem;
-    const uriDocs = data.docs;
-
-    if (uriImage) {
-      const uri = uriImage;
+    if (imagem) {
+      const uri = imagem;
       const blob = await this.uriToBlob(uri);
 
-      await uploadImageToFirebase(blob);
+      const nomeImagem = 'photo' + Math.random() * 286 + '.jpg';
+      data.imagem = nomeImagem;
+
+      await uploadImageToFirebase(blob, nomeImagem);
     }
 
-    if (uriDocs.length > 0) {
-      const promises = uriDocs.map(async (uri) => {
-        const blob = await this.uriToBlob(uri);
+    if (documento) {
+      const uri = documento;
+      const blob = await this.uriToBlob(uri);
 
-        await uploadDocumentToFirebase(blob);
-      });
+      const nomeDocumento = 'doc' + Math.random() * 286 + '.pdf';
+      data.doc = nomeDocumento;
 
-      Promise.all(promises);
+      await uploadDocumentToFirebase(blob, nomeDocumento);
     }
+
+    this.createDataAndUserInDatabase(data, email, password);
 
     Alert.alert('Cadastro efetuado com sucesso!');
 

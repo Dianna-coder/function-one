@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import colors from '../styles/colors/index';
 import * as ExpoImagePicker from 'expo-image-picker';
 
-export let imagemPerfil = null;
+let imagemSelecionada = undefined;
 
 export default function ImagePicker(props) {
   const [image, setImage] = useState(null);
@@ -29,20 +29,22 @@ export default function ImagePicker(props) {
     });
 
     if (!result.cancelled) {
+      props.onChangeImage(result.uri);
+
       setImage(result.uri);
 
-      imagemPerfil = result.uri;
+      imagemSelecionada = result.uri;
     }
   };
 
-  const { permitirAdd } = props;
+  const {
+    permitirAdd
+  } = props;
 
   return (
     <ImageBackground
       source={{
-        uri: !image
-          ? imagemPerfil
-          : image
+        uri: !image ? imagemSelecionada : image
       }}
       style={styles.container}
       borderRadius={100}>

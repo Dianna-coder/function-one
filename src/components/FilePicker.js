@@ -5,29 +5,27 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../styles/colors';
 
-export let docsSelecionados = [];
-
-export default function FilePicker() {
-  const [docs, setDocs] = useState(null);
+export default function FilePicker(props) {
+  const [doc, setDoc] = useState(null);
   const [label, setLabel] = useState('Anexar Certificados e Diplomas')
 
-  const pickDocs = async () => {
+  const pickDoc = async () => {
     let result = await ExpoDocsPicker.getDocumentAsync({
-      multiple: true,
+      multiple: false,
       copyToCacheDirectory: true,
       type: '*/*'
     });
 
     if (!result.cancelled) {
-      setDocs(result.uri);
-      setLabel(result.name);
+      props.onChangeDoc(result.uri);
 
-      docsSelecionados.push(result.uri);
+      setDoc(result.uri);
+      setLabel(result.name);
     }
   }
 
   return (
-    <TouchableOpacity onPress={pickDocs}>
+    <TouchableOpacity onPress={pickDoc}>
       <View style={styles.container}>
         <Text style={styles.text}>
           {label}

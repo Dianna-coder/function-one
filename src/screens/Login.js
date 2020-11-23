@@ -18,7 +18,6 @@ import { emailSignIn, getUserData, getProfissionalData } from "../database/Fireb
 import colors from "../styles/colors"
 import Global from "../global/Global";
 import Header from "../components/Header";
-import ResetPassword from "./ResetPassword";
 
 const fundo = "../../assets/fundo.png";
 const logo = "../../assets/logo.png";
@@ -51,19 +50,33 @@ export default class Login extends React.Component {
       getUserData(email, (data, error) => {
         if (error && !data) return alert(error.message);
 
-        Global.userData = data.data();
-        Global.EMAIL = email;
+        const userData = data.data();
 
-        if (Global.userData) this.props.navigation.navigate('ProfileCliente');
+        if (userData) {
+          Global.userData = userData;
+          Global.EMAIL = email;
+          Global.NOME = Global.userData.nome;
+          Global.PROFILEIMAGE = Global.userData.imagem;
+
+          this.props.navigation.navigate('ProfileCliente');
+        }
       });
 
       getProfissionalData(email, (data, error) => {
         if (error && !data) alert(error.message);
 
-        Global.userData = data.data();
-        Global.EMAIL = email;
+        const userData = data.data();
 
-        if (Global.userData) this.props.navigation.navigate('ProfileProfissional');
+        if (userData) {
+          Global.userData = userData;
+          Global.EMAIL = email;
+          Global.NOME = Global.userData.nome;
+          Global.PROFILEIMAGE = Global.userData.imagem;
+
+          console.log(Global);
+          if (Global.userData) this.props.navigation.navigate('ProfileProfissional');
+        }
+
       });
     });
   }

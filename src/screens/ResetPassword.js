@@ -6,6 +6,8 @@ import {
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -39,43 +41,45 @@ export default class ResetPassword extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
 
-        <ImageBackground
-          style={{
-            width: wp("100%"),
-            height: hp("100%"),
-            justifyContent: "center",
-          }}
-          source={require(fundo)}
-        >
+          <ImageBackground
+            style={{
+              width: wp("100%"),
+              height: hp("100%"),
+              justifyContent: "center",
+            }}
+            source={require(fundo)}
+          >
 
-          <KeyboardAvoidingView>
-            <View style={{ justifyContent: "space-evenly", height: hp('100%'), width: wp('100%'), alignItems: "center", }}>
+            <KeyboardAvoidingView>
+              <View style={{ justifyContent: "space-evenly", height: hp('100%'), width: wp('100%'), alignItems: "center", }}>
 
-              <Header
-                titulo=''
-                funcao={() => this.props.navigation.navigate('Login')}
-              />
+                <Header
+                  titulo=''
+                  funcao={() => this.props.navigation.navigate('Login')}
+                />
 
-              <Text style={styles.saudacao}>Confirme seu e-mail para realizar o reset de senha, por favor</Text>
+                <Text style={styles.saudacao}>Confirme seu e-mail para realizar o reset de senha, por favor</Text>
 
-              <Input
-                inputType='email-address'
-                labelText='E-mail'
-                onChangeText={this.handleEmailChange}
-                value={this.state.email}
-              />
+                <Input
+                  inputType='email-address'
+                  labelText='E-mail'
+                  onChangeText={this.handleEmailChange}
+                  value={this.state.email}
+                />
 
-              <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
-                <TouchableOpacity onPress={this.handleForgotPassword} style={styles.botoes}>
-                  <Text style={styles.txtbotao}>CONFIRMAR</Text>
-                </TouchableOpacity>
+                <View style={{ alignItems: "center", marginTop: 40, marginBottom: 40 }}>
+                  <TouchableOpacity onPress={this.handleForgotPassword} style={styles.botoes}>
+                    <Text style={styles.txtbotao}>CONFIRMAR</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </KeyboardAvoidingView>
-        </ImageBackground>
-      </View>
+            </KeyboardAvoidingView>
+          </ImageBackground>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

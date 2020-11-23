@@ -34,7 +34,7 @@ export default class PrimeiroLoginTecnico extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.conteudo}>
-          <Text style={styles.titulo}>BEM VINDO {this.pickName()}</Text>
+          <Text style={styles.titulo}>OLÁ {this.pickName()}</Text>
 
           <Image style={styles.imagem} source={require('../../../assets/icons/garoto.png')} />
 

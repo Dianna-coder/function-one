@@ -1,8 +1,9 @@
 module.exports = {
   EMAIL: "",
+  NOME: "",
   PROFILEIMAGE: "",
+  IMAGEURL: "https://reactnative.dev/img/tiny_logo.png",
   userData: {
-    profissional: false,
     nome: "",
     email: "",
   }

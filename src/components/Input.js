@@ -92,14 +92,15 @@ export default class Input extends Component {
               height: altura ? altura : hp('3.95%')
             }
           ]}
+          secureTextEntry={isPassword}
           onChangeText={this.onChangeText}
           keyboardType={inputType}
           underlineColorAndroid="transparent"
           defaultValue={inputValue}
+          value={inputValue}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           blurOnSubmit
-          secureTextEntry={isPassword}
           multiline={multiline}
           numberOfLines={numberOfLines}
           onEndEditing={Keyboard.dismiss}
